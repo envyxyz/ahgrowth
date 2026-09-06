@@ -1,0 +1,376 @@
+- generic [active] [ref=e1]:
+  - generic:
+    - generic:
+      - generic [ref=e3]:
+        - generic [ref=e4]:
+          - link [ref=e6] [cursor=pointer]:
+            - /url: /
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - paragraph: Home
+        - generic [ref=e17]:
+          - generic [ref=e18]:
+            - link [ref=e20] [cursor=pointer]:
+              - /url: /work
+              - generic [ref=e24]:
+                - paragraph [ref=e27]: Work
+                - paragraph [ref=e31]: Explore case studies
+            - link [ref=e33] [cursor=pointer]:
+              - /url: /about
+              - generic [ref=e37]:
+                - paragraph [ref=e40]: About
+                - paragraph [ref=e44]: Meet the team
+            - link [ref=e46] [cursor=pointer]:
+              - /url: /services
+              - generic [ref=e50]:
+                - paragraph [ref=e53]: Services
+                - paragraph [ref=e57]: What we do
+            - link [ref=e59] [cursor=pointer]:
+              - /url: /latest
+              - generic [ref=e63]:
+                - paragraph [ref=e66]: Latest
+                - paragraph [ref=e70]: News and events
+            - link [ref=e72] [cursor=pointer]:
+              - /url: /careers
+              - generic [ref=e76]:
+                - paragraph [ref=e79]: Careers
+                - paragraph [ref=e83]: Join the team
+            - link [ref=e85] [cursor=pointer]:
+              - /url: /contact
+              - generic [ref=e89]:
+                - paragraph [ref=e92]: Contact
+                - paragraph [ref=e96]: Reach out
+          - generic [ref=e98]:
+            - heading "Channels" [level=2] [ref=e99]
+            - generic [ref=e100]:
+              - link [ref=e101] [cursor=pointer]:
+                - /url: https://www.instagram.com/studiokoto/
+                - generic [ref=e102]:
+                  - paragraph [ref=e103]: Instagram
+                  - img "A screenshot of Koto instagram thumbnail." [ref=e107]
+              - link [ref=e108] [cursor=pointer]:
+                - /url: https://offlive.koto.studio/
+                - generic [ref=e109]:
+                  - paragraph [ref=e110]: Off.Live
+                  - img "Off.Live logo." [ref=e114]
+              - link [ref=e115] [cursor=pointer]:
+                - /url: https://offbrandkoto.substack.com/
+                - generic [ref=e116]:
+                  - paragraph [ref=e117]: Off.Brand
+                  - img "OFF Brand logo." [ref=e121]
+              - link [ref=e122] [cursor=pointer]:
+                - /url: https://seasoned.koto.studio
+                - generic [ref=e123]:
+                  - paragraph [ref=e124]: Seasoned
+                  - img "Seasoned logo." [ref=e128]
+      - generic [ref=e130]:
+        - link [ref=e132] [cursor=pointer]:
+          - /url: /work
+          - paragraph [ref=e134]: Work
+        - link [ref=e136] [cursor=pointer]:
+          - /url: /about
+          - paragraph [ref=e138]: About
+        - link [ref=e140] [cursor=pointer]:
+          - /url: /services
+          - paragraph [ref=e142]: Services
+        - link [ref=e144] [cursor=pointer]:
+          - /url: /latest
+          - paragraph [ref=e146]: Latest
+        - link [ref=e148] [cursor=pointer]:
+          - /url: /careers
+          - paragraph [ref=e150]: Careers
+        - link [ref=e152] [cursor=pointer]:
+          - /url: /contact
+          - paragraph [ref=e154]: Contact
+  - generic:
+    - generic:
+      - button [ref=e157]:
+        - generic [ref=e158] [cursor=pointer]
+      - generic:
+        - generic:
+          - button
+  - main [ref=e166]:
+    - generic [ref=e168]:
+      - generic [ref=e170]:
+        - generic:
+          - generic:
+            - button [ref=e175]:
+              - generic [ref=e176] [cursor=pointer]
+            - generic:
+              - generic:
+                - generic:
+                  - heading "We’re Koto" [level=1]
+                  - paragraph: The Creative Company
+          - generic [ref=e188]:
+            - generic:
+              - paragraph: We make ambitious ideas for ambitious brands. Five offices, one studio, united by optimism, collaboration, and craft. Find us in Los Angeles, New York, London, Berlin and Sydney.
+      - generic [ref=e191]:
+        - generic [ref=e192]:
+          - generic:
+            - generic [ref=e193]:
+              - heading "Our work" [level=2] [ref=e195]
+              - generic [ref=e196]:
+                - heading "Instagram" [level=3] [ref=e198]
+                - heading "Amazon" [level=3] [ref=e200]
+                - heading "Microsoft Copilot+PC" [level=3] [ref=e202]
+                - heading "Fitbit Ace LTE" [level=3] [ref=e204]
+                - heading "Tripadvisor" [level=3] [ref=e206]
+            - generic:
+              - generic [ref=e208]:
+                - paragraph [ref=e210]: "There are parts of Instagram that will never change. It will always remain a platform for creators to experiment, find, and share their voice. But the Instagram of today has pushed far beyond what it once was. With that growth comes the opportunity to build for the future—and double down on what matters most. The Instagram Design Team came to us to do just that: to reimagine a globally recognized wordmark, bring it in line with an evolving brand system, and ensure it stands the test of time."
+                - paragraph [ref=e212]: An 18-month project across 15 markets and more than 50 sub-brands. With Amazon XCM we modernized the brand’s core assets, a warmer smile, a flexible new typeface and a unified palette, so the brand could move at Amazon speed with clarity and consistency, and put design at the heart and the forefront of the company. Our focus was on restoring clarity and confidence. A shared system linking every sub-brand back to the parent. One system, strong enough to carry across 50+ lines of business, flexible enough to stretch across global markets, audiences and teams. The goal was to make Amazon feel unified again, and recapture the magic of finding exactly what you need, exactly when you need it.
+                - paragraph [ref=e214]: Microsoft’s latest flagship is Copilot+PC, a new class of computers powered by Copilot. Pushing the technology to new heights, they asked us to create a brand identity that signals a new era in personal computing – redefining AI by showing its practical power and everyday impact.
+                - paragraph [ref=e216]: "Google’s Fitbit Ace LTE set out to create the first connected smartwatch designed to get kids moving—shifting them away from sedentary gaming and into physical play. The challenge was twofold: compete with the excitement of traditional gaming, while reassuring parents about screen time and health. The brand had to speak to kids’ desire for fun and parents’ need for confidence in a product that could make activity both engaging and beneficial."
+                - paragraph [ref=e218]: "For 25 years, Tripadvisor has been the world’s travel companion, with real reviews, real advice, straight from real people. But in a race to compete with booking engines and comparison sites on price and capacity, the brand risked losing its edge. We set out to refocus on what makes Tripadvisor unique: its community of real travelers, and their real reviews."
+              - generic [ref=e219]:
+                - generic [ref=e223]:
+                  - paragraph [ref=e224]: A new mark with old memories
+                  - paragraph [ref=e225]: 2026, Social Media
+                - generic [ref=e227]:
+                  - img "Amazon logo." [ref=e229]
+                  - generic [ref=e230]:
+                    - paragraph [ref=e231]: Global brand transformation
+                    - paragraph [ref=e232]: 2025, Marketplaces
+                - generic [ref=e234]:
+                  - img "Copilot + PC logo." [ref=e236]
+                  - generic [ref=e237]:
+                    - paragraph [ref=e238]: A new era of PCs
+                    - paragraph [ref=e239]: 2024, Tech
+                - generic [ref=e241]:
+                  - img "Fitbit Ace LTE logo." [ref=e243]
+                  - generic [ref=e244]:
+                    - paragraph [ref=e245]: Because it’s fun
+                    - paragraph [ref=e246]: 2024, Wearables
+                - generic [ref=e248]:
+                  - img "Tripadvisor logo." [ref=e250]
+                  - generic [ref=e251]:
+                    - paragraph [ref=e252]: Every type of traveler, every type of trip
+                    - paragraph [ref=e253]: 2025, Travel
+        - generic [ref=e255]:
+          - link [ref=e257]:
+            - /url: /projects/instagram
+            - button [ref=e261]:
+              - generic [ref=e262] [cursor=pointer]
+          - link [ref=e271]:
+            - /url: /projects/amazon
+            - button [ref=e275]:
+              - generic [ref=e276] [cursor=pointer]
+          - link [ref=e285]:
+            - /url: /projects/microsoft-copilot-pc
+            - button [ref=e289]:
+              - generic [ref=e290] [cursor=pointer]
+          - link [ref=e299]:
+            - /url: /projects/fitbit-ace-lte
+            - button [ref=e303]:
+              - generic [ref=e304] [cursor=pointer]
+          - link [ref=e313]:
+            - /url: /projects/tripadvisor
+            - button [ref=e317]:
+              - generic [ref=e318] [cursor=pointer]
+          - link "[ View all projects ]" [ref=e327] [cursor=pointer]:
+            - /url: /work
+            - generic [ref=e329]:
+              - generic [ref=e330]: "["
+              - generic [ref=e331]: View all projects
+              - generic [ref=e332]: "]"
+      - generic [ref=e334]:
+        - generic [ref=e337]:
+          - generic [ref=e338]:
+            - heading [level=2] [ref=e340]: Studio news
+            - paragraph [ref=e342]: Press, talks, and events
+          - link "[ View all ]" [ref=e344] [cursor=pointer]:
+            - /url: /latest
+            - generic [ref=e345]:
+              - generic [ref=e346]: "["
+              - generic [ref=e347]: View all
+              - generic [ref=e348]: "]"
+        - generic [ref=e350]:
+          - link "APAC is rewriting global branding, says Koto’s Damian Borchok The future of global branding isn’t being shaped in London or New York. In this sharp take, Koto’s APAC MD Damian Borchok breaks down why the real creative edge now sits in Asia and what that means for brand leaders today. If you’re still applying Western playbooks, you’re already behind. Press Thu 19 Nov" [ref=e352] [cursor=pointer]:
+            - /url: /latest/apac-is-rewriting-global-branding
+            - generic [ref=e356]:
+              - generic [ref=e357]:
+                - heading "APAC is rewriting global branding, says Koto’s Damian Borchok" [level=2] [ref=e358]
+                - paragraph [ref=e360]: The future of global branding isn’t being shaped in London or New York. In this sharp take, Koto’s APAC MD Damian Borchok breaks down why the real creative edge now sits in Asia and what that means for brand leaders today. If you’re still applying Western playbooks, you’re already behind.
+              - generic [ref=e361]:
+                - generic [ref=e362]: Press
+                - paragraph [ref=e368]: Thu 19 Nov
+          - generic [ref=e369]:
+            - link "Koto introduces new wordmark for Instagram Press Thu 20 Aug" [ref=e371] [cursor=pointer]:
+              - /url: /latest/koto-introduces-instagram-s-new-wordamark
+              - generic [ref=e375]:
+                - heading "Koto introduces new wordmark for Instagram" [level=2] [ref=e377]
+                - generic [ref=e378]:
+                  - generic [ref=e379]: Press
+                  - paragraph [ref=e385]: Thu 20 Aug
+            - link "Koto launches CcType with a typeface built for modern brands Press Thu 9 Jul" [ref=e387] [cursor=pointer]:
+              - /url: /latest/koto-launches-cctype-typeface
+              - generic [ref=e391]:
+                - heading "Koto launches CcType with a typeface built for modern brands" [level=2] [ref=e393]
+                - generic [ref=e394]:
+                  - generic [ref=e395]: Press
+                  - paragraph [ref=e401]: Thu 9 Jul
+      - generic [ref=e404]:
+        - generic [ref=e405]:
+          - heading "Contact" [level=2] [ref=e406]
+          - paragraph [ref=e407]: Press and careers
+        - generic [ref=e408]:
+          - generic [ref=e412]:
+            - heading "Press + Media" [level=3] [ref=e414]
+            - generic [ref=e416]:
+              - paragraph [ref=e418]: For information, images, and media resources.
+              - link [ref=e419] [cursor=pointer]:
+                - /url: mailto:press@koto.com
+                - paragraph [ref=e420]:
+                  - generic [ref=e421]: press@koto.com
+          - generic [ref=e426]:
+            - heading "Recruitment" [level=3] [ref=e428]
+            - generic [ref=e430]:
+              - paragraph [ref=e432]: One team, five locations.
+              - link [ref=e433] [cursor=pointer]:
+                - /url: /careers
+                - paragraph [ref=e434]:
+                  - generic [ref=e435]: Work with us
+          - generic [ref=e440]:
+            - heading "Channels" [level=3] [ref=e442]
+            - generic [ref=e443]:
+              - link [ref=e445] [cursor=pointer]:
+                - /url: https://offbrandkoto.substack.com/
+                - paragraph [ref=e446]:
+                  - generic [ref=e447]: OFF Brand
+              - link [ref=e450] [cursor=pointer]:
+                - /url: https://offlive.koto.studio/
+                - paragraph [ref=e451]:
+                  - generic [ref=e452]: OFF Live
+              - link [ref=e455] [cursor=pointer]:
+                - /url: https://www.instagram.com/studiokoto
+                - paragraph [ref=e456]:
+                  - generic [ref=e457]: Instagram
+              - link [ref=e460] [cursor=pointer]:
+                - /url: https://www.linkedin.com/company/koto/posts/?feedView=all
+                - paragraph [ref=e461]:
+                  - generic [ref=e462]: Linkedin
+              - link [ref=e465] [cursor=pointer]:
+                - /url: https://x.com/studiokoto
+                - paragraph [ref=e466]:
+                  - generic [ref=e467]: X
+      - generic [ref=e470]:
+        - generic [ref=e474]:
+          - generic:
+            - button "Say Hello Copy":
+              - generic:
+                - generic:
+                  - generic:
+                    - generic: Say Hello
+                    - generic: Copy
+        - generic [ref=e479]:
+          - paragraph [ref=e481]: © 2015—2026
+          - generic [ref=e483]:
+            - link [ref=e484] [cursor=pointer]:
+              - /url: /privacy-policy
+              - paragraph [ref=e485]:
+                - generic [ref=e486]: Privacy Policy
+            - link [ref=e488] [cursor=pointer]:
+              - /url: /terms-of-use
+              - paragraph [ref=e489]:
+                - generic [ref=e490]: Terms of Use
+            - link [ref=e492] [cursor=pointer]:
+              - /url: "#"
+              - paragraph [ref=e493]:
+                - generic [ref=e494]: Cookies
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic:
+            - button "Los Angeles"
+          - generic:
+            - button "NYC"
+          - generic:
+            - button "LDN"
+          - generic:
+            - button "BER"
+          - generic:
+            - button "SYD"
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img "Los Angeles"
+                    - generic:
+                      - generic:
+                        - img "Los Angeles"
+                      - generic:
+                        - paragraph: Say hello
+                        - paragraph: la@koto.com
+                      - generic:
+                        - button "Previous studio"
+                        - button "Previous studio"
+                - generic:
+                  - generic:
+                    - heading "Latest news" [level=2]
+                    - link "[ All ]":
+                      - /url: /latest
+                      - generic:
+                        - generic: "["
+                        - generic: All
+                        - generic: "]"
+                  - generic:
+                    - generic:
+                      - 'link "OFF Brand: Why you still need a website in the age of AI AI is reshaping discovery, but your website still builds trust. It’s not a relic; it’s the only part of the internet you truly own, shaping how people see, believe, connect, and buy from you. Newsletters"':
+                        - /url: /latest/off-brand-why-you-still-need-a-website-in-the-age-of-ai
+                        - generic:
+                          - 'heading "OFF Brand: Why you still need a website in the age of AI" [level=3]'
+                          - paragraph: AI is reshaping discovery, but your website still builds trust. It’s not a relic; it’s the only part of the internet you truly own, shaping how people see, believe, connect, and buy from you.
+                          - paragraph: Newsletters
+                    - generic:
+                      - link "\"Some UK brands are tired,\" Koto's James Greenfield on branding today Who decides when a brand needs evolution or revolution? James Greenfield on Amazon’s refresh, tired UK brands, and why design discipline matters for work that is hard to copy or ignore. Press James Greenfield, Koto CEO giving a talk.":
+                        - /url: /latest/some-uk-brands-are-tired-koto-s-james-greenfield-on-branding-today
+                        - generic:
+                          - heading "\"Some UK brands are tired,\" Koto's James Greenfield on branding today" [level=3]
+                          - paragraph: Who decides when a brand needs evolution or revolution? James Greenfield on Amazon’s refresh, tired UK brands, and why design discipline matters for work that is hard to copy or ignore.
+                          - paragraph: Press
+                        - generic:
+                          - generic:
+                            - img "James Greenfield, Koto CEO giving a talk."
+                    - generic:
+                      - 'link "OFF Brand: Branding longevity, the next health frontier Longevity has moved from labs to shelves, spas, and wrists. OFF Brand explores how health is becoming culture, and why trust, clarity, and aspiration are now core to branding this frontier. Newsletters"':
+                        - /url: /latest/off-brand-branding-longevity-the-next-health-frontier
+                        - generic:
+                          - 'heading "OFF Brand: Branding longevity, the next health frontier" [level=3]'
+                          - paragraph: Longevity has moved from labs to shelves, spas, and wrists. OFF Brand explores how health is becoming culture, and why trust, clarity, and aspiration are now core to branding this frontier.
+                          - paragraph: Newsletters
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - img "Two people sit in stadium seats, posing and making peace signs at the camera. Other spectators are around them, some wearing baseball caps and holding drinks. The stands and a large advertisement board are visible in the background."
+                    - generic:
+                      - img "Two people sit in stadium seats, posing and making peace signs at the camera. Other spectators are around them, some wearing baseball caps and holding drinks. The stands and a large advertisement board are visible in the background."
+                    - generic:
+                      - img "Two people sit in stadium seats, posing and making peace signs at the camera. Other spectators are around them, some wearing baseball caps and holding drinks. The stands and a large advertisement board are visible in the background."
+                    - generic:
+                      - img "Two people sit in stadium seats, posing and making peace signs at the camera. Other spectators are around them, some wearing baseball caps and holding drinks. The stands and a large advertisement board are visible in the background."
+                    - generic:
+                      - img "Two people sit in stadium seats, posing and making peace signs at the camera. Other spectators are around them, some wearing baseball caps and holding drinks. The stands and a large advertisement board are visible in the background."
+                  - generic:
+                    - generic:
+                      - generic:
+                        - img "Album cover for Lily Allen’s fifth studio release, West End Girl."
+                        - generic:
+                          - generic:
+                            - img "Album cover for Lily Allen’s fifth studio release, West End Girl."
+                    - generic:
+                      - generic:
+                        - generic:
+                          - paragraph: "--:--"
+                          - paragraph

@@ -290,6 +290,35 @@
   4. **Accessibility:**
      - Under `prefers-reduced-motion: reduce`, the subsurface roll animation is disabled, rendering a static background.
 
+### Element 6: High-Impact Metrics & Social Proof Bento Grid
+- **Reference Asset:** [bento-grid-social-proof.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/bento-grid-social-proof.png) *(Source: Buzz Interactive)*
+- **Sitemap Placement:** Home page (`/`), **Section 05 — Social Proof (Bento Grid)**.
+- **Component Purpose:** Delivers quantifiable social proof, craft guarantees, and retention metrics through a modern, asymmetric card matrix instead of a boring bulleted list.
+
+- **Visual Structure & Bento Grid Layout:**
+  - **Grid System:** Asymmetric CSS grid (3 columns desktop, responsive single column on mobile) with mixed row/column spans.
+  - **Card Anatomy & Aesthetics:**
+    - Generous corner radii (`border-radius: var(--radius-card)` / `28px - 34px`).
+    - 1px hairline stroke (`border: 1px solid var(--border-subtle)` / `var(--border-glass)`).
+    - Monochromatic dark surfaces (`var(--bg-surface)`) with high-contrast numerical headlines (`font-size: clamp(2.5rem, 5vw, 4.5rem)`, grotesque sans-serif).
+    - Optional single accent-whisper card with subtle crimson/ruby rim or ambient background glow (`var(--accent-hint-subtle)`).
+  - **Card Breakdown:**
+    - **Card A (Conversion/Lead Spike):** Big stat (`3%` / `100%`) + short, punchy micro-copy ("lead gen spike within 3 months. Actual math, not fluff").
+    - **Card B (3D Asset Module):** Dark compact card framing an isolated metallic/3D graphic asset (e.g. 3D funnel or geometric glyph) with subtle mouse-parallax tilt (`perspective: 1000px`).
+    - **Card C (Philosophy / Craft Guarantee):** High-contrast typography card ("Zero templates. 100% custom-built interfaces. From brain to pixel. No cookie-cutter solutions.").
+    - **Card D (Engagement Multiplier):** Wide horizontal card (`4X` more website engagement).
+    - **Card E (Client Retention):** Proof stat card (`95%` of clients stick around).
+
+- **Motion Dynamics & Buzz Presets Integration:**
+  1. **Scroll-Scrubbed Text Reveal (`Preset: Word Wipe Scrub`):**
+     - As the user scrolls down through the bento cards, the supporting micro-copy transitions word-by-word from a dim/muted state (`color: var(--text-muted)`) to full crisp opacity (`color: var(--text-primary)`), giving the copy a dynamic "reading wipe" feel.
+  2. **Viewport Entrance Animation (`Preset: Line Rise`):**
+     - Fallback / entrance alternative: Supporting text lines rise in (`translateY: 16px → 0px, opacity: 0 → 1`, `stagger: 0.04s`, `ease: "power2.out"`).
+  3. **Numerical Stat Counter:**
+     - Quantitative numbers (`4X`, `95%`, `100%`) count up smoothly from 0 upon entering the viewport via GSAP `ScrollTrigger` with the site's exponential-out inertia curve (`--ease-inertia`).
+  4. **Interactive Hover Physics:**
+     - Cards feature a subtle scale micro-spring (`transform: scale(1.02)`) with a gentle cursor-magnetic pull on pointer proximity.
+
 ---
 
 ## 7. Project Detail / Case Study Page Architecture
