@@ -7,7 +7,7 @@
 
 ## 1. Buzz Interactive
 - **Target URL:** [https://www.buzzinteractive.co/](https://www.buzzinteractive.co/)
-- **Motion Audit File:** [buzz-interactive-animation-presets.md](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/buzz-interactive-animation-presets.md)
+- **Motion Audit File:** [buzz-interactive-animation-presets.md](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/presets/buzz-interactive-animation-presets.md)
 - **Primary Focus:** Inertia-based virtual scrolling, velocity clamping, and momentum-driven micro-interactions.
 
 ### Key Interaction Patterns & Technical Requirements:
@@ -41,8 +41,28 @@
 
 ---
 
-## 3. Visual & Component Archetype: `primary.jpg`
-- **Reference Asset:** [primary.jpg](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/primary.jpg)
+## 3. Koto
+- **Target URL:** [https://koto.com/](https://koto.com/)
+- **Motion Audit File:** [koto-animation-presets.md](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/presets/koto-animation-presets.md)
+- **Primary Focus:** Native hand-rolled React/CSS transitions (zero heavy animation libraries), pinned caption rails, collapse-to-pill header, 4-dot glass location panel, and seamless shared-element video page transitions.
+
+### Key Interaction Patterns & Technical Requirements:
+1. **Pinned Caption Rail (Scroll Sync):**
+   - 16-column layout: Left column (6/16) is `position: sticky; top: 0; -mt-[100svh] h-[100svh]`, visually pinned while right column (10/16) scrolls full-bleed project media.
+   - Project caption cross-fades and slides (`translateY` + dual curves: 133ms fast outgoing, 333ms incoming) triggered by a single `IntersectionObserver` (~0.5 threshold).
+2. **Collapse-to-Pill Header:**
+   - Full transparent nav bar cross-fades into a dark, rounded glass pill showing only the active section upon scrolling past hero.
+3. **Roll Reveal Hover:**
+   - Double-stacked label inside `overflow: hidden` mask shifts `translateY(-18px)` on hover (133ms in, 317ms delayed out).
+4. **4-Dot Glass Tab Switcher:**
+   - 2×2 dot trigger opens full-viewport frosted glass overlay (`blur(20px)`) with sliding active white pill city switcher and asymmetric team/office grid.
+5. **Morph-to-Hero Case Study Transition:**
+   - Seamless shared-element video transition via `document.startViewTransition` where the clicked thumbnail video persists uninterrupted into the case study hero without remounting.
+
+---
+
+## 4. Visual & Component Archetype: `primary.jpg`
+- **Reference Asset:** [primary.jpg](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/primary.jpg)
 - **Primary Focus:** Editorial art direction, glassmorphic UI tokens, and Apple-style interactive card modules.
 
 ### Adopted Design Patterns & Architectural Decisions:
@@ -76,7 +96,7 @@
      - Compact scale with crisp, unblurred imagery.
      - Minimalist layout showing only the service title in the bottom-left corner (identical to the resting cards in `primary.jpg`).
    
-   - **Service Taxonomy Reference Matrix (From [service-categories-ref-1.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/service-categories-ref-1.png) & [service-categories-ref-2.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/service-categories-ref-2.png)):**
+   - **Service Taxonomy Reference Matrix (From [service-categories-ref-1.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/service-categories-ref-1.png) & [service-categories-ref-2.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/service-categories-ref-2.png)):**
      *(Note: Sourced for category taxonomy and information architecture reference, not visual styling)*
      - **Service 1: Designing** → Sub-categories: `Branding`, `Logo`, `Print Design`, `Motion Graphics`, `UI/UX`
      - **Service 2: CMS Websites** → Sub-categories: `Webflow`, `Framer`, `WordPress`, `Shopify`, `Ecommerce Solutions`
@@ -101,7 +121,7 @@
 
 ---
 
-## 4. Color System & Theme Tokens Specification
+## 5. Color System & Theme Tokens Specification
 
 ### Aesthetic Philosophy:
 - **Strictly Monochromatic Foundation (90%–95% Surface Area):**
@@ -148,10 +168,10 @@
 
 ---
 
-## 5. UI Elements & Component Catalog
+## 6. UI Elements & Component Catalog
 
 ### Element 1: Luxury Editorial Pill CTA Button ("EXPLORE NOW ↗")
-- **Reference Asset:** [element-pill-button.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/element-pill-button.png) *(extracted from [primary.jpg](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/primary.jpg))*
+- **Reference Asset:** [element-pill-button.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/element-pill-button.png) *(extracted from [primary.jpg](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/primary.jpg))*
 
 - **Geometry & Structure:**
   - Full capsule / pill silhouette (`border-radius: var(--radius-pill)` or `9999px`).
@@ -172,7 +192,7 @@
   - **Magnetic Physics:** Hooked into custom cursor magnetic pull listener (from Buzz Interactive motion preset).
 
 ### Element 2: Minimalist Project Inquiry & Contact Form ("Start a project")
-- **Reference Asset:** [element-contact-form.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/element-contact-form.png)
+- **Reference Asset:** [element-contact-form.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/element-contact-form.png)
 
 - **Component Purpose:** High-conversion, frictionless editorial project briefing form that completely avoids visual clutter and bulky text boxes.
 - **Architectural Anatomy:**
@@ -197,7 +217,7 @@
      - Right: Pinned submit button `[ SEND NOW ↗ ]` utilizing the identical luxury pill architecture from **Element 1** (`EXPLORE NOW ↗`).
 
 ### Element 3: Interactive 3D Owner Photogrammetry Model (About Section — Future Roadmap)
-- **Reference Asset:** [interactive-3d-model-about.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/interactive-3d-model-about.png) *(Source: Locomotive Agency)*
+- **Reference Asset:** [interactive-3d-model-about.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/interactive-3d-model-about.png) *(Source: Locomotive Agency)*
 - **Implementation Target:** Planned for future integration in the **About Section**.
 - **Visual Presentation & Staging:**
   - 3D photogrammetric full-body scan of the owner/founder (captured via mobile LIDAR / Polycam / Luma AI).
@@ -218,7 +238,7 @@
      - **Accessibility & Low-Power Fallback:** If WebGL fails, on low-end mobile devices, or when `prefers-reduced-motion: reduce` is active, seamlessly fall back to an optimized static WebP render.
 
 ### Element 4: Direction-Aware Cursor-Origin Radial Fill Button
-- **Reference Asset:** [element-cursor-fill-button.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/element-cursor-fill-button.png)
+- **Reference Asset:** [element-cursor-fill-button.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/element-cursor-fill-button.png)
 - **Target CTAs:** Designated high-intent action buttons (e.g., `"ACCEPT"`, `"SEND NOW ↗"`, `"FILL FORM"`, `"START A PROJECT"`).
 - **Core Concept:** When the mouse enters the button, the background fill originates from the exact entry point coordinates of the cursor and expands outward to flood the container. On exit, the fill collapses toward the exit point.
 
@@ -252,7 +272,7 @@
      - When `prefers-reduced-motion: reduce` is active, disable the radial canvas expansion and fall back to an instantaneous opacity transition (`opacity: 1` on hover).
 
 ### Element 5: Kinetic Typographic Rollover Submit Button ("Submit •")
-- **Reference Assets:** [element-submit-button-buzz.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/element-submit-button-buzz.png) & [element-buzz-liquid-letters.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/element-buzz-liquid-letters.png) *(Source: Buzz Interactive)*
+- **Reference Assets:** [element-submit-button-buzz.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/element-submit-button-buzz.png) & [element-buzz-liquid-letters.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/element-buzz-liquid-letters.png) *(Source: Buzz Interactive)*
 - **Component Purpose:** High-energy form submission CTA combining static functional clarity with playful background motion.
 - **Visual Structure & Anatomy:**
   - **Outer Pill Container:** `border-radius: var(--radius-pill)` (or `9999px`), `overflow: hidden; position: relative; height: 56px - 64px;`.
@@ -272,8 +292,8 @@
 
 ---
 
-## 6. Project Detail / Case Study Page Architecture
-- **Reference Asset:** [project-case-study-layout.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/project-case-study-layout.png) *(Source: Off-Brand Agency case study)*
+## 7. Project Detail / Case Study Page Architecture
+- **Reference Asset:** [project-case-study-layout.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/project-case-study-layout.png) *(Source: Off-Brand Agency case study)*
 - **Approved Layout Scope:** Spans from **"The Big Questions"** (challenge statement) down to the bottom showcase immediately preceding the **"More Projects"** footer carousel.
 - **Architectural Purpose:** Blueprint for individual project/case-study pages when a user opens a project.
 
@@ -340,10 +360,10 @@
 
 ---
 
-## 7. Fullscreen Parallax Reveal Footer (Curtain Effect & Layout)
+## 8. Fullscreen Parallax Reveal Footer (Curtain Effect & Layout)
 - **Reference Assets:**
-  - Layout & Content Blueprint: [footer-buzz-layout-1.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/footer-buzz-layout-1.png) & [footer-buzz-layout-2.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/footer-buzz-layout-2.png) *(Source: Buzz Interactive)*
-  - Motion / Curtain Staging: [footer-parallax-reveal-1.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/footer-parallax-reveal-1.png) & [footer-parallax-reveal-2.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/footer-parallax-reveal-2.png) *(Source: Monopo London)*
+  - Layout & Content Blueprint: [footer-buzz-layout-1.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/footer-buzz-layout-1.png) & [footer-buzz-layout-2.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/footer-buzz-layout-2.png) *(Source: Buzz Interactive)*
+  - Motion / Curtain Staging: [footer-parallax-reveal-1.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/footer-parallax-reveal-1.png) & [footer-parallax-reveal-2.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/footer-parallax-reveal-2.png) *(Source: Monopo London)*
 - **Layout Status:** **DECIDED & LOCKED** (Buzz Interactive architectural layout).
 
 ### Structural Layout Anatomy:
@@ -361,7 +381,7 @@
 ---
 
 ### Animation Curves & Motion Physics Specification:
-*Derived directly from [buzz-interactive-animation-presets.md](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/buzz-interactive-animation-presets.md)*
+*Derived directly from [buzz-interactive-animation-presets.md](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/presets/buzz-interactive-animation-presets.md)*
 
 1. **Sticky Curtain Parallax Reveal (ScrollTrigger):**
    - **Staging:** Footer pinned at `position: sticky; bottom: 0; z-index: 1; height: 100vh;` beneath the main page content wrapper (`z-index: 2; background: var(--bg-canvas);`).

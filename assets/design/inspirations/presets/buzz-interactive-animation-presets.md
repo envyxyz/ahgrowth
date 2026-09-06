@@ -51,7 +51,7 @@ Directional motion blur that only appears above a velocity threshold and is bare
 Paragraph and heading text splits by line (not word, not character) and each line enters with a combined `translateY` (12–24px) + opacity fade, staggered roughly 40–60ms per line. Triggers once when the block enters the viewport — this is an entrance reveal, not scroll-scrubbed. Cheapest and most readable of the text presets; use it as the default for body copy and subheads.
 
 ### Preset: Word Wipe Scrub
-- **Visual Reference:** [preset-word-wipe-scrub.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/preset-word-wipe-scrub.png)
+- **Visual Reference:** [preset-word-wipe-scrub.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/preset-word-wipe-scrub.png)
 Text splits by word and its reveal progress is tied directly to scroll position rather than triggering once — as the block moves through a defined scroll range, words transition from a dim/muted state to full opacity (or a color shift, e.g. gray to black) in sequence, so the paragraph visibly "writes itself in" as the user scrolls past it. Because this ties directly to scroll position every frame, it must be driven by one timeline with one scroll listener, not one trigger per word — a shared progress value maps to per-word stagger offsets, calculated once and applied via a lookup rather than recalculated per word per frame.
 
 ### Preset: Underline Draw
@@ -87,7 +87,7 @@ Long forms are broken into numbered steps (01, 02, 03…) laid out vertically ra
 Not observed on this specific page, but worth adding for image-heavy sections (case studies, project thumbnails). An image sits behind a solid-color panel that slides away (`transform: scaleY` or `translateY` on the mask, never on the image itself) as the image scrolls into view, exposing it panel-wipe style rather than a plain fade-in. Triggers once, ease-out, roughly 600–800ms.
 
 ### Preset: Subsurface Type Roll
-- **Visual References:** [element-submit-button-buzz.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/element-submit-button-buzz.png) & [element-buzz-liquid-letters.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/element-buzz-liquid-letters.png)
+- **Visual References:** [element-submit-button-buzz.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/element-submit-button-buzz.png) & [element-buzz-liquid-letters.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/element-buzz-liquid-letters.png)
 Observed on the Buzz Interactive submit button. A pill button contains a clipped background sub-layer of oversized liquid brand lettering beneath a static foreground label (`Submit •`). On hover (`mouseenter`), the background lettering smoothly translates upward vertically (`transform: translateY(0) → translateY(-60px)`) with a snappy kinetic ease (~400–450ms, ease-out), while the foreground submit label remains perfectly still and legible. On mouse leave, the letters ease back to their baseline position. Provides playful, tactile kinetic feedback to the user immediately prior to submission.
 
 ---
