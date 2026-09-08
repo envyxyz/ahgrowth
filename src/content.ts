@@ -124,7 +124,7 @@ export const nav = {
   items: [
     { label: "Home", href: "/", shipped: true },
     { label: "Work", href: "/work", hoverLabel: "See the work", shipped: false },
-    { label: "About", href: "/about", hoverLabel: "Who we are", shipped: false },
+    { label: "About", href: "/about", hoverLabel: "Who we are", shipped: true },
     { label: "Contact", href: "/contact", hoverLabel: "Reach out", shipped: true },
   ] as NavItem[],
   cta: { label: "Start a project", href: "/contact" },
@@ -400,9 +400,57 @@ export interface ProcessPhase {
 }
 
 export const about = {
-  manifesto: { heading: PLACEHOLDER, body: PLACEHOLDER },
-  process: { heading: PLACEHOLDER, phases: [] as ProcessPhase[] },
+  manifesto: {
+    eyebrow: "About",
+    heading: {
+      lead: "Built by the people",
+      muted: "who do the work.",
+    } as Statement,
+    body: [
+      "AH Growth started because too many businesses were buying a logo from one place, a website from another, and ads from a third, then being left to make the three agree with each other. We do all of it, so the parts fit.",
+      "We work with local businesses across Pakistan, and with software teams who need the same things done properly. Small enough that you know who is on your project. Set up so the work does not stop at handover.",
+    ],
+  },
+
+  /**
+   * Delivery phases. Working copy: this is how a project of this shape
+   * normally runs, and it is safe to publish, but confirm it against how AH
+   * Growth actually works before launch.
+   */
+  process: {
+    eyebrow: "How a project runs",
+    heading: {
+      lead: "Four phases.",
+      muted: "No surprises in the middle.",
+    } as Statement,
+    phases: [
+      {
+        label: "01",
+        heading: "Discovery",
+        body: "We learn the business before designing anything: who buys from you, what they compare you against, and what is actually slowing growth down. You get our read on it in writing.",
+      },
+      {
+        label: "02",
+        heading: "Strategy",
+        body: "Scope, priorities, and a plan you can argue with. Nothing gets built until we agree on what success looks like and what it costs.",
+      },
+      {
+        label: "03",
+        heading: "Build",
+        body: "Design and development run together rather than in sequence. You see working screens early and often, so changes stay cheap while they are still cheap.",
+      },
+      {
+        label: "04",
+        heading: "Growth",
+        body: "Launch is a checkpoint, not the finish. We watch how people actually use the thing, then fix what the numbers argue with.",
+      },
+    ] as ProcessPhase[],
+  },
+
+  /** Ships as editorial photography once real photos exist. Section omitted until then. */
   team: [] as TeamMember[],
+
+  /** Only once AH Growth has real, citable awards or press. */
   recognition: null as null | {
     heading: string;
     items: { title: string; issuer: string; year: string }[];

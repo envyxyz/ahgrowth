@@ -410,3 +410,31 @@ No percentage, multiplier, client count, award, client logo, or response-time gu
 ### First edits a non-developer should make
 
 `src/content.ts`, in this order: `home.hero`, `home.positioning.statement`, `serviceCategories` summaries, `home.socialProof.commitments`, `footer.directEmail`, `footer.offices`, `contact.form.budgetTiers`.
+
+
+---
+
+## 12. Follow-up: /about shipped
+
+`/about` now ships with two of its four sections and is back in the navigation
+(`shipped: true` on the nav item; the sitemap picks it up automatically because
+it derives from `content.ts`).
+
+**Shipped:** 01 Manifesto, 02 Process (four phases).
+**Omitted, not stubbed:** 03 Team (no real photography; `team: []`) and
+04 Recognition (no citable awards; `recognition: null`). Neither renders an
+empty container or a heading over nothing. Filling either array is a content
+edit.
+
+Verified: 200 on all five routes, 404 on an unknown path, one `<h1>`, zero
+placeholders, no overflow at 320 / 375 / 1440, light and dark both legible,
+zero console errors.
+
+### Deliberately still not built, with the reason
+
+| Item | Why not |
+|---|---|
+| `/work` and `/work/[slug]` | Zero real case studies. An archive with nothing in it is the half-shipped look this build exists to avoid. Nav item stays `shipped: false`, so nothing 404s. |
+| WebGL hero canvas | `three` is not a dependency and never was, so it was aspiration rather than an adopted decision. It is the highest-risk item in the spec against a brief whose first constraint is "static, MVP, nothing half complete or broken." The `z-0` slot in the hero card is reserved and documented; dropping a canvas in later touches one file. |
+| Sensory preloader | Its stated purpose in SITEMAP.md §2 is masking WebGL warmup. With no WebGL to warm up it is a pure load tax on every first visit. |
+| GSAP timeline layer | The CSS implementation of Line Rise already does what the preset specifies. Swapping it for GSAP right now adds a runtime dependency and regression risk for no visual change. The point of `motion/reveal.tsx` is that this swap stays a one-file change whenever it is actually worth making. |

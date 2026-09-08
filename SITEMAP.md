@@ -112,11 +112,11 @@ Structure locked from the Off-Brand reference in `inspirations.md` §7, extended
 | 03 | Team | Humanize, build trust |
 | 04 | Recognition | *(only if real awards exist — otherwise omitted)* |
 
-**02 — Process** uses AH Growth's actual delivery phases once defined (discovery, strategy, execution, growth/optimization, or whatever the real methodology is) — not the fabricated "3D Prototyping & Sensory Lab" phase from the draft, which assumes WebGL production work this stack doesn't do.
+**02 — Process** ships with four working phases (Discovery, Strategy, Build, Growth) in `content.about.process`. These describe how a project of this shape normally runs and are safe to publish, but they are working copy: confirm them against AH Growth's actual methodology before launch. The section uses AH Growth's actual delivery phases once defined (discovery, strategy, execution, growth/optimization, or whatever the real methodology is) — not the fabricated "3D Prototyping & Sensory Lab" phase from the draft, which assumes WebGL production work this stack doesn't do.
 
-**03 — Team** ships as editorial photography with a simple hover state at launch. The photogrammetry / interactive 3D model treatment from `inspirations.md` Element 3 is explicitly flagged there as a future-roadmap item, not part of the initial locked build (it also requires a WebGL runtime this project doesn't currently include).
+**03 — Team** *(DEFERRED from the MVP: no real photography exists, and stock imagery would destroy the authenticity this section is for. `content.about.team` is an empty array; the section renders when it is filled.)* Ships as editorial photography with a simple hover state at launch. The photogrammetry / interactive 3D model treatment from `inspirations.md` Element 3 is explicitly flagged there as a future-roadmap item, not part of the initial locked build (it also requires a WebGL runtime this project doesn't currently include).
 
-**04 — Recognition** only ships once AH Growth has real, citable awards or press. An empty or fabricated trophy wall is worse than no trophy wall; cut the section rather than dress it up.
+**04 — Recognition** *(DEFERRED: `content.about.recognition` is `null`.)* Only ships once AH Growth has real, citable awards or press. An empty or fabricated trophy wall is worse than no trophy wall; cut the section rather than dress it up.
 
 ---
 
