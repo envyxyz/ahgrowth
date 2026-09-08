@@ -28,7 +28,7 @@ Five routes. No services route, no blog, no separate pricing page at launch — 
 | 01 | Hero | Immediate positioning, first impression |
 | 02 | Positioning Statement | Cognitive-ease reset after the hero |
 | 03 | Capabilities Carousel | What we do |
-| 04 | Selected Work | Proof, curated not exhaustive |
+| 04 | Selected Work | Proof, curated not exhaustive *(deferred, see note)* |
 | 05 | Social Proof | Client trust, credibility |
 | 06 | Studio Culture | Humanize the team *(content-gated, see note)* |
 | 07 | CTA Outro | Conversion push |
@@ -46,10 +46,14 @@ Generous negative space, large-scale editorial line that scrubs from low-opacity
 **03 — Capabilities Carousel** *(architecture locked in `inspirations.md` §4)*
 Full-viewport pinned horizontal carousel. Resting state: card 1 focused/enlarged, remaining cards compact. On scroll, focus hands off between cards; the focused card's background gets the liquid-glass expanding radial blur with sub-categories fading in from the right; unfocused cards stay crisp with just a title. Service taxonomy and sub-categories are placeholders pending AH Growth's actual service list, not the reference taxonomy in the inspiration doc (that was sourced for IA shape, not content).
 
-**04 — Selected Work**
+**04 — Selected Work** *(DEFERRED from the MVP)*
 3 to 4 flagship projects only, not a full grid, teased here (Von Restorff isolation). Koto-style layout: sticky left caption column, scrolling right media column, single IntersectionObserver driving the caption swap. Each card links to its full case study.
 
+> **Deferred.** `content.work.projects` is empty: there are no case studies yet. A "Selected Work" heading above nothing reads as a broken page rather than a curated one, so the section is cut from the initial build the same way §06 Studio Culture is. **Un-defer when** at least three real projects with usable media exist in `content.work.projects`; at that point re-add `<SelectedWork />` to `src/app/page.tsx` between Capabilities and Social Proof, and flip `shipped: true` on the `/work` nav item in `content.ts`.
+
 **05 — Social Proof (Bento Grid)** *(architecture in `inspirations.md` §6, Element 6)*
+
+> **MVP scope.** This section ships the craft-guarantee half of its brief (`home.socialProof.commitments`), not the metric half. Every candidate figure would be an unverified measurement, which the no-invented-statistics rule bars. The asymmetric bento spans are built as specified, and `home.socialProof.metrics` / `.clientLogos` are typed, empty, and gated at render, so real figures and logos later are a content edit rather than a layout rebuild.
 Monochrome logo marquee paired with an asymmetric Bento Grid for high-impact metric callouts, custom craftsmanship guarantees, and credibility proof (reference: [bento-grid-social-proof.png](file:///c:/Users/ameer/Desktop/AHGrowth-Website/assets/design/inspirations/images/bento-grid-social-proof.png)). Bento modules feature oversized impact figures (`100%`, `4X`, `95%`) coupled with scannable micro-copy driven by the Buzz Interactive **Word Wipe Scrub** (or **Line Rise**) scroll-tied text preset. Metrics count up on viewport entry via GSAP ScrollTrigger with the site's exponential-out inertia curve (`--ease-inertia`). Every number here must come from `content.ts`; until AH Growth supplies real figures, this section ships with an explicit `[PLACEHOLDER]` marker per the content rules in `CLAUDE.md`, not a plausible-looking fake number.
 
 **06 — Studio Culture**

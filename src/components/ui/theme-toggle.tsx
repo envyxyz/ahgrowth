@@ -19,7 +19,7 @@ export function ThemeToggle({ label }: { label: string }) {
       aria-label={label}
       aria-pressed={isDark}
       title={label}
-      className="fixed bottom-lg right-lg z-[60] inline-flex h-12 w-12 items-center justify-center rounded-full bg-overlay-fill text-ink shadow-elevation-1 backdrop-blur-chrome transition-colors ease-out-soft hover:bg-overlay-fill-hover"
+      className="fixed bottom-lg right-lg z-[60] inline-flex h-12 w-12 items-center justify-center rounded-full bg-chrome text-on-chrome shadow-elevation-1 backdrop-blur-chrome transition-opacity ease-out-soft hover:opacity-80"
       style={{ transitionDuration: `${designMotion.header.chromeHoverMs}ms` }}
     >
       <SunMoonIcon isDark={isDark} />

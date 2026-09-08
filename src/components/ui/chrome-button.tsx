@@ -57,8 +57,10 @@ export function DotGridIcon() {
         <span
           key={i}
           aria-hidden
-          className="absolute h-[3px] w-[3px]"
+          className="absolute"
           style={{
+            height: designMotion.header.dotSizePx,
+            width: designMotion.header.dotSizePx,
             left: i % 2 === 0 ? 0 : "auto",
             right: i % 2 === 1 ? 0 : "auto",
             top: i < 2 ? 0 : "auto",

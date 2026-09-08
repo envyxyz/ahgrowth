@@ -2,50 +2,37 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { content } from "@/content";
 import { ChromeButton } from "@/components/ui/chrome-button";
 import { CursorFillButton } from "@/components/ui/cursor-fill-button";
 import type { NavItem } from "@/content";
 import { motion as designMotion } from "@/lib/design-tokens";
-import { useSmoothScroll } from "@/components/providers/smooth-scroll";
 
 /**
- * Right-side cluster: Work/About/Contact + CTA at page-top, a small glass
- * 4-dot trigger + live PKT clock at tablet+. AH Growth's nav sits opposite
- * the logo (unlike Koto's adjacent layout), so on scroll this whole cluster
- * fades/drifts away rather than merging into the logo pill — see the
- * corrected note in assets/design/design-ahgrowth.md § Navigation.
+ * Right-side cluster: nav links + CTA at page-top, a live PKT clock at
+ * laptop+. AH Growth's nav sits opposite the logo, so on scroll this whole
+ * cluster fades away rather than merging into the logo pill.
+ *
+ * Below md only the Menu trigger survives: the full cluster overflows a
+ * 375px viewport, and the CTA already lives inside the nav panel.
  */
 export function HeaderActions({
   items,
-  ctaLabel,
-  ctaHref,
   scrolled,
-  menuLabel,
   open,
   onToggleOpen,
 }: {
   items: NavItem[];
-  ctaLabel: string;
-  ctaHref: string;
   scrolled: boolean;
-  menuLabel: string;
   open: boolean;
   onToggleOpen: () => void;
 }) {
   const { header } = designMotion;
-  const { scrollToId } = useSmoothScroll();
-
-  const handleCta = () => {
-    if (ctaHref.startsWith("#")) {
-      scrollToId(ctaHref.slice(1));
-    } else {
-      window.location.href = ctaHref;
-    }
-  };
+  const { nav } = content;
 
   return (
     <div
-      className="flex items-center gap-xl transition-[opacity,transform]"
+      className="flex items-center gap-md transition-[opacity,transform] md:gap-xl"
       style={{
         opacity: scrolled ? 0 : 1,
         transform: scrolled ? "translateY(-8px)" : "translateY(0)",
@@ -54,12 +41,12 @@ export function HeaderActions({
         transitionTimingFunction: header.navCollapseSlideEase,
       }}
     >
-      <nav className="hidden items-center gap-xl md:flex">
+      <nav aria-label={nav.a11y.primaryNav} className="hidden items-center gap-xl md:flex">
         {items.map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className="type-eyebrow text-on-inverse-muted transition-colors ease-out-soft hover:text-on-inverse"
+            className="type-eyebrow rounded-xs text-on-inverse-muted transition-colors ease-out-soft hover:text-on-inverse"
             style={{ transitionDuration: `${header.chromeHoverMs}ms` }}
           >
             {item.label}
@@ -67,24 +54,29 @@ export function HeaderActions({
         ))}
       </nav>
 
-      <ClockReadout />
+      <ClockReadout label={nav.a11y.timezone} />
 
       <ChromeButton
-        ariaLabel={open ? "Close navigation" : "Open navigation"}
+        ariaLabel={open ? nav.a11y.closeMenu : nav.a11y.openMenu}
         ariaExpanded={open}
         onClick={onToggleOpen}
         tone="inverse"
         className="md:hidden"
       >
-        {menuLabel}
+        {nav.menuLabel}
       </ChromeButton>
 
-      <CursorFillButton label={ctaLabel} onClick={handleCta} tone="inverse" />
+      <CursorFillButton
+        label={nav.cta.label}
+        href={nav.cta.href}
+        tone="inverse"
+        className="hidden md:inline-flex"
+      />
     </div>
   );
 }
 
-function ClockReadout() {
+function ClockReadout({ label }: { label: string }) {
   const [time, setTime] = useState<string | null>(null);
 
   useEffect(() => {
@@ -104,7 +96,7 @@ function ClockReadout() {
   if (!time) return null;
 
   return (
-    <span className="type-eyebrow hidden text-on-inverse-muted lg:inline">
+    <span aria-label={label} className="type-eyebrow hidden text-on-inverse-muted lg:inline">
       {time} UTC+5
     </span>
   );

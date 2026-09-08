@@ -1,16 +1,15 @@
 import { Hero } from "@/components/sections/hero";
 import { Positioning } from "@/components/sections/positioning";
 import { Capabilities } from "@/components/sections/capabilities";
-import { SelectedWork } from "@/components/sections/selected-work";
 import { SocialProof } from "@/components/sections/social-proof";
 import { CtaOutro } from "@/components/sections/cta-outro";
 import { SiteFooter } from "@/components/sections/site-footer";
 
 /**
- * Home (/). Section order locked in SITEMAP.md §2. 00 — Preloader and
- * 06 — Studio Culture are deferred: the preloader needs the WebGL hero it
- * warms up for (not built this phase), Studio Culture stays cut until real
- * photo/video assets exist (content.home.studioCulture is `null`).
+ * Home (/). Section order locked in SITEMAP.md §2. Three sections are
+ * deliberately deferred, each with its un-defer condition recorded there:
+ * 00 Preloader (needs the WebGL hero it warms up), 04 Selected Work (needs
+ * real case studies), 06 Studio Culture (needs real photo/video assets).
  */
 export default function Home() {
   return (
@@ -18,7 +17,6 @@ export default function Home() {
       <Hero />
       <Positioning />
       <Capabilities />
-      <SelectedWork />
       <SocialProof />
       <CtaOutro />
       <SiteFooter />

@@ -4,6 +4,10 @@ const config: Config = {
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
+      /* Design spec tiers: Mobile 375-767, Tablet 768-1023, Laptop
+         1024-1439, Desktop 1440+. Tailwind's md/lg already match Tablet
+         and Laptop; `desktop` adds the container-cap tier. */
+      screens: { desktop: "1440px" },
       colors: {
         primary: {
           DEFAULT: "var(--color-primary)",
@@ -59,8 +63,13 @@ const config: Config = {
           inverse: "var(--color-ghost-inverse)",
         },
         scrim: "var(--color-scrim)",
+        focus: {
+          DEFAULT: "var(--color-focus-ring)",
+          inverse: "var(--color-focus-ring-inverse)",
+        },
       },
       borderRadius: {
+        xxs: "var(--radius-xxs)",
         xs: "var(--radius-xs)",
         sm: "var(--radius-sm)",
         md: "var(--radius-md)",
@@ -83,6 +92,9 @@ const config: Config = {
         inset: "var(--layout-inset)",
         "section-y": "var(--layout-section-y)",
         card: "var(--layout-card-p)",
+        "toggle-clearance": "var(--layout-toggle-clearance)",
+        "hero-top": "var(--layout-hero-pad-top)",
+        "hero-bottom": "var(--layout-hero-pad-bottom)",
       },
       maxWidth: {
         container: "var(--layout-container)",

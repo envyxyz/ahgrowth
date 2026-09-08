@@ -55,6 +55,12 @@
   --color-hairline: rgba(17, 17, 16, 0.1);
   --color-hairline-inverse: rgba(255, 255, 255, 0.12);
 
+  /* --- Color: keyboard focus ring. Two values because the ring must be
+     visible on the canvas AND on the inverse block, which stays dark in
+     both themes. --- */
+  --color-focus-ring: #111110;
+  --color-focus-ring-inverse: #f7f7f5;
+
   /* --- Color: neutral chrome fills (buttons, header controls) --- */
   --color-overlay-fill: rgba(17, 17, 16, 0.06);
   --color-overlay-fill-hover: rgba(17, 17, 16, 0.11);
@@ -81,6 +87,9 @@
    * =================================================================== */
 
   /* --- Radius --- */
+  /* Micro-glyph geometry: the eyebrow marker square, inline dots. A 6px
+     radius on an 8px square reads as a circle, so the scale needs this step. */
+  --radius-xxs: 2px;
   --radius-xs: 6px;
   --radius-sm: 10px;
   --radius-md: 16px;
@@ -109,6 +118,13 @@
   --layout-section-y: clamp(96px, 11vw, 180px);
   /* Interior padding for filled cards/panels. */
   --layout-card-p: clamp(28px, 3vw, 48px);
+  /* Clearance any bottom-right page content must reserve for the fixed
+     48px theme toggle plus its 24px offset. */
+  --layout-toggle-clearance: 72px;
+  /* Hero card block padding. Fluid, because fixed values here crush the
+     content on a 375px viewport inside an 82vh card. */
+  --layout-hero-pad-top: clamp(96px, 14vh, 224px);
+  --layout-hero-pad-bottom: clamp(88px, 12vh, 176px);
 
   /* --- Blur tiers --- */
   --blur-card: 20px;
@@ -255,6 +271,9 @@
     --color-hairline: rgba(255, 255, 255, 0.08);
     --color-hairline-inverse: rgba(255, 255, 255, 0.08);
 
+    --color-focus-ring: #f5f4f2;
+    --color-focus-ring-inverse: #f5f4f2;
+
     --color-overlay-fill: rgba(255, 255, 255, 0.07);
     --color-overlay-fill-hover: rgba(255, 255, 255, 0.13);
     --color-overlay-fill-inverse: rgba(255, 255, 255, 0.07);
@@ -299,6 +318,9 @@
 
   --color-hairline: rgba(255, 255, 255, 0.08);
   --color-hairline-inverse: rgba(255, 255, 255, 0.08);
+
+  --color-focus-ring: #f5f4f2;
+  --color-focus-ring-inverse: #f5f4f2;
 
   --color-overlay-fill: rgba(255, 255, 255, 0.07);
   --color-overlay-fill-hover: rgba(255, 255, 255, 0.13);

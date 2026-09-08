@@ -46,6 +46,9 @@ export const lightColors = {
   hairline: "rgba(17, 17, 16, 0.10)",
   hairlineInverse: "rgba(255, 255, 255, 0.12)",
 
+  focusRing: "#111110",
+  focusRingInverse: "#f7f7f5",
+
   overlayFill: "rgba(17, 17, 16, 0.06)",
   overlayFillHover: "rgba(17, 17, 16, 0.11)",
   overlayFillInverse: "rgba(255, 255, 255, 0.10)",
@@ -86,6 +89,9 @@ export const darkColors: Record<keyof typeof lightColors, string> = {
   hairline: "rgba(255, 255, 255, 0.08)",
   hairlineInverse: "rgba(255, 255, 255, 0.08)",
 
+  focusRing: "#f5f4f2",
+  focusRingInverse: "#f5f4f2",
+
   overlayFill: "rgba(255, 255, 255, 0.07)",
   overlayFillHover: "rgba(255, 255, 255, 0.13)",
   overlayFillInverse: "rgba(255, 255, 255, 0.07)",
@@ -124,6 +130,8 @@ const CSS_VAR_BY_KEY: Record<keyof typeof lightColors, string> = {
   onChromeMuted: "--color-on-chrome-muted",
   hairline: "--color-hairline",
   hairlineInverse: "--color-hairline-inverse",
+  focusRing: "--color-focus-ring",
+  focusRingInverse: "--color-focus-ring-inverse",
   overlayFill: "--color-overlay-fill",
   overlayFillHover: "--color-overlay-fill-hover",
   overlayFillInverse: "--color-overlay-fill-inverse",
@@ -152,6 +160,7 @@ export const blur = {
 } as const;
 
 export const radius = {
+  xxs: 2,
   xs: 6,
   sm: 10,
   md: 16,
@@ -273,10 +282,17 @@ export const motion = {
     ease: easing.smooth,
   },
 
+  /** Preset: "Let's go up" back-to-top scroll (inspirations.md §8.4). */
+  backToTop: {
+    durationMs: 1250,
+  },
+
   /** Preset: Fullscreen Parallax Reveal Footer (curtain) */
   footerCurtain: {
     scrub: 0.8,
     counterOffsetPercent: -15,
+    /** Giant letterforms settle upward as the footer is revealed (§8.3). */
+    settleOffsetPx: 45,
   },
 
   /** Preset: Collapse-to-Pill Header / Roll Reveal Hover */
@@ -312,6 +328,8 @@ export const motion = {
     navCollapseSlideEase: easing.outSoft,
     chromeHoverMs: duration.micro,
     dotExplodeOffsetPx: 2,
+    /** Diameter of each dot in the 4-dot widget glyph. */
+    dotSizePx: 3,
     /** Hero-state logo emphasis scale, per design-ahgrowth.md. */
     logoHeroScale: 1.24,
     /** Island hover-widen before a click opens the full panel. */

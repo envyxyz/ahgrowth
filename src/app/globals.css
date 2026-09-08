@@ -13,6 +13,26 @@ body {
 }
 
 /*
+ * Keyboard focus. The only outline in the system: everything else separates
+ * by fill. Two rings because the inverse block stays dark in BOTH themes, so
+ * a single ink-colored ring would be invisible on it.
+ */
+:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
+
+[data-tone="inverse"] :focus-visible {
+  outline-color: var(--color-focus-ring-inverse);
+}
+
+/* Mouse users never see it; keyboard users always do. */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/*
  * Palette cross-fade, applied only while `data-theme-transition` is on <html>
  * (added by the toggle, removed once the flip lands). Scoping it to that
  * brief window keeps it from overriding the transitions components declare

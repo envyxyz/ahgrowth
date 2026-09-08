@@ -1,40 +1,59 @@
 import { content } from "@/content";
-import { Copy } from "@/components/ui/placeholder-block";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { Section } from "@/components/ui/section";
+import { Statement } from "@/components/ui/statement";
+import { Reveal } from "@/components/motion/reveal";
+import { ServiceCard } from "@/components/sections/capabilities/service-card";
+import { PinnedCarousel } from "@/components/sections/capabilities/pinned-carousel";
+import { motion as designMotion } from "@/lib/design-tokens";
 
 /**
- * 03 — Capabilities Carousel (skeleton). Renders as white cards on the light
- * canvas until the pinned horizontal / liquid-glass mechanic lands.
+ * 03 — Capabilities. Two layouts, one content source.
+ *
+ * Laptop and up with motion allowed: the pinned horizontal carousel locked in
+ * inspirations.md §4. Everything else (mobile, tablet, reduced motion): the
+ * stacked card grid, per SITEMAP.md §7 "any pinned or scroll-scrubbed section
+ * falls back to normal vertical stacking below laptop".
+ *
+ * Both are server-rendered and swapped by media query, not by a mount-time
+ * state flip, so neither flashes on first paint.
  */
 export function Capabilities() {
   const { capabilities } = content.home;
 
   return (
-    <Section tone="inverse">
-      <Eyebrow tone="inverse">{capabilities.eyebrow}</Eyebrow>
-
-      <h2 className="type-display-lg mt-lg max-w-[18ch] text-balance text-on-inverse">
-        <Copy value={capabilities.heading} />
-      </h2>
-
-      <div className="mt-4xl grid gap-lg sm:grid-cols-2 lg:grid-cols-3">
-        {content.services.length === 0 ? (
-          <div className="type-caption rounded-lg bg-inverse-soft p-card text-on-inverse-faint">
-            Service taxonomy pending — see content.ts serviceCategories.
-          </div>
-        ) : (
-          content.services.map((service) => (
-            <div
-              key={service.id}
-              className="rounded-lg bg-inverse-soft p-card"
-            >
-              <h3 className="type-heading-3 text-on-inverse">{service.title}</h3>
-              <p className="type-body-sm mt-sm text-on-inverse-muted">{service.summary}</p>
-            </div>
-          ))
-        )}
+    <section id={capabilities.id} aria-labelledby="capabilities-heading">
+      <div className="hidden lg:motion-safe:block">
+        <PinnedCarousel services={content.services} />
       </div>
-    </Section>
+
+      <div className="lg:motion-safe:hidden">
+        <Section tone="inverse" as="div">
+          <Reveal className="flex flex-col gap-lg">
+            <Eyebrow tone="inverse">{capabilities.eyebrow}</Eyebrow>
+            <Statement
+              value={capabilities.heading}
+              as="h2"
+              tone="inverse"
+              className="max-w-[18ch]"
+            />
+            <p className="type-body-lg max-w-[46ch] text-on-inverse-muted">
+              {capabilities.intro}
+            </p>
+          </Reveal>
+
+          <div className="mt-4xl grid gap-xxl md:grid-cols-2">
+            {content.services.map((service, i) => (
+              <Reveal key={service.id} delay={i * designMotion.lineRise.staggerMs}>
+                <ServiceCard
+                  service={service}
+                  includesLabel={capabilities.includesLabel}
+                />
+              </Reveal>
+            ))}
+          </div>
+        </Section>
+      </div>
+    </section>
   );
 }

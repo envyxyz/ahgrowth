@@ -9,6 +9,9 @@ import { motion as designMotion } from "@/lib/design-tokens";
  * surrounding pill/panel chrome (background, border, grow/expand tweens)
  * lives one level up in island-shell.tsx so both the collapsed pill and the
  * expanded panel share one continuous surface.
+ *
+ * The home link and the panel toggle are SIBLINGS, never nested: interactive
+ * content inside a <button> is invalid HTML and breaks keyboard semantics.
  */
 export function LogoIsland({
   scrolled,
@@ -16,21 +19,23 @@ export function LogoIsland({
   widened,
   onToggleOpen,
   homeLabel,
+  homeAriaLabel,
+  openAriaLabel,
+  closeAriaLabel,
 }: {
   scrolled: boolean;
   open: boolean;
   widened: boolean;
   onToggleOpen: () => void;
   homeLabel: string;
+  homeAriaLabel: string;
+  openAriaLabel: string;
+  closeAriaLabel: string;
 }) {
   const { header } = designMotion;
 
   return (
-    <button
-      type="button"
-      onClick={scrolled ? onToggleOpen : undefined}
-      aria-expanded={open}
-      aria-label={open ? "Close navigation" : "Open navigation"}
+    <div
       className="flex w-full items-center gap-xs whitespace-nowrap transition-[padding]"
       style={{
         padding: scrolled
@@ -39,14 +44,12 @@ export function LogoIsland({
             : "var(--space-xs) var(--space-sm)"
           : "0",
         transitionDuration: `${header.hoverExpandMs}ms`,
-        cursor: scrolled ? "pointer" : "default",
       }}
     >
       <Link
         href="/"
-        aria-label="AH Growth, home"
-        onClick={(e) => scrolled && e.stopPropagation()}
-        className="origin-left shrink-0 text-primary transition-transform"
+        aria-label={homeAriaLabel}
+        className="origin-left shrink-0 rounded-xs text-primary transition-transform"
         style={{
           transform: `scale(${scrolled ? 1 : header.logoHeroScale})`,
           transitionDuration: `${header.logoPillExpandMs}ms`,
@@ -56,17 +59,26 @@ export function LogoIsland({
         <AhMark className="h-5 w-auto" />
       </Link>
 
-      <span
-        className="type-eyebrow overflow-hidden text-on-chrome-muted transition-[opacity,max-width]"
+      {/* Only interactive once the island has chrome to expand. Kept mounted
+          so the label's width tween has something stable to animate. */}
+      <button
+        type="button"
+        onClick={scrolled ? onToggleOpen : undefined}
+        aria-expanded={open}
+        aria-label={open ? closeAriaLabel : openAriaLabel}
+        tabIndex={scrolled ? 0 : -1}
+        className="type-eyebrow overflow-hidden rounded-xs text-on-chrome-muted transition-[opacity,max-width]"
         style={{
           opacity: scrolled ? 1 : 0,
           maxWidth: scrolled ? "120px" : "0px",
+          pointerEvents: scrolled ? "auto" : "none",
+          cursor: scrolled ? "pointer" : "default",
           transitionDuration: `${header.logoPillExpandMs}ms`,
           transitionDelay: scrolled ? "120ms" : "0ms",
         }}
       >
         {homeLabel}
-      </span>
-    </button>
+      </button>
+    </div>
   );
 }

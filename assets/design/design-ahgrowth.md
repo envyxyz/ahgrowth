@@ -30,6 +30,8 @@ colors:
     on-chrome: "#f7f7f5"
     on-chrome-muted: "#a8a8a2"
     hairline: "rgba(17, 17, 16, 0.10)"
+    focus-ring: "#111110"
+    focus-ring-inverse: "#f7f7f5"
     hairline-inverse: "rgba(255, 255, 255, 0.12)"
     overlay-fill: "rgba(17, 17, 16, 0.06)"
     overlay-fill-hover: "rgba(17, 17, 16, 0.11)"
@@ -61,6 +63,8 @@ colors:
     on-chrome: "#f5f4f2"
     on-chrome-muted: "#93928d"
     hairline: "rgba(255, 255, 255, 0.08)"
+    focus-ring: "#f5f4f2"
+    focus-ring-inverse: "#f5f4f2"
     hairline-inverse: "rgba(255, 255, 255, 0.08)"
     overlay-fill: "rgba(255, 255, 255, 0.07)"
     overlay-fill-hover: "rgba(255, 255, 255, 0.13)"
@@ -165,6 +169,7 @@ typography:
     textTransform: "uppercase"
 
 rounded:
+  xxs: "2px"
   xs: "6px"
   sm: "10px"
   md: "16px"
@@ -190,6 +195,9 @@ layout:
   inset: "clamp(20px, 4vw, 56px)"
   section-y: "clamp(96px, 11vw, 180px)"
   card-p: "clamp(28px, 3vw, 48px)"
+  toggle-clearance: "72px"
+  hero-pad-top: "clamp(96px, 14vh, 224px)"
+  hero-pad-bottom: "clamp(88px, 12vh, 176px)"
 
 blur:
   card: "20px"
@@ -434,6 +442,7 @@ Two blur tiers back the glass chrome: `{blur.card}` (20px) for panels and `{blur
 ### Border Radius Scale
 | Token | Value | Use |
 |---|---|---|
+| xxs | 2px | Micro-glyphs: the eyebrow marker square, inline dots |
 | xs | 6px | Inline chips, small markers |
 | sm | 10px | Dense controls |
 | md | 16px | Open nav panel |

@@ -51,8 +51,45 @@ If you change a token, update `design-ahgrowth.md` first, then mirror the value 
 
 - **Don't over-engineer**: Deliver lean, concise, and optimal outputs. Avoid unnecessary abstractions or bloat.
 - **High confidence**: Execute decisively with high confidence.
-- **Parallel execution**: Run parallel agents/subagents to get tasks done sooner whenever applicable.
+- **Parallel execution**: Run parallel agents/subagents to get tasks done sooner whenever applicable. Do not fan out to re-read files the calling session has already loaded; that is cost without information.
 - **Mission-critical reliability**: Outputs must work correctly and reliably without breaking.
+- **Active plan**: `PLAN.md` holds the current build's phases and gates. `AUDIT-GEMINI.md` is a re-runnable third-party audit brief, not a build instruction. Never mark a phase done until its gate is proven by a command's exit code or a screenshot, not by reasoning about it.
+
+## Working discipline
+
+The failure mode on this project is not a hard bug. It is a hundred small drifts: a string typed inline "for now", an arbitrary `[24px]` instead of `p-lg`, a second card component that already existed, a "done" claimed without running the build. Each is invisible alone and fatal in aggregate. These guards exist to catch drift at the moment it happens, not at review.
+
+### Before writing any component
+
+Run this check every time, even when the answer feels obvious:
+
+1. **Does this primitive already exist?** `ls src/components/ui/` before creating anything there. Two components solving one problem is worse than one imperfect component.
+2. **Does `content.ts` already have a field for every string this renders?** If not, add the field first, in a separate edit, then write the component. Never in the other order, and never "I'll wire it up after."
+3. **Which tone is this on?** Canvas, surface, or inverse. Pick the text and fill tokens for that tone before writing markup. `surface` on an inverse block is invisible in the dark palette, and it will not be caught by typecheck, lint, or a light-mode screenshot.
+4. **What does this look like at 375px?** Decide before writing, not after the desktop version is finished. Retrofitting mobile onto a desktop-first layout is where the fixed pixel values sneak in.
+
+### Before claiming anything is done
+
+- Ran `npx tsc --noEmit`, `npm run lint`, and `npm run build`, and read the exit codes. "It should compile" is not a status.
+- Looked at the rendered result at 375px **and** 1440px, in **both** themes. Four screenshots. A section verified in one theme is a section verified half way.
+- Grepped the files just written for `#`, `[NNpx]`, `[NNms]`, and quoted strings in JSX.
+- If any part of the task was skipped or blocked, said so explicitly. Silent scope reduction is the worst outcome available, worse than an honest incomplete.
+
+### Thinking tactics that prevent the expensive mistakes
+
+**Read before you edit, always.** Never edit a file whose current contents are not in context. The most costly errors on this codebase come from writing against a remembered version of a file rather than the actual one.
+
+**Trace one full path before building the pattern.** Before building five service cards, build one end to end: `content.ts` field → component → rendered pixel at three widths in two themes. Then replicate. Building all five and discovering the token choice was wrong costs five rewrites.
+
+**Fix causes, not symptoms.** If text overflows, do not add `overflow-hidden`. Find why the box is too small. If a color looks wrong, do not hardcode the right one. Find which semantic token was the wrong choice. A symptom fix in a design system propagates the original error to everything downstream of it.
+
+**Name the failure before you fix it.** State in one sentence what is broken and why, then fix it. If that sentence cannot be written, the cause is not understood yet and the fix will be a guess.
+
+**Verify per phase, never in one batch at the end.** A defect introduced in the content layer and found during final QA costs every phase built on top of it. Gate each phase before starting the next.
+
+**When two rules appear to conflict, the stricter one wins and the conflict gets reported.** `CLAUDE.md` rules do not have exceptions that are discovered mid-build. If a rule genuinely blocks the work, say so and ask, do not quietly route around it.
+
+**Distrust plausible-looking content most of all.** An invented statistic reads exactly like a real one. That is precisely why the rule exists. Narrative copy can be authored; a measurement cannot.
 
 ## `src/content.ts` is the only place copy lives in code (hard rule)
 

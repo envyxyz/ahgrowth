@@ -3,23 +3,26 @@
 import { useEffect, useState } from "react";
 import { content } from "@/content";
 import { useScrollState } from "@/lib/hooks/use-scroll-state";
+import { useSmoothScroll } from "@/components/providers/smooth-scroll";
 import { IslandShell } from "@/components/layout/header/island-shell";
 import { LogoIsland } from "@/components/layout/header/logo-island";
 import { NavPanel } from "@/components/layout/header/nav-panel";
 import { MenuScrim } from "@/components/layout/header/menu-scrim";
 import { HeaderActions } from "@/components/layout/header/header-actions";
 
-const panelItems = content.nav.items.filter((item) => item.href !== "/");
+/** Home is covered by the logo mark; unbuilt routes are filtered out. */
+const panelItems = content.nav.items.filter((item) => item.shipped && item.href !== "/");
 
 export function SiteHeader() {
   const [heroHeight, setHeroHeight] = useState<number | null>(null);
   const [open, setOpen] = useState(false);
   const [hovering, setHovering] = useState(false);
   const scrolled = useScrollState(heroHeight ?? 9999);
+  const { stop, start } = useSmoothScroll();
 
   useEffect(() => {
     const hero = document.querySelector("[data-hero]");
-    setHeroHeight(hero instanceof HTMLElement ? hero.offsetHeight * 0.8 : window.innerHeight * 0.8);
+    setHeroHeight(hero instanceof HTMLElement ? hero.offsetHeight * 0.8 : window.innerHeight * 0.5);
   }, []);
 
   useEffect(() => {
@@ -35,12 +38,16 @@ export function SiteHeader() {
       if (e.key === "Escape") setOpen(false);
     };
     document.addEventListener("keydown", onKey);
+    // Both: Lenis owns the scroll when it is running, `overflow` covers the
+    // reduced-motion path where Lenis is never instantiated.
+    stop();
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
+      start();
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [open, stop, start]);
 
   return (
     <>
@@ -48,10 +55,13 @@ export function SiteHeader() {
       {/*
         Aligned to the hero card's own inset and nudged inside its top edge,
         so at page-top the whole cluster reads as chrome sitting ON the dark
-        card (references put the nav inside the hero card). On scroll the
-        actions fade out and the logo island picks up a solid surface.
+        card. On scroll the actions fade out and the logo island picks up a
+        solid chrome surface.
       */}
-      <header className="fixed inset-x-0 top-0 z-50 flex items-center justify-between px-inset pt-[calc(var(--layout-inset)+var(--space-lg))]">
+      <header
+        data-tone="inverse"
+        className="fixed inset-x-0 top-0 z-50 flex items-center justify-between gap-md px-inset pt-[calc(var(--layout-inset)+var(--space-lg))]"
+      >
         <IslandShell
           scrolled={scrolled}
           open={open}
@@ -73,16 +83,16 @@ export function SiteHeader() {
               widened={hovering || open}
               onToggleOpen={() => setOpen((v) => !v)}
               homeLabel={content.nav.homeLabel}
+              homeAriaLabel={content.nav.a11y.home}
+              openAriaLabel={content.nav.a11y.openMenu}
+              closeAriaLabel={content.nav.a11y.closeMenu}
             />
           </div>
         </IslandShell>
 
         <HeaderActions
           items={panelItems}
-          ctaLabel={content.nav.cta.label}
-          ctaHref={content.nav.cta.href}
           scrolled={scrolled}
-          menuLabel={content.nav.menuLabel}
           open={open}
           onToggleOpen={() => setOpen((v) => !v)}
         />

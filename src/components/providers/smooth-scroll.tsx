@@ -12,18 +12,25 @@ import { motion as motionTokens } from "@/lib/design-tokens";
 
 interface SmoothScrollContextValue {
   scrollToId: (id: string) => void;
+  scrollToTop: () => void;
+  /** Pause/resume the scroll engine. Used while the nav panel is open —
+      `body { overflow: hidden }` alone does not stop Lenis. */
+  stop: () => void;
+  start: () => void;
 }
 
 const SmoothScrollContext = createContext<SmoothScrollContextValue | null>(null);
 
+/** Exponential-out. inspirations.md §8.4, the "Let's go up" curve. */
+const expoOut = (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t));
+
 /**
- * Site-wide Lenis instance (Preset: Fluid Cap Scroll) + a single full-viewport
- * velocity-blur layer (Preset: Velocity Fade Blur). One rAF loop drives both
- * the scroll tick and the blur read — never a second listener.
+ * Site-wide Lenis instance (Preset: Fluid Cap Scroll). One rAF loop, one
+ * engine. Not instantiated at all under `prefers-reduced-motion: reduce`,
+ * where every consumer falls back to native scrolling.
  */
 export function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
-  const blurLayerRef = useRef<HTMLDivElement | null>(null);
   const reducedMotionRef = useRef(false);
 
   useEffect(() => {
@@ -40,25 +47,10 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
     });
     lenisRef.current = lenis;
 
-    const { thresholdPxPerFrame, maxBlurPx } = motionTokens.velocityFadeBlur;
-
-    function raf(time: number) {
+    let frameId = requestAnimationFrame(function raf(time: number) {
       lenis.raf(time);
-
-      const layer = blurLayerRef.current;
-      if (layer) {
-        const speed = Math.abs(lenis.velocity);
-        const eased = Math.min(speed / thresholdPxPerFrame, 1);
-        const blurAmount = eased > 0.02 ? eased * maxBlurPx : 0;
-        layer.style.backdropFilter = blurAmount
-          ? `blur(${blurAmount}px)`
-          : "none";
-      }
-
       frameId = requestAnimationFrame(raf);
-    }
-
-    let frameId = requestAnimationFrame(raf);
+    });
 
     return () => {
       cancelAnimationFrame(frameId);
@@ -78,26 +70,45 @@ export function SmoothScrollProvider({ children }: { children: React.ReactNode }
 
     lenisRef.current.scrollTo(target, {
       duration: motionTokens.inertiaSettle.maxMs / 1000,
-      easing: (t: number) => 1 - Math.pow(1 - t, 3),
+      easing: expoOut,
     });
   }, []);
 
+  const scrollToTop = useCallback(() => {
+    if (reducedMotionRef.current || !lenisRef.current) {
+      window.scrollTo({ top: 0, behavior: reducedMotionRef.current ? "auto" : "smooth" });
+      return;
+    }
+    lenisRef.current.scrollTo(0, {
+      duration: motionTokens.backToTop.durationMs / 1000,
+      easing: expoOut,
+    });
+  }, []);
+
+  const stop = useCallback(() => lenisRef.current?.stop(), []);
+  const start = useCallback(() => lenisRef.current?.start(), []);
+
   return (
-    <SmoothScrollContext.Provider value={{ scrollToId }}>
+    <SmoothScrollContext.Provider value={{ scrollToId, scrollToTop, stop, start }}>
       {children}
-      <div
-        ref={blurLayerRef}
-        aria-hidden
-        className="pointer-events-none fixed inset-0 z-[60] transition-[backdrop-filter] duration-150"
-      />
     </SmoothScrollContext.Provider>
   );
 }
 
+/**
+ * Native-scroll fallback used when there is no provider above the consumer.
+ * Next renders some trees (the not-found boundary, error boundaries) outside
+ * the normal layout chain, and a hook that throws there fails the whole
+ * static export. Degrading to plain scrolling is strictly better than
+ * crashing a page over a smooth-scroll nicety.
+ */
+const nativeFallback: SmoothScrollContextValue = {
+  scrollToId: (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }),
+  scrollToTop: () => window.scrollTo({ top: 0, behavior: "smooth" }),
+  stop: () => {},
+  start: () => {},
+};
+
 export function useSmoothScroll() {
-  const ctx = useContext(SmoothScrollContext);
-  if (!ctx) {
-    throw new Error("useSmoothScroll must be used within SmoothScrollProvider");
-  }
-  return ctx;
+  return useContext(SmoothScrollContext) ?? nativeFallback;
 }

@@ -21,7 +21,7 @@ export function Eyebrow({
         tone === "inverse" ? "text-on-inverse-muted" : "text-ink-muted"
       } ${className}`}
     >
-      <span aria-hidden className="h-2 w-2 shrink-0 rounded-[2px] bg-primary" />
+      <span aria-hidden className="h-2 w-2 shrink-0 rounded-xxs bg-primary" />
       {children}
     </p>
   );

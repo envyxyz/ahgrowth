@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { content } from "@/content";
 import { RollText } from "@/components/ui/roll-text";
 import type { NavItem, SocialLink } from "@/content";
 import { motion as designMotion } from "@/lib/design-tokens";
@@ -36,6 +37,7 @@ export function NavPanel({
         pointerEvents: open ? "auto" : "none",
       }}
     >
+      <nav aria-label={content.nav.a11y.primaryNav}>
       <ul className="flex flex-col">
         {items.map((item) => (
           <li key={item.href} className="border-b border-hairline-inverse last:border-b-0">
@@ -49,6 +51,17 @@ export function NavPanel({
           </li>
         ))}
       </ul>
+
+      {/* The CTA is hidden in the header row below md, so the panel is the
+          only place a mobile visitor can reach it. */}
+      <Link
+        href={content.nav.cta.href}
+        onClick={onNavigate}
+        className="type-button mt-sm inline-flex h-11 items-center justify-center rounded-full bg-on-chrome px-lg text-chrome md:hidden"
+      >
+        {content.nav.cta.label}
+      </Link>
+      </nav>
 
       {socialLinks.length > 0 && (
         <div className="mt-md border-t border-hairline-inverse pt-md">
