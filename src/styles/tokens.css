@@ -17,6 +17,11 @@
  */
 
 :root {
+  /* Which palette the browser paints native UI in: scrollbars, form controls,
+     autofill, spellcheck underlines. Declared per theme alongside the color
+     tokens so all three resolution states stay in lockstep. */
+  color-scheme: light;
+
   /* --- Color: brand accent (vermilion) --- */
   --color-primary: #ea4127;
   --color-primary-hover: #d3341c;
@@ -109,6 +114,9 @@
   --space-4xl: 96px;
   --space-5xl: 128px;
   --space-6xl: 176px;
+
+  /* Micro geometry: the DotGridIcon's individual dot dimension. */
+  --size-dot: 3px;
 
   /* --- Layout --- */
   --layout-container: 1440px;
@@ -240,6 +248,7 @@
  */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --color-primary: #ea4127;
     --color-primary-hover: #f2583f;
     /* Accent as text lightens on dark to hold contrast. */
@@ -291,6 +300,7 @@
 }
 
 :root[data-theme="dark"] {
+  color-scheme: dark;
   --color-primary: #ea4127;
   --color-primary-hover: #f2583f;
   --color-primary-ink: #ff6a4d;

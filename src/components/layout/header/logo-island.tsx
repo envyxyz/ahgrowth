@@ -70,11 +70,11 @@ export function LogoIsland({
         className="type-eyebrow overflow-hidden rounded-xs text-on-chrome-muted transition-[opacity,max-width]"
         style={{
           opacity: scrolled ? 1 : 0,
-          maxWidth: scrolled ? "120px" : "0px",
+          maxWidth: scrolled ? "var(--space-5xl)" : "0px",
           pointerEvents: scrolled ? "auto" : "none",
           cursor: scrolled ? "pointer" : "default",
           transitionDuration: `${header.logoPillExpandMs}ms`,
-          transitionDelay: scrolled ? "120ms" : "0ms",
+          transitionDelay: scrolled ? `${header.labelFadeDelayMs}ms` : "0ms",
         }}
       >
         {homeLabel}

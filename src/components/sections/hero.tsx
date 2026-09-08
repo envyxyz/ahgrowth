@@ -30,7 +30,7 @@ export function Hero() {
             it. The content block reserves pb-hero-bottom to clear it. */}
         <span
           aria-hidden
-          className="type-ghost pointer-events-none absolute -bottom-[0.3em] left-[-0.04em] z-0 select-none whitespace-nowrap text-ghost-inverse"
+          className="type-ghost pointer-events-none absolute -bottom-[0.45em] left-[-0.04em] z-0 select-none whitespace-nowrap text-ghost-inverse"
         >
           <span className="md:hidden">{content.footer.wordmarkShort}</span>
           <span className="hidden md:inline">{content.footer.wordmark}</span>

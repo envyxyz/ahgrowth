@@ -6,8 +6,6 @@ import { Statement } from "@/components/ui/statement";
 import { buttonVariants } from "@/components/ui/button";
 import { SiteFooter } from "@/components/sections/site-footer";
 
-export const metadata = { title: content.notFound.eyebrow };
-
 export default function NotFound() {
   const { notFound } = content;
 

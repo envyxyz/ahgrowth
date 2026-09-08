@@ -35,7 +35,7 @@ export function HeaderActions({
       className="flex items-center gap-md transition-[opacity,transform] md:gap-xl"
       style={{
         opacity: scrolled ? 0 : 1,
-        transform: scrolled ? "translateY(-8px)" : "translateY(0)",
+        transform: scrolled ? "translateY(calc(-1 * var(--space-xs)))" : "translateY(0)",
         pointerEvents: scrolled ? "none" : "auto",
         transitionDuration: `${header.navCollapseSlideMs}ms`,
         transitionTimingFunction: header.navCollapseSlideEase,
@@ -96,8 +96,8 @@ function ClockReadout({ label }: { label: string }) {
   if (!time) return null;
 
   return (
-    <span aria-label={label} className="type-eyebrow hidden text-on-inverse-muted lg:inline">
-      {time} UTC+5
+    <span aria-label={label} className="type-eyebrow tabular hidden text-on-inverse-muted lg:inline">
+      {time} {content.nav.timezoneSuffix}
     </span>
   );
 }

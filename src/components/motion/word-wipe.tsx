@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Statement as StatementValue } from "@/content";
 import { useViewportProgress } from "@/lib/hooks/use-scroll-progress";
-import { motion as designMotion } from "@/lib/design-tokens";
+import { easing, motion as designMotion } from "@/lib/design-tokens";
 
 /**
  * Preset: Word Wipe Scrub (Buzz Interactive). The line writes itself in as
@@ -56,7 +56,7 @@ export function WordWipe({
               color: progress > threshold ? strong : soft,
               transitionProperty: "color",
               transitionDuration: `${designMotion.durationInteractiveMs}ms`,
-              transitionTimingFunction: designMotion.easeInertia,
+              transitionTimingFunction: easing.outSoft,
             }}
           >
             {word}{" "}

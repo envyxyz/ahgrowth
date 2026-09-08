@@ -6,7 +6,7 @@ import { content, type Service } from "@/content";
 import { Eyebrow } from "@/components/ui/eyebrow";
 import { StaticChip } from "@/components/ui/chip";
 import { Statement } from "@/components/ui/statement";
-import { motion as designMotion, duration } from "@/lib/design-tokens";
+import { easing, motion as designMotion, duration } from "@/lib/design-tokens";
 import { useScrollProgress, useMotionViewport } from "@/lib/hooks/use-scroll-progress";
 
 /**
@@ -80,7 +80,7 @@ export function PinnedCarousel({ services }: { services: Service[] }) {
     if (offsets.length === 0 || !viewportWidth) return 0;
     const offset = offsets[activeIndex] ?? 0;
     const width = widths[activeIndex] ?? 0;
-    return offset - (viewportWidth - width) / 2;
+    return Math.max(0, offset - (viewportWidth - width) / 2);
   })();
 
   return (
@@ -106,7 +106,7 @@ export function PinnedCarousel({ services }: { services: Service[] }) {
                   animation: `caption-in ${designMotion.captionRail.incomingMs}ms ${designMotion.easeInertia} both`,
                 }}
               >
-                <p className="type-eyebrow text-primary-ink">
+                <p className="type-eyebrow tabular text-primary-ink">
                   {String(activeIndex + 1).padStart(2, "0")} / {String(services.length).padStart(2, "0")}
                 </p>
                 <h3 className="type-heading-1 text-on-inverse">{active.title}</h3>
@@ -151,7 +151,7 @@ export function PinnedCarousel({ services }: { services: Service[] }) {
 
       <style>{`
         @keyframes caption-in {
-          from { opacity: 0; transform: translateY(12px); }
+          from { opacity: 0; transform: translateY(var(--space-sm)); }
           to   { opacity: 1; transform: translateY(0); }
         }
       `}</style>
@@ -177,7 +177,7 @@ function CarouselCard({
         transform: `scale(${focused ? 1 : 0.92})`,
         opacity: focused ? 1 : 0.55,
         transitionDuration: `${designMotion.captionRail.incomingMs}ms`,
-        transitionTimingFunction: designMotion.easeInertia,
+        transitionTimingFunction: easing.smooth,
       }}
     >
       {/* Theme-colored glow behind the cutout's transparent aperture. */}
@@ -207,7 +207,7 @@ function CarouselCard({
         aria-hidden
         className="absolute inset-x-0 bottom-0 z-[2] h-1/2 bg-gradient-to-t from-inverse to-transparent"
       />
-      <h4 className="type-heading-2 absolute bottom-card left-card z-[3] text-on-inverse">
+      <h4 className="type-heading-2 absolute bottom-card left-card right-card z-[3] text-on-inverse">
         {service.title}
       </h4>
     </article>

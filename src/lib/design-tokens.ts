@@ -320,6 +320,7 @@ export const motion = {
    * translate by the row's own measured width.
    */
   header: {
+    labelFadeDelayMs: 120,
     logoPillExpandMs: 900,
     logoPillExpandEase: easing.smooth,
     logoContainerResizeMs: duration.layout,

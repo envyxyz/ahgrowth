@@ -134,6 +134,8 @@ export const nav = {
   menuLabel: "Menu",
   /** Sub-list heading inside the expanded nav panel. */
   channelsLabel: "Channels",
+  /** Suffix shown after the live clock readout in the header. */
+  timezoneSuffix: "UTC+5",
   themeToggleLabel: "Switch theme",
   skipToContent: "Skip to content",
   /**
@@ -155,7 +157,7 @@ export const footer = {
   directEmail: "hello@ahgrowth.com",
   /** Empty until real handles are confirmed. The column hides itself. */
   social: [] as SocialLink[],
-  backToTop: "Let's go up",
+  backToTop: "Let’s go up",
   legalLinks: [
     { label: "Privacy Policy", href: "/privacy", shipped: true },
     { label: "Terms of Use", href: "/terms", shipped: true },
@@ -262,8 +264,8 @@ export const home = {
     headline: "The studio behind growing businesses.",
     subheadline:
       "AH Growth designs brands, builds the websites and apps they run on, and handles the marketing that brings people to them. One team, from the first sketch to live traffic.",
-    cta: { label: "See what we do", href: "#capabilities" },
-    secondaryCta: { label: "Start a project", href: "/contact" },
+    cta: { label: "Start a project", href: "/contact" },
+    secondaryCta: { label: "See what we do", href: "#capabilities" },
     /** Floating status badges per primary.jpg. Empty: every candidate value
         here would be a measurement, and none are verified. */
     metrics: [] as Metric[],
@@ -465,6 +467,7 @@ export const contact = {
     fallbackNote: "This opens your email app with the details filled in.",
   },
 
+  reassuranceHeading: "What to expect",
   reassurance: [
     {
       title: "A reply, not a ticket",

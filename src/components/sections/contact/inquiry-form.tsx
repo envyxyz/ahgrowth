@@ -104,6 +104,7 @@ export function InquiryForm() {
         <Field
           label={fields.name}
           name="name"
+          autoComplete="name"
           value={values.name}
           onChange={set("name")}
           required
@@ -111,6 +112,7 @@ export function InquiryForm() {
         <Field
           label={fields.email}
           name="email"
+          autoComplete="email"
           type="email"
           value={values.email}
           onChange={set("email")}
@@ -119,6 +121,7 @@ export function InquiryForm() {
         <Field
           label={fields.company}
           name="company"
+          autoComplete="organization"
           value={values.company}
           onChange={set("company")}
           optionalSuffix={form.optionalSuffix}
@@ -126,6 +129,7 @@ export function InquiryForm() {
         <Field
           label={fields.designation}
           name="designation"
+          autoComplete="organization-title"
           value={values.designation}
           onChange={set("designation")}
           optionalSuffix={form.optionalSuffix}
@@ -133,6 +137,7 @@ export function InquiryForm() {
         <Field
           label={fields.phone}
           name="phone"
+          autoComplete="tel"
           type="tel"
           value={values.phone}
           onChange={set("phone")}

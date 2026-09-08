@@ -1,6 +1,6 @@
 "use client";
 
-import { motion as designMotion } from "@/lib/design-tokens";
+import { easing, motion as designMotion } from "@/lib/design-tokens";
 
 const base =
   "type-body-sm inline-flex min-h-11 items-center rounded-full px-lg transition-colors";
@@ -42,7 +42,7 @@ export function Chip({
       className={`${base} ${selected ? activeClass : restClass}`}
       style={{
         transitionDuration: `${designMotion.invertChip.durationMs}ms`,
-        transitionTimingFunction: designMotion.easeInertia,
+        transitionTimingFunction: easing.outSoft,
       }}
     >
       {label}

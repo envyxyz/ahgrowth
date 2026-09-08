@@ -5,6 +5,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Kills the legacy tap delay and the default blue flash on touch. */
+a,
+button,
+[role="button"],
+input,
+select,
+textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Figures that sit in a column or update on a timer must not reflow as their
+   glyphs change width. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
 body {
   background: var(--color-canvas);
   color: var(--color-ink);

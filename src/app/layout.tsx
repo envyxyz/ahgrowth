@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { content } from "@/content";
 import { fontVariables } from "@/lib/fonts";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll";
@@ -27,6 +27,17 @@ export const metadata: Metadata = {
     description: meta.defaultDescription,
   },
   robots: { index: true, follow: true },
+};
+
+/**
+ * Browser chrome colour, per palette. Values match --color-canvas so the
+ * mobile address bar blends into the page instead of banding against it.
+ */
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f2f1ef" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a09" },
+  ],
 };
 
 export default function RootLayout({

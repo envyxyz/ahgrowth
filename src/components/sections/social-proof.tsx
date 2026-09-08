@@ -19,14 +19,14 @@ import { motion as designMotion } from "@/lib/design-tokens";
 export function SocialProof() {
   const { socialProof } = content.home;
 
-  /* Card 0 wide, card 2 tall: the asymmetry from inspirations.md Element 6. */
-  const spans = ["md:col-span-2", "", "md:row-span-2", ""];
+  /* Card 0 wide, card 3 wide: balanced 3-col bento grid for 4 items. */
+  const spans = ["md:col-span-2", "", "", "md:col-span-2"];
 
   return (
     <Section tone="surface" ariaLabelledBy="commitments-heading">
       <Reveal className="flex flex-col gap-lg">
         <Eyebrow>{socialProof.eyebrow}</Eyebrow>
-        <Statement value={socialProof.heading} as="h2" className="max-w-[20ch]" />
+        <Statement id="commitments-heading" value={socialProof.heading} as="h2" className="max-w-[20ch]" />
       </Reveal>
 
       <div className="mt-4xl grid gap-lg md:grid-cols-2 lg:grid-cols-3">

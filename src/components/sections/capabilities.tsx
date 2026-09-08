@@ -22,7 +22,7 @@ export function Capabilities() {
   const { capabilities } = content.home;
 
   return (
-    <section id={capabilities.id} aria-labelledby="capabilities-heading">
+    <section id={capabilities.id} className="scroll-mt-xxl" aria-labelledby="capabilities-heading">
       <div className="hidden lg:motion-safe:block">
         <PinnedCarousel services={content.services} />
       </div>
@@ -32,6 +32,7 @@ export function Capabilities() {
           <Reveal className="flex flex-col gap-lg">
             <Eyebrow tone="inverse">{capabilities.eyebrow}</Eyebrow>
             <Statement
+              id="capabilities-heading"
               value={capabilities.heading}
               as="h2"
               tone="inverse"

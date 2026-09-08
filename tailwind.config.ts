@@ -95,6 +95,7 @@ const config: Config = {
         "toggle-clearance": "var(--layout-toggle-clearance)",
         "hero-top": "var(--layout-hero-pad-top)",
         "hero-bottom": "var(--layout-hero-pad-bottom)",
+        dot: "var(--size-dot)",
       },
       maxWidth: {
         container: "var(--layout-container)",

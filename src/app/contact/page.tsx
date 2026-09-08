@@ -54,6 +54,7 @@ export default function ContactPage() {
       </Section>
 
       <Section tone="surface">
+        <h2 className="sr-only">{contact.reassuranceHeading}</h2>
         <div className="grid gap-lg md:grid-cols-3">
           {contact.reassurance.map((item, i) => (
             <Reveal key={item.title} delay={i * designMotion.lineRise.staggerMs}>

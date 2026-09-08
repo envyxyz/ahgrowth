@@ -28,10 +28,10 @@ export function NavPanel({
 
   return (
     <div
-      className="flex flex-col gap-xs px-md pb-md pt-xs transition-[opacity,transform]"
+      className="flex flex-col gap-xs overscroll-contain px-md pb-md pt-xs transition-[opacity,transform]"
       style={{
         opacity: open ? 1 : 0,
-        transform: open ? "translateY(0)" : "translateY(-8px)",
+        transform: open ? "translateY(0)" : "translateY(calc(-1 * var(--space-xs)))",
         transitionDuration: `${nav.pillExpandContentFadeMs}ms`,
         transitionDelay: open ? `${nav.pillExpandContentDelayMs}ms` : "0ms",
         pointerEvents: open ? "auto" : "none",

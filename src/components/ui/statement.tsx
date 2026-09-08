@@ -15,6 +15,7 @@ export function Statement({
   tone = "light",
   size = "display-lg",
   className = "",
+  id,
 }: {
   value: StatementValue;
   as?: ElementType;
@@ -22,13 +23,14 @@ export function Statement({
   tone?: "light" | "inverse";
   size?: "display-xl" | "display-lg" | "display-md";
   className?: string;
+  id?: string;
 }) {
   const isInverse = tone === "inverse";
   const strong = isInverse ? "text-on-inverse" : "text-ink";
   const soft = isInverse ? "text-on-inverse-faint" : "text-ink-faint";
 
   return (
-    <Tag className={`type-${size} text-balance ${strong} ${className}`}>
+    <Tag id={id} className={`type-${size} text-balance ${strong} ${className}`}>
       {value.lead} <span className={soft}>{value.muted}</span>
       {value.tail ? <> {value.tail}</> : null}
     </Tag>

@@ -102,7 +102,7 @@ export function SiteFooter() {
           <button
             type="button"
             onClick={scrollToTop}
-            className="type-caption rounded-xs text-on-inverse-muted transition-colors duration-micro ease-out-soft hover:text-on-inverse"
+            className="type-caption inline-flex min-h-11 items-center rounded-xs text-on-inverse-muted transition-colors duration-micro ease-out-soft hover:text-on-inverse"
           >
             {footer.backToTop}
           </button>
