@@ -100,6 +100,25 @@ export interface SocialLink {
 export interface Commitment {
   title: string;
   body: string;
+  /** Optional背 image. Cards with one get a media treatment instead of flat fill. */
+  imageSrc?: string;
+  imageAlt?: string;
+}
+
+export interface EditorialItem {
+  src: string;
+  alt: string;
+  caption: string;
+}
+
+/**
+ * A statement with small pill-masked images set INSIDE the line, the
+ * signature move in primary.jpg. `capsuleAfterLead` drops one capsule at the
+ * end of the lead clause; `capsuleAfterMuted` drops one after the muted half.
+ */
+export interface CapsuleStatement extends Statement {
+  capsuleAfterLead?: { src: string; alt: string };
+  capsuleAfterMuted?: { src: string; alt: string };
 }
 
 // ---------------------------------------------------------------------------
@@ -272,12 +291,45 @@ export const home = {
   },
 
   positioning: {
-    /** The exhale after the hero. */
+    /** The exhale after the hero. Centred, with pill-masked images set into
+        the line: the signature composition in primary.jpg. */
     statement: {
       lead: "Good design is where it starts.",
       muted:
         "What makes it worth paying for is everything after: a build that holds up, traffic that finds it, and the changes you make once real people are using it.",
-    } as Statement,
+      capsuleAfterLead: {
+        src: "/images/blobs/blob-01.jpg",
+        alt: "",
+      },
+      capsuleAfterMuted: {
+        src: "/images/blobs/blob-02.jpg",
+        alt: "",
+      },
+    } as CapsuleStatement,
+  },
+
+  /** Asymmetric media row. Three frames at staggered vertical offsets. */
+  editorial: {
+    lead: "How the work looks",
+    body: "Brand systems, interfaces, and the campaigns that carry them.",
+    cta: { label: "Start a project", href: "/contact" },
+    items: [
+      {
+        src: "/images/editorial/editorial-01.jpg",
+        alt: "A gallery wall displaying a large backlit portrait silhouette.",
+        caption: "Identity and art direction",
+      },
+      {
+        src: "/images/editorial/editorial-02.jpg",
+        alt: "A product jar with its lid lifted, floating above red mountain peaks.",
+        caption: "Commerce and CMS builds",
+      },
+      {
+        src: "/images/editorial/editorial-03.jpg",
+        alt: "Matte red over-ear headphones on a studio pedestal under directional light.",
+        caption: "Campaign and performance",
+      },
+    ] as EditorialItem[],
   },
 
   capabilities: {
@@ -317,6 +369,8 @@ export const home = {
       {
         title: "You talk to the people building it",
         body: "No account manager relaying messages between you and the work. The designer and the developer on your project are the ones in the room.",
+        imageSrc: "/images/texture/gradient-card.jpg",
+        imageAlt: "",
       },
       {
         title: "We stay past launch",
@@ -344,6 +398,10 @@ export const home = {
     } as Statement,
     cta: { label: "Start a project", href: "/contact" },
     directPrefix: "Or email us at",
+    media: {
+      src: "/images/texture/gradient-card.jpg",
+      alt: "",
+    },
   },
 };
 
