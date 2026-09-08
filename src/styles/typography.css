@@ -6,6 +6,25 @@
  */
 
 @layer components {
+  /* Giant ghosted wordmark. Sits BEHIND content at low opacity — the
+     references (Seative "Of-Brand", Lovera "LOVERA") use a filled, ghosted
+     word in the same family, not a stroke outline in a decorative face. */
+  .type-ghost {
+    font-family: var(--font-sans);
+    font-size: var(--text-ghost);
+    font-weight: var(--weight-ghost);
+    line-height: var(--leading-ghost);
+    letter-spacing: var(--tracking-ghost);
+  }
+
+  .type-display-xl {
+    font-family: var(--font-sans);
+    font-size: var(--text-display-xl);
+    font-weight: var(--weight-display-xl);
+    line-height: var(--leading-display-xl);
+    letter-spacing: var(--tracking-display-xl);
+  }
+
   .type-display-lg {
     font-family: var(--font-sans);
     font-size: var(--text-display-lg);
@@ -22,16 +41,12 @@
     letter-spacing: var(--tracking-display-md);
   }
 
-  /* Signature move: stroke-only oversized word, never filled. See
-     assets/design/design-ahgrowth.md § Signature Components. */
-  .type-display-outline {
-    font-family: var(--font-signature);
-    font-size: var(--text-display-outline);
-    font-weight: var(--weight-display-outline);
-    line-height: var(--leading-display-outline);
-    letter-spacing: var(--tracking-display-outline);
-    color: transparent;
-    -webkit-text-stroke: 1.5px var(--color-ink);
+  .type-stat {
+    font-family: var(--font-sans);
+    font-size: var(--text-stat);
+    font-weight: var(--weight-stat);
+    line-height: var(--leading-stat);
+    letter-spacing: var(--tracking-stat);
   }
 
   .type-heading-1 {
@@ -66,6 +81,14 @@
     letter-spacing: var(--tracking-title);
   }
 
+  .type-body-lg {
+    font-family: var(--font-sans);
+    font-size: var(--text-body-lg);
+    font-weight: var(--weight-body-lg);
+    line-height: var(--leading-body-lg);
+    letter-spacing: var(--tracking-body-lg);
+  }
+
   .type-body-md {
     font-family: var(--font-sans);
     font-size: var(--text-body-md);
@@ -82,13 +105,14 @@
     letter-spacing: var(--tracking-body-sm);
   }
 
+  /* Sentence case — deliberately NOT uppercase. Every button across the
+     reference set reads "View Projects" / "See pricing" / "Start Today". */
   .type-button {
     font-family: var(--font-sans);
     font-size: var(--text-button);
     font-weight: var(--weight-button);
     line-height: var(--leading-button);
     letter-spacing: var(--tracking-button);
-    text-transform: uppercase;
   }
 
   .type-caption {
@@ -99,8 +123,9 @@
     letter-spacing: var(--tracking-caption);
   }
 
+  /* Mono micro-label: eyebrows, section indices, meta rows, clock. */
   .type-eyebrow {
-    font-family: var(--font-sans);
+    font-family: var(--font-mono);
     font-size: var(--text-eyebrow);
     font-weight: var(--weight-eyebrow);
     line-height: var(--leading-eyebrow);

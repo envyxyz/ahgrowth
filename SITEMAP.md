@@ -56,7 +56,7 @@ Monochrome logo marquee paired with an asymmetric Bento Grid for high-impact met
 Behind-the-scenes carousel (process shots, workspace, team). Cut this section entirely from the initial build if no real photo/video assets exist yet; do not fill it with stock imagery to preserve the "authentic craft" signal it's meant to send.
 
 **07 — CTA Outro**
-Oversized statement line, magnetic pull on the CTA target, cursor-fill pill button leading straight to `/contact`. This is the peak-end close: last thing before the footer, so keep it to one line and one action.
+Oversized statement line, magnetic pull on the CTA target, cursor-fill pill button leading straight to `/contact`. This is the peak-end close: last thing before the footer, so keep it to one line and one action. Carries `id="start"` — the header's own CTA (`nav.cta`) smooth-scrolls here rather than routing to `/contact` directly, since this is the last conversion moment before the footer on the single-page v1 build.
 
 **08 — Footer** *(layout locked in `inspirations.md` §8, "Buzz" architecture)*
 Sticky curtain reveal: main content scrolls over it, footer content counter-translates in as it's revealed. Real office/location columns (city, address, direct email) — only include offices AH Growth actually operates from, not decorative "global studio" copy. Social links as outline pills with invert/magnetic hover. "Let's go up" back-to-top control using the exponential-out scroll curve already specified in the inspiration doc.

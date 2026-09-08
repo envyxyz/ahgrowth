@@ -1,10 +1,27 @@
+import { Hero } from "@/components/sections/hero";
+import { Positioning } from "@/components/sections/positioning";
+import { Capabilities } from "@/components/sections/capabilities";
+import { SelectedWork } from "@/components/sections/selected-work";
+import { SocialProof } from "@/components/sections/social-proof";
+import { CtaOutro } from "@/components/sections/cta-outro";
+import { SiteFooter } from "@/components/sections/site-footer";
+
+/**
+ * Home (/). Section order locked in SITEMAP.md §2. 00 — Preloader and
+ * 06 — Studio Culture are deferred: the preloader needs the WebGL hero it
+ * warms up for (not built this phase), Studio Culture stays cut until real
+ * photo/video assets exist (content.home.studioCulture is `null`).
+ */
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-6">
-      <h1 className="type-display-lg text-ink">AH Growth</h1>
-      <p className="type-body-md mt-4 max-w-md text-center text-ink-muted">
-        Site scaffold is up. Sections come next per the blueprint.
-      </p>
-    </main>
+    <>
+      <Hero />
+      <Positioning />
+      <Capabilities />
+      <SelectedWork />
+      <SocialProof />
+      <CtaOutro />
+      <SiteFooter />
+    </>
   );
 }

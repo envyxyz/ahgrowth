@@ -24,6 +24,8 @@ export const PLACEHOLDER = "[PLACEHOLDER]" as const;
 export interface NavItem {
   label: string;
   href: string;
+  /** Second line for the roll-reveal hover in the expanded nav panel. */
+  hoverLabel?: string;
 }
 
 export interface Metric {
@@ -69,13 +71,27 @@ export const meta = {
 };
 
 export const nav = {
+  /**
+   * Home is intentionally included (logo mark links here) but excluded
+   * from the rendered top row and nav panel list — header-nav-list per
+   * design-ahgrowth.md is Work/About/Contact only, logo covers Home.
+   */
   items: [
     { label: "Home", href: "/" },
-    { label: "Work", href: "/work" },
-    { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
+    { label: "Work", href: "/work", hoverLabel: "See the work" },
+    { label: "About", href: "/about", hoverLabel: "Who we are" },
+    { label: "Contact", href: "/contact", hoverLabel: "Reach out" },
   ] as NavItem[],
-  cta: { label: "Start a project", href: "/contact" },
+  /** Scrolls to the CTA Outro / inquiry anchor on Home for the single-page v1 build. */
+  cta: { label: "Start a project", href: "#start" },
+  /** Collapsed-state island pill label showing the current section, page-top default. */
+  homeLabel: "Home",
+  /** Mobile-breakpoint chrome button replacing the 4-dot + clock cluster. */
+  menuLabel: "Menu",
+  /** Sub-list heading inside the expanded nav panel. */
+  channelsLabel: "Channels",
+  /** Fixed bottom-right light/dark switch. Shown as its tooltip. */
+  themeToggleLabel: "Switch theme",
 };
 
 export const footer = {

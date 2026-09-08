@@ -1,46 +1,64 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  darkMode: "class",
   content: ["./src/**/*.{ts,tsx}"],
   theme: {
     extend: {
       colors: {
         primary: {
           DEFAULT: "var(--color-primary)",
-          active: "var(--color-primary-active)",
+          hover: "var(--color-primary-hover)",
+          ink: "var(--color-primary-ink)",
         },
         "on-primary": "var(--color-on-primary)",
-        secondary: "var(--color-secondary)",
         ink: {
           DEFAULT: "var(--color-ink)",
           secondary: "var(--color-ink-secondary)",
           muted: "var(--color-ink-muted)",
           faint: "var(--color-ink-faint)",
         },
-        canvas: {
-          DEFAULT: "var(--color-canvas)",
-          soft: "var(--color-canvas-soft)",
+        "on-inverse": {
+          DEFAULT: "var(--color-on-inverse)",
+          secondary: "var(--color-on-inverse-secondary)",
+          muted: "var(--color-on-inverse-muted)",
+          faint: "var(--color-on-inverse-faint)",
+        },
+        canvas: "var(--color-canvas)",
+        chrome: {
+          DEFAULT: "var(--color-chrome)",
+        },
+        "on-chrome": {
+          DEFAULT: "var(--color-on-chrome)",
+          muted: "var(--color-on-chrome-muted)",
         },
         surface: {
           DEFAULT: "var(--color-surface)",
-          card: "var(--color-surface-card)",
+          sunken: "var(--color-surface-sunken)",
         },
-        hairline: "var(--color-hairline)",
-        "border-glass": "var(--color-border-glass)",
-        "border-active": "var(--color-border-active)",
-        accent: {
-          "ruby-glow": "var(--color-accent-ruby-glow)",
-          "ruby-border": "var(--color-accent-ruby-border)",
+        inverse: {
+          DEFAULT: "var(--color-inverse)",
+          soft: "var(--color-inverse-soft)",
+        },
+        /* Dividers only. Separation is normally carried by a surface step —
+           the reference set is almost entirely border-free. */
+        hairline: {
+          DEFAULT: "var(--color-hairline)",
+          inverse: "var(--color-hairline-inverse)",
         },
         overlay: {
           fill: "var(--color-overlay-fill)",
           "fill-hover": "var(--color-overlay-fill-hover)",
+          "fill-inverse": "var(--color-overlay-fill-inverse)",
+          "fill-inverse-hover": "var(--color-overlay-fill-inverse-hover)",
         },
-      },
-      backdropBlur: {
-        card: "var(--blur-card)",
-        chrome: "var(--blur-chrome)",
+        accent: {
+          tint: "var(--color-accent-tint)",
+        },
+        ghost: {
+          DEFAULT: "var(--color-ghost)",
+          inverse: "var(--color-ghost-inverse)",
+        },
+        scrim: "var(--color-scrim)",
       },
       borderRadius: {
         xs: "var(--radius-xs)",
@@ -58,22 +76,46 @@ const config: Config = {
         lg: "var(--space-lg)",
         xl: "var(--space-xl)",
         xxl: "var(--space-xxl)",
+        "3xl": "var(--space-3xl)",
+        "4xl": "var(--space-4xl)",
+        "5xl": "var(--space-5xl)",
+        "6xl": "var(--space-6xl)",
+        inset: "var(--layout-inset)",
+        "section-y": "var(--layout-section-y)",
+        card: "var(--layout-card-p)",
+      },
+      maxWidth: {
+        container: "var(--layout-container)",
       },
       boxShadow: {
         "elevation-1": "var(--shadow-elevation-1)",
         "elevation-2": "var(--shadow-elevation-2)",
       },
+      backdropBlur: {
+        card: "var(--blur-card)",
+        chrome: "var(--blur-chrome)",
+      },
       transitionTimingFunction: {
+        "out-soft": "var(--ease-out-soft)",
+        smooth: "var(--ease-smooth)",
         inertia: "var(--ease-inertia)",
       },
       transitionDuration: {
+        micro: "var(--duration-micro)",
         interactive: "var(--duration-interactive)",
+        layout: "var(--duration-layout)",
+        reveal: "var(--duration-reveal)",
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
-        signature: ["var(--font-signature)"],
+        mono: ["var(--font-mono)"],
       },
       fontSize: {
+        ghost: ["var(--text-ghost)", { lineHeight: "var(--leading-ghost)", letterSpacing: "var(--tracking-ghost)" }],
+        "display-xl": [
+          "var(--text-display-xl)",
+          { lineHeight: "var(--leading-display-xl)", letterSpacing: "var(--tracking-display-xl)" },
+        ],
         "display-lg": [
           "var(--text-display-lg)",
           { lineHeight: "var(--leading-display-lg)", letterSpacing: "var(--tracking-display-lg)" },
@@ -82,10 +124,7 @@ const config: Config = {
           "var(--text-display-md)",
           { lineHeight: "var(--leading-display-md)", letterSpacing: "var(--tracking-display-md)" },
         ],
-        "display-outline": [
-          "var(--text-display-outline)",
-          { lineHeight: "var(--leading-display-outline)", letterSpacing: "var(--tracking-display-outline)" },
-        ],
+        stat: ["var(--text-stat)", { lineHeight: "var(--leading-stat)", letterSpacing: "var(--tracking-stat)" }],
         "heading-1": [
           "var(--text-heading-1)",
           { lineHeight: "var(--leading-heading-1)", letterSpacing: "var(--tracking-heading-1)" },
@@ -99,6 +138,10 @@ const config: Config = {
           { lineHeight: "var(--leading-heading-3)", letterSpacing: "var(--tracking-heading-3)" },
         ],
         title: ["var(--text-title)", { lineHeight: "var(--leading-title)", letterSpacing: "var(--tracking-title)" }],
+        "body-lg": [
+          "var(--text-body-lg)",
+          { lineHeight: "var(--leading-body-lg)", letterSpacing: "var(--tracking-body-lg)" },
+        ],
         "body-md": [
           "var(--text-body-md)",
           { lineHeight: "var(--leading-body-md)", letterSpacing: "var(--tracking-body-md)" },

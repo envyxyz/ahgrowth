@@ -8,19 +8,34 @@ AH Growth agency marketing site.
 
 ## Design direction
 
-**Locked.** Full spec: `assets/design/design-ahgrowth.md` (Google alpha-spec format — colors, typography, spacing, radius, elevation, and every component's token references). Strictly monochromatic base (obsidian canvas, zinc borders, near-white ink) with a restrained ruby accent (`#e11d48`) used only as ambient glow, hairline border tint, or micro-badges/CTAs — never a flat fill. Type is Bricolage Grotesque across every functional role (display through caption), plus one signature move: an oversized stroke-only Boldonse word (`.type-display-outline`) layered behind hero/section content, used once per major section at most.
+**Locked.** Full spec: `assets/design/design-ahgrowth.md`. Derived from the reference set in `assets/design/inspirations/` (Stodio, Seative, Lovera, Blueprint, Lumifya) — study those before changing anything visual.
+
+Light monochromatic base: off-white canvas (`#f2f1ef`) with deliberate near-black contrast blocks (`#111110`) for the hero, capabilities, CTA outro and footer, plus a single vermilion accent (`#ea4127`). Type is **Geist** across every functional role, with **Geist Mono** reserved strictly for small uppercase micro-labels (`.type-eyebrow`). One signature move: the brand wordmark set enormous and ghosted almost into the surface behind the hero and footer (`.type-ghost`).
+
+Three rules that are easy to get wrong:
+
+1. **Spacious by default.** `--layout-section-y` is 96–180px fluid and the spacing scale runs to `6xl` (176px). If a layout feels tight the fix is more space, not smaller type.
+2. **Borders are structural, not decorative.** Cards, panels and buttons are never outlined — they separate by fill. Dividers are kept where they do real structural work (the rule under each stat, the footer meta rule, nav list separators), and nowhere else.
+3. **Light and dark are one system.** Both palettes define every token; only color values differ. Spacing, radius, type and motion are shared and must stay byte-identical across themes.
 
 ### Token architecture
 
 Don't hand-write hex/px/ms values in components — every visual and motion value already exists as a token:
 
-- `src/styles/tokens.css` — CSS custom properties (colors, radius, spacing, elevation shadows, typography roles). Source of truth for the cascade.
-- `src/styles/typography.css` — `.type-display-lg`, `.type-heading-1`, `.type-body-md`, etc. Use these classes for text instead of composing raw Tailwind size/weight/tracking utilities by hand.
-- `src/lib/fonts.ts` — `next/font/google` loaders for Bricolage Grotesque + Boldonse, exposed as CSS vars on `<html>`.
-- `src/lib/design-tokens.ts` — JS-consumable mirror of the same colors/radius/spacing, plus motion constants (lerp, wheel multiplier, easing curves, per-preset durations) reverse-engineered in `assets/design/inspirations/presets/*.md`. Use this for GSAP/Lenis config instead of re-deriving tuning numbers per component.
-- `tailwind.config.ts` — maps all of the above to Tailwind utilities (`bg-primary`, `text-ink-muted`, `rounded-lg`, `p-xl`, `shadow-elevation-2`, `ease-inertia`, `duration-interactive`, etc).
+- `src/styles/tokens.css` — CSS custom properties. Holds both palettes: `:root` is light, with dark declared under `prefers-color-scheme` and again under `[data-theme="dark"]` so the toggle wins in both directions. Source of truth for the cascade.
+- `src/styles/typography.css` — `.type-display-xl`, `.type-stat`, `.type-body-md`, `.type-eyebrow`, etc. Use these instead of composing raw Tailwind size/weight/tracking utilities by hand.
+- `src/lib/fonts.ts` — `next/font/google` loaders for Geist + Geist Mono, exposed as CSS vars on `<html>`.
+- `src/lib/design-tokens.ts` — JS mirror: `lightColors`/`darkColors`, plus `easing`, `duration` and per-preset motion constants. For anything rendering at runtime use `readColor()`, which reads the live CSS variable so it stays correct when the theme flips.
+- `src/components/providers/theme.tsx` — theme state, `localStorage` persistence, and `themeInitScript` (inlined in `<head>` to prevent a flash). `src/components/ui/theme-toggle.tsx` is the fixed bottom-right switch; page content in that corner must clear 72px.
+- `tailwind.config.ts` — maps all of the above to utilities (`bg-canvas`, `text-ink-muted`, `bg-inverse`, `text-on-inverse`, `bg-chrome`, `p-card`, `px-inset`, `py-section-y`, `ease-smooth`, `duration-layout`, …).
+
+Semantic tokens carry theme meaning, so pick the right one: `surface` is a card on the canvas, `inverse` is a deliberate dark contrast block (dark in **both** themes), `chrome` is a floating control that passes over arbitrary sections. Never use `surface` on an inverse block — it collapses into it in the dark palette.
 
 If you change a token, update `design-ahgrowth.md` first, then mirror the value into `tokens.css` and `design-tokens.ts` in the same pass.
+
+### Motion
+
+`--ease-out-soft` for hovers/chrome, `--ease-smooth` (ease-in-out) for CTAs and layout tweens, `--ease-inertia` only for reveal-length entrances (700ms+) — it reads as twitchy on anything shorter. Durations: `micro` 200ms, `interactive` 400ms, `layout` 600ms, `reveal` 800ms. CTA buttons deliberately run slow (the cursor-fill sweep is 900ms in / 720ms out on `ease-smooth`).
 
 ## Section order
 

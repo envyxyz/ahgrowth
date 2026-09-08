@@ -1,40 +1,86 @@
 /*
  * Design tokens — mirrors assets/design/design-ahgrowth.md exactly.
- * Single dark aesthetic (no light theme): update values here first,
- * then keep design-ahgrowth.md and tailwind.config.ts in sync.
+ *
+ * Monochromatic base + one vermilion accent, derived from the locked
+ * reference set. Two themes share ONE structure: every token below exists in
+ * both palettes, so light and dark differ in color only — never in spacing,
+ * radius, type, or motion.
+ *
+ * Separation comes from filled surfaces stepping off the canvas, not from
+ * borders. The reference set is almost entirely border-free; `--color-hairline`
+ * survives only for the rare true divider.
+ *
+ * Theme resolution (three states):
+ *   :root                                   -> light (default)
+ *   prefers-color-scheme: dark, no override -> dark
+ *   [data-theme="dark"|"light"]             -> explicit user choice, wins
  */
 
 :root {
-  /* --- Color: brand & accent --- */
-  --color-primary: #e11d48;
-  --color-primary-active: #b41739;
+  /* --- Color: brand accent (vermilion) --- */
+  --color-primary: #ea4127;
+  --color-primary-hover: #d3341c;
+  /* Accent used as TEXT. Darker on light so small labels stay readable;
+     --color-primary is for fills/dots/badges only. */
+  --color-primary-ink: #c4331c;
   --color-on-primary: #ffffff;
-  --color-secondary: #1a1a1f;
 
   /* --- Color: text --- */
-  --color-ink: #f4f4f5;
-  --color-ink-secondary: #d4d4d8;
-  --color-ink-muted: #a1a1aa;
-  --color-ink-faint: #71717a;
+  --color-ink: #111110;
+  --color-ink-secondary: #3a3a37;
+  --color-ink-muted: #6e6e69;
+  --color-ink-faint: #a3a39d;
+
+  /* --- Color: text on the dark contrast block (hero, capabilities, outro) --- */
+  --color-on-inverse: #f7f7f5;
+  --color-on-inverse-secondary: #d0d0cb;
+  --color-on-inverse-muted: #a8a8a2;
+  --color-on-inverse-faint: #74746f;
 
   /* --- Color: surface --- */
-  --color-canvas: #09090b;
-  --color-canvas-soft: #0f0f12;
-  --color-surface: #121215;
-  --color-surface-card: rgba(18, 18, 21, 0.75);
-  --color-hairline: rgba(255, 255, 255, 0.08);
-  --color-border-glass: rgba(255, 255, 255, 0.14);
-  --color-border-active: rgba(255, 255, 255, 0.28);
+  --color-canvas: #f2f1ef;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #e8e7e4;
+  --color-inverse: #111110;
+  --color-inverse-soft: #1c1c1a;
 
-  /* --- Color: accent whispers (ruby, never a flat fill) --- */
-  --color-accent-ruby-glow: rgba(225, 29, 72, 0.12);
-  --color-accent-ruby-border: rgba(225, 29, 72, 0.25);
+  /* Floating chrome (scrolled header island, pills that hover over arbitrary
+     sections). Defined per theme so the control always separates from
+     whatever is behind it — a single surface value cannot guarantee that. */
+  --color-chrome: #111110;
+  --color-on-chrome: #f7f7f5;
+  --color-on-chrome-muted: #a8a8a2;
 
-  /* --- Color: neutral chrome fills (glass buttons, header controls) --- */
-  --color-overlay-fill: rgba(255, 255, 255, 0.05);
-  --color-overlay-fill-hover: rgba(255, 255, 255, 0.1);
+  /* --- Color: dividers. Used sparingly — prefer a surface step. --- */
+  --color-hairline: rgba(17, 17, 16, 0.1);
+  --color-hairline-inverse: rgba(255, 255, 255, 0.12);
 
-  /* --- Radius (6-stop scale) --- */
+  /* --- Color: neutral chrome fills (buttons, header controls) --- */
+  --color-overlay-fill: rgba(17, 17, 16, 0.06);
+  --color-overlay-fill-hover: rgba(17, 17, 16, 0.11);
+  --color-overlay-fill-inverse: rgba(255, 255, 255, 0.1);
+  --color-overlay-fill-inverse-hover: rgba(255, 255, 255, 0.16);
+
+  /* --- Color: accent whispers (never a large flat fill) --- */
+  --color-accent-tint: rgba(234, 65, 39, 0.1);
+
+  /* --- Color: ghosted giant wordmark + scrim.
+     Explicit rgba tokens rather than Tailwind `/opacity` modifiers, which
+     don't apply to `var()`-valued colors. --- */
+  --color-ghost: rgba(17, 17, 16, 0.05);
+  --color-ghost-inverse: rgba(255, 255, 255, 0.055);
+  --color-scrim: rgba(242, 241, 239, 0.72);
+
+  /* --- Elevation. Soft and low-opacity; depth is carried by the surface
+     step, with shadow only reinforcing it. --- */
+  --shadow-elevation-1: 0 1px 2px rgba(17, 17, 16, 0.04), 0 8px 24px -12px rgba(17, 17, 16, 0.1);
+  --shadow-elevation-2: 0 2px 8px rgba(17, 17, 16, 0.06), 0 24px 56px -16px rgba(17, 17, 16, 0.16);
+
+  /* ===================================================================
+   * Everything below is theme-invariant — identical in light and dark.
+   * =================================================================== */
+
+  /* --- Radius --- */
   --radius-xs: 6px;
   --radius-sm: 10px;
   --radius-md: 16px;
@@ -42,7 +88,7 @@
   --radius-xl: 32px;
   --radius-full: 9999px;
 
-  /* --- Spacing (8px base) --- */
+  /* --- Spacing (8px base, extended well upward for real section rhythm) --- */
   --space-xxs: 4px;
   --space-xs: 8px;
   --space-sm: 12px;
@@ -50,81 +96,221 @@
   --space-lg: 24px;
   --space-xl: 32px;
   --space-xxl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+  --space-6xl: 176px;
 
-  /* --- Elevation --- */
-  --shadow-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -8px rgba(0, 0, 0, 0.5);
-  --shadow-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.5), 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+  /* --- Layout --- */
+  --layout-container: 1440px;
+  /* Page-edge inset. Also the gap around the inset hero card. */
+  --layout-inset: clamp(20px, 4vw, 56px);
+  /* Vertical breathing room between major sections. */
+  --layout-section-y: clamp(96px, 11vw, 180px);
+  /* Interior padding for filled cards/panels. */
+  --layout-card-p: clamp(28px, 3vw, 48px);
 
   /* --- Blur tiers --- */
   --blur-card: 20px;
   --blur-chrome: 40px;
 
-  /* --- Motion (interactive, non-scroll) --- */
+  /* --- Motion --- */
+  /* Gentle deceleration. Default for hover/color/opacity. */
+  --ease-out-soft: cubic-bezier(0.25, 1, 0.5, 1);
+  /* Symmetric ease for layout tweens that open AND close. */
+  --ease-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+  /* Exponential-out. Big entrance reveals only, at reveal-length durations. */
   --ease-inertia: cubic-bezier(0.16, 1, 0.3, 1);
-  --duration-interactive: 280ms;
+
+  --duration-micro: 200ms;
+  --duration-interactive: 400ms;
+  --duration-layout: 600ms;
+  --duration-reveal: 800ms;
+  /* Cross-fade when the theme flips. */
+  --duration-theme: 320ms;
 
   /* --- Font families (variables populated by src/lib/fonts.ts) --- */
-  --font-sans: var(--font-bricolage), "Inter", system-ui, sans-serif;
-  --font-signature: var(--font-boldonse), var(--font-sans);
+  --font-sans: var(--font-geist), "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
 
   /* --- Typography roles: size / line-height / letter-spacing / weight --- */
-  --text-display-lg: 72px;
-  --leading-display-lg: 1.05;
-  --tracking-display-lg: -2px;
-  --weight-display-lg: 700;
 
-  --text-display-md: 56px;
-  --leading-display-md: 1.08;
-  --tracking-display-md: -1.5px;
-  --weight-display-md: 700;
+  /* Giant ghosted wordmark behind hero/footer content. */
+  --text-ghost: clamp(5rem, 18vw, 16rem);
+  --leading-ghost: 0.85;
+  --tracking-ghost: -0.04em;
+  --weight-ghost: 700;
 
-  --text-display-outline: clamp(4rem, 12vw, 9rem);
-  --leading-display-outline: 0.9;
-  --tracking-display-outline: -2px;
-  --weight-display-outline: 400;
+  --text-display-xl: clamp(3.25rem, 6.4vw, 5.5rem);
+  --leading-display-xl: 1.04;
+  --tracking-display-xl: -0.03em;
+  --weight-display-xl: 600;
 
-  --text-heading-1: 40px;
-  --leading-heading-1: 1.15;
-  --tracking-heading-1: -1px;
+  --text-display-lg: clamp(2.5rem, 4.8vw, 4rem);
+  --leading-display-lg: 1.08;
+  --tracking-display-lg: -0.025em;
+  --weight-display-lg: 600;
+
+  --text-display-md: clamp(2rem, 3.6vw, 2.75rem);
+  --leading-display-md: 1.14;
+  --tracking-display-md: -0.02em;
+  --weight-display-md: 600;
+
+  /* Oversized metric numbers (stat rows). */
+  --text-stat: clamp(2.5rem, 5vw, 3.5rem);
+  --leading-stat: 1;
+  --tracking-stat: -0.03em;
+  --weight-stat: 700;
+
+  --text-heading-1: clamp(1.75rem, 2.6vw, 2.25rem);
+  --leading-heading-1: 1.2;
+  --tracking-heading-1: -0.015em;
   --weight-heading-1: 600;
 
-  --text-heading-2: 28px;
-  --leading-heading-2: 1.2;
-  --tracking-heading-2: -0.5px;
+  --text-heading-2: 1.5rem;
+  --leading-heading-2: 1.25;
+  --tracking-heading-2: -0.01em;
   --weight-heading-2: 600;
 
-  --text-heading-3: 20px;
-  --leading-heading-3: 1.3;
-  --tracking-heading-3: -0.1px;
+  --text-heading-3: 1.25rem;
+  --leading-heading-3: 1.35;
+  --tracking-heading-3: -0.005em;
   --weight-heading-3: 600;
 
-  --text-title: 18px;
-  --leading-title: 1.4;
-  --tracking-title: 0px;
+  --text-title: 1.0625rem;
+  --leading-title: 1.45;
+  --tracking-title: 0em;
   --weight-title: 500;
 
-  --text-body-md: 16px;
-  --leading-body-md: 1.6;
-  --tracking-body-md: 0px;
+  /* Large statement paragraphs (the two-tone dark-to-muted blocks). */
+  --text-body-lg: 1.125rem;
+  --leading-body-lg: 1.6;
+  --tracking-body-lg: 0em;
+  --weight-body-lg: 400;
+
+  --text-body-md: 1rem;
+  --leading-body-md: 1.65;
+  --tracking-body-md: 0em;
   --weight-body-md: 400;
 
-  --text-body-sm: 14px;
-  --leading-body-sm: 1.55;
-  --tracking-body-sm: 0px;
+  --text-body-sm: 0.875rem;
+  --leading-body-sm: 1.6;
+  --tracking-body-sm: 0em;
   --weight-body-sm: 400;
 
-  --text-button: 13px;
+  /* Sentence case, not uppercase — matches every button in the references. */
+  --text-button: 0.875rem;
   --leading-button: 1;
-  --tracking-button: 1.5px;
+  --tracking-button: -0.005em;
   --weight-button: 500;
 
-  --text-caption: 12px;
-  --leading-caption: 1.4;
-  --tracking-caption: 0px;
+  --text-caption: 0.8125rem;
+  --leading-caption: 1.45;
+  --tracking-caption: 0em;
   --weight-caption: 400;
 
-  --text-eyebrow: 12px;
+  /* Mono micro-label. Uppercase, tracked. */
+  --text-eyebrow: 0.75rem;
   --leading-eyebrow: 1.2;
-  --tracking-eyebrow: 0.4px;
+  --tracking-eyebrow: 0.08em;
   --weight-eyebrow: 500;
+}
+
+/*
+ * Dark palette. Color values only — every structural token above is shared.
+ * Declared twice: once for the system preference (unless the user has
+ * explicitly chosen light) and once for an explicit dark choice, so the
+ * toggle wins in both directions.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-primary: #ea4127;
+    --color-primary-hover: #f2583f;
+    /* Accent as text lightens on dark to hold contrast. */
+    --color-primary-ink: #ff6a4d;
+    --color-on-primary: #ffffff;
+
+    --color-ink: #f5f4f2;
+    --color-ink-secondary: #c9c8c4;
+    --color-ink-muted: #93928d;
+    --color-ink-faint: #66655f;
+
+    --color-on-inverse: #f5f4f2;
+    --color-on-inverse-secondary: #c9c8c4;
+    --color-on-inverse-muted: #93928d;
+    --color-on-inverse-faint: #66655f;
+
+    --color-canvas: #0a0a09;
+    --color-surface: #161615;
+    --color-surface-sunken: #050504;
+    /* The hero/contrast block stays dark and dramatic in both themes; on a
+       dark canvas it reads as an elevated step rather than a flip. */
+    --color-inverse: #161615;
+    --color-inverse-soft: #1f1f1d;
+
+    --color-chrome: #262625;
+    --color-on-chrome: #f5f4f2;
+    --color-on-chrome-muted: #93928d;
+
+    --color-hairline: rgba(255, 255, 255, 0.08);
+    --color-hairline-inverse: rgba(255, 255, 255, 0.08);
+
+    --color-overlay-fill: rgba(255, 255, 255, 0.07);
+    --color-overlay-fill-hover: rgba(255, 255, 255, 0.13);
+    --color-overlay-fill-inverse: rgba(255, 255, 255, 0.07);
+    --color-overlay-fill-inverse-hover: rgba(255, 255, 255, 0.13);
+
+    --color-accent-tint: rgba(234, 65, 39, 0.16);
+
+    --color-ghost: rgba(255, 255, 255, 0.045);
+    --color-ghost-inverse: rgba(255, 255, 255, 0.045);
+    --color-scrim: rgba(10, 10, 9, 0.72);
+
+    --shadow-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+    --shadow-elevation-2: 0 2px 8px rgba(0, 0, 0, 0.5), 0 24px 56px -16px rgba(0, 0, 0, 0.7);
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-primary: #ea4127;
+  --color-primary-hover: #f2583f;
+  --color-primary-ink: #ff6a4d;
+  --color-on-primary: #ffffff;
+
+  --color-ink: #f5f4f2;
+  --color-ink-secondary: #c9c8c4;
+  --color-ink-muted: #93928d;
+  --color-ink-faint: #66655f;
+
+  --color-on-inverse: #f5f4f2;
+  --color-on-inverse-secondary: #c9c8c4;
+  --color-on-inverse-muted: #93928d;
+  --color-on-inverse-faint: #66655f;
+
+  --color-canvas: #0a0a09;
+  --color-surface: #161615;
+  --color-surface-sunken: #050504;
+  --color-inverse: #161615;
+  --color-inverse-soft: #1f1f1d;
+
+  --color-chrome: #262625;
+  --color-on-chrome: #f5f4f2;
+  --color-on-chrome-muted: #93928d;
+
+  --color-hairline: rgba(255, 255, 255, 0.08);
+  --color-hairline-inverse: rgba(255, 255, 255, 0.08);
+
+  --color-overlay-fill: rgba(255, 255, 255, 0.07);
+  --color-overlay-fill-hover: rgba(255, 255, 255, 0.13);
+  --color-overlay-fill-inverse: rgba(255, 255, 255, 0.07);
+  --color-overlay-fill-inverse-hover: rgba(255, 255, 255, 0.13);
+
+  --color-accent-tint: rgba(234, 65, 39, 0.16);
+
+  --color-ghost: rgba(255, 255, 255, 0.045);
+  --color-ghost-inverse: rgba(255, 255, 255, 0.045);
+  --color-scrim: rgba(10, 10, 9, 0.72);
+
+  --shadow-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
+  --shadow-elevation-2: 0 2px 8px rgba(0, 0, 0, 0.5), 0 24px 56px -16px rgba(0, 0, 0, 0.7);
 }

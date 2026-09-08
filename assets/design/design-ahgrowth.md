@@ -1,102 +1,168 @@
 ---
 version: alpha
 name: AH Growth
-description: AH Growth lives on an obsidian canvas ({colors.canvas}) that stays almost entirely monochrome, letting a single ruby accent ({colors.primary}) do the emotional signaling instead of decorating the whole page. Type is the loudest visual device — Bricolage Grotesque carries a tight, negative-tracked hierarchy from headline down to caption, while an oversized outlined Boldonse word ({typography.display-outline}) sits behind key sections as the brand's one unmistakable signature. Surfaces are frosted glass over near-black rather than flat cards, so depth reads as focus and energy, not soft comfort — confident and deliberately not another generic corporate agency.
+description: A spacious, largely border-free monochrome system on an off-white canvas, punctuated by near-black contrast blocks and a single vermilion accent. Type is Geist throughout with Geist Mono reserved for small technical micro-labels, and the brand wordmark is ghosted at low contrast across the hero and footer. Light and dark are one system: every structural token is shared, only color values swap, and separation is normally carried by a filled surface step, with dividers kept for genuine structure rather than sprayed across every element.
+
+themes:
+  # Structure is identical across themes. Only the color block below differs.
+  resolution: "system preference by default; [data-theme] on <html> overrides, set by the bottom-right toggle and persisted to localStorage"
 
 colors:
-  primary: "#e11d48"
-  primary-active: "#b41739"
-  on-primary: "#ffffff"
-  secondary: "#1a1a1f"
-  ink: "#f4f4f5"
-  ink-secondary: "#d4d4d8"
-  ink-muted: "#a1a1aa"
-  ink-faint: "#71717a"
-  canvas: "#09090b"
-  canvas-soft: "#0f0f12"
-  surface: "#121215"
-  surface-card: "rgba(18, 18, 21, 0.75)"
-  hairline: "rgba(255, 255, 255, 0.08)"
-  border-glass: "rgba(255, 255, 255, 0.14)"
-  border-active: "rgba(255, 255, 255, 0.28)"
-  accent-ruby-glow: "rgba(225, 29, 72, 0.12)"
-  accent-ruby-border: "rgba(225, 29, 72, 0.25)"
-  overlay-fill: "rgba(255, 255, 255, 0.05)"
-  overlay-fill-hover: "rgba(255, 255, 255, 0.1)"
+  light:
+    primary: "#ea4127"
+    primary-hover: "#d3341c"
+    primary-ink: "#c4331c"
+    on-primary: "#ffffff"
+    ink: "#111110"
+    ink-secondary: "#3a3a37"
+    ink-muted: "#6e6e69"
+    ink-faint: "#a3a39d"
+    on-inverse: "#f7f7f5"
+    on-inverse-secondary: "#d0d0cb"
+    on-inverse-muted: "#a8a8a2"
+    on-inverse-faint: "#74746f"
+    canvas: "#f2f1ef"
+    surface: "#ffffff"
+    surface-sunken: "#e8e7e4"
+    inverse: "#111110"
+    inverse-soft: "#1c1c1a"
+    chrome: "#111110"
+    on-chrome: "#f7f7f5"
+    on-chrome-muted: "#a8a8a2"
+    hairline: "rgba(17, 17, 16, 0.10)"
+    hairline-inverse: "rgba(255, 255, 255, 0.12)"
+    overlay-fill: "rgba(17, 17, 16, 0.06)"
+    overlay-fill-hover: "rgba(17, 17, 16, 0.11)"
+    overlay-fill-inverse: "rgba(255, 255, 255, 0.10)"
+    overlay-fill-inverse-hover: "rgba(255, 255, 255, 0.16)"
+    accent-tint: "rgba(234, 65, 39, 0.10)"
+    ghost: "rgba(17, 17, 16, 0.05)"
+    ghost-inverse: "rgba(255, 255, 255, 0.055)"
+    scrim: "rgba(242, 241, 239, 0.72)"
+  dark:
+    primary: "#ea4127"
+    primary-hover: "#f2583f"
+    primary-ink: "#ff6a4d"
+    on-primary: "#ffffff"
+    ink: "#f5f4f2"
+    ink-secondary: "#c9c8c4"
+    ink-muted: "#93928d"
+    ink-faint: "#66655f"
+    on-inverse: "#f5f4f2"
+    on-inverse-secondary: "#c9c8c4"
+    on-inverse-muted: "#93928d"
+    on-inverse-faint: "#66655f"
+    canvas: "#0a0a09"
+    surface: "#161615"
+    surface-sunken: "#050504"
+    inverse: "#161615"
+    inverse-soft: "#1f1f1d"
+    chrome: "#262625"
+    on-chrome: "#f5f4f2"
+    on-chrome-muted: "#93928d"
+    hairline: "rgba(255, 255, 255, 0.08)"
+    hairline-inverse: "rgba(255, 255, 255, 0.08)"
+    overlay-fill: "rgba(255, 255, 255, 0.07)"
+    overlay-fill-hover: "rgba(255, 255, 255, 0.13)"
+    overlay-fill-inverse: "rgba(255, 255, 255, 0.07)"
+    overlay-fill-inverse-hover: "rgba(255, 255, 255, 0.13)"
+    accent-tint: "rgba(234, 65, 39, 0.16)"
+    ghost: "rgba(255, 255, 255, 0.045)"
+    ghost-inverse: "rgba(255, 255, 255, 0.045)"
+    scrim: "rgba(10, 10, 9, 0.72)"
 
 typography:
-  display-lg:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "72px"
+  ghost:
+    fontFamily: "Geist"
+    fontSize: "clamp(5rem, 18vw, 16rem)"
     fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: "-2px"
-  display-md:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "56px"
-    fontWeight: 700
-    lineHeight: 1.08
-    letterSpacing: "-1.5px"
-  display-outline:
-    fontFamily: "Boldonse"
-    fontSize: "clamp(4rem, 12vw, 9rem)"
-    fontWeight: 400
-    lineHeight: 0.9
-    letterSpacing: "-2px"
-  heading-1:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "40px"
+    lineHeight: 0.85
+    letterSpacing: "-0.04em"
+  display-xl:
+    fontFamily: "Geist"
+    fontSize: "clamp(3.25rem, 6.4vw, 5.5rem)"
     fontWeight: 600
-    lineHeight: 1.15
-    letterSpacing: "-1px"
-  heading-2:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "28px"
+    lineHeight: 1.04
+    letterSpacing: "-0.03em"
+  display-lg:
+    fontFamily: "Geist"
+    fontSize: "clamp(2.5rem, 4.8vw, 4rem)"
+    fontWeight: 600
+    lineHeight: 1.08
+    letterSpacing: "-0.025em"
+  display-md:
+    fontFamily: "Geist"
+    fontSize: "clamp(2rem, 3.6vw, 2.75rem)"
+    fontWeight: 600
+    lineHeight: 1.14
+    letterSpacing: "-0.02em"
+  stat:
+    fontFamily: "Geist"
+    fontSize: "clamp(2.5rem, 5vw, 3.5rem)"
+    fontWeight: 700
+    lineHeight: 1
+    letterSpacing: "-0.03em"
+  heading-1:
+    fontFamily: "Geist"
+    fontSize: "clamp(1.75rem, 2.6vw, 2.25rem)"
     fontWeight: 600
     lineHeight: 1.2
-    letterSpacing: "-0.5px"
-  heading-3:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "20px"
+    letterSpacing: "-0.015em"
+  heading-2:
+    fontFamily: "Geist"
+    fontSize: "1.5rem"
     fontWeight: 600
-    lineHeight: 1.3
-    letterSpacing: "-0.1px"
+    lineHeight: 1.25
+    letterSpacing: "-0.01em"
+  heading-3:
+    fontFamily: "Geist"
+    fontSize: "1.25rem"
+    fontWeight: 600
+    lineHeight: 1.35
+    letterSpacing: "-0.005em"
   title:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "18px"
+    fontFamily: "Geist"
+    fontSize: "1.0625rem"
     fontWeight: 500
-    lineHeight: 1.4
-    letterSpacing: "0px"
-  body-md:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "16px"
+    lineHeight: 1.45
+    letterSpacing: "0em"
+  body-lg:
+    fontFamily: "Geist"
+    fontSize: "1.125rem"
     fontWeight: 400
     lineHeight: 1.6
-    letterSpacing: "0px"
-  body-sm:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "14px"
+    letterSpacing: "0em"
+  body-md:
+    fontFamily: "Geist"
+    fontSize: "1rem"
     fontWeight: 400
-    lineHeight: 1.55
-    letterSpacing: "0px"
+    lineHeight: 1.65
+    letterSpacing: "0em"
+  body-sm:
+    fontFamily: "Geist"
+    fontSize: "0.875rem"
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: "0em"
   button:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "13px"
+    fontFamily: "Geist"
+    fontSize: "0.875rem"
     fontWeight: 500
     lineHeight: 1
-    letterSpacing: "1.5px"
+    letterSpacing: "-0.005em"
   caption:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "12px"
+    fontFamily: "Geist"
+    fontSize: "0.8125rem"
     fontWeight: 400
-    lineHeight: 1.4
-    letterSpacing: "0px"
+    lineHeight: 1.45
+    letterSpacing: "0em"
   eyebrow:
-    fontFamily: "Bricolage Grotesque"
-    fontSize: "12px"
+    fontFamily: "Geist Mono"
+    fontSize: "0.75rem"
     fontWeight: 500
     lineHeight: 1.2
-    letterSpacing: "0.4px"
+    letterSpacing: "0.08em"
+    textTransform: "uppercase"
 
 rounded:
   xs: "6px"
@@ -114,390 +180,326 @@ spacing:
   lg: "24px"
   xl: "32px"
   xxl: "48px"
+  3xl: "64px"
+  4xl: "96px"
+  5xl: "128px"
+  6xl: "176px"
+
+layout:
+  container: "1440px"
+  inset: "clamp(20px, 4vw, 56px)"
+  section-y: "clamp(96px, 11vw, 180px)"
+  card-p: "clamp(28px, 3vw, 48px)"
 
 blur:
   card: "20px"
   chrome: "40px"
 
+motion:
+  ease-out-soft: "cubic-bezier(0.25, 1, 0.5, 1)"
+  ease-smooth: "cubic-bezier(0.65, 0, 0.35, 1)"
+  ease-inertia: "cubic-bezier(0.16, 1, 0.3, 1)"
+  duration-micro: "200ms"
+  duration-interactive: "400ms"
+  duration-layout: "600ms"
+  duration-reveal: "800ms"
+  duration-theme: "320ms"
+
 components:
+  section:
+    description: "Every major section's shell. Carries the page inset, vertical rhythm and container cap."
+    paddingX: "{layout.inset}"
+    paddingY: "{layout.section-y}"
+    maxWidth: "{layout.container}"
+    tone: "canvas | surface | inverse"
+  eyebrow:
+    description: "Vermilion square + mono micro-label. The main place the accent appears on a light surface."
+    markerColor: "{colors.primary}"
+    markerSize: "8px"
+    textColor: "{colors.ink-muted}"
+    typography: "{typography.eyebrow}"
+    gap: "{spacing.xs}"
   button-primary:
     backgroundColor: "{colors.primary}"
     textColor: "{colors.on-primary}"
+    hoverBackground: "{colors.primary-hover}"
     rounded: "{rounded.full}"
-    padding: "{spacing.sm} {spacing.lg}"
-    typography: "{typography.button}"
-  button-primary-pressed:
-    backgroundColor: "{colors.primary-active}"
-    textColor: "{colors.on-primary}"
-    rounded: "{rounded.full}"
-    padding: "{spacing.sm} {spacing.lg}"
+    height: "48px"
+    paddingX: "{spacing.xl}"
     typography: "{typography.button}"
   button-secondary:
-    backgroundColor: "transparent"
-    textColor: "{colors.ink}"
-    borderColor: "{colors.hairline}"
-    rounded: "{rounded.full}"
-    padding: "{spacing.sm} {spacing.lg}"
-    typography: "{typography.button}"
-    hoverBackground: "{colors.ink}"
-    hoverTextColor: "{colors.canvas}"
-  button-utility:
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink-secondary}"
-    borderColor: "{colors.hairline}"
-    rounded: "{rounded.sm}"
-    padding: "{spacing.xs} {spacing.sm}"
-    typography: "{typography.caption}"
-  nav-bar:
-    description: "Outer fixed header row; see header-logo-pill / header-nav-list / header-chrome-button for the three sub-parts (Koto-derived, see Components § Navigation for full behavior)."
-    backgroundColor: "transparent"
-    height: "{spacing.xxl}"
-    inset: "{spacing.md}"
-  header-logo-pill:
-    description: "Solid pill behind the logo mark. Width starts at 0 (logo floats bare over the hero) and tweens to full once scrolled past hero height."
-    backgroundColor: "{colors.surface}"
-    rounded: "{rounded.sm}"
-    padding: "{spacing.xs} {spacing.sm}"
-    logoColor: "{colors.primary}"
-  header-nav-list:
-    description: "Work / About / Contact label row beside the logo pill. Auto-inverts over any hero media via mix-blend-mode: exclusion, no JS section-detection needed."
-    textColor: "{colors.ink-muted}"
-    hoverTextColor: "{colors.ink}"
-    gap: "{spacing.xl}"
-    typography: "{typography.eyebrow}"
-  header-chrome-button:
-    description: "Glass utility button: 4-dot widget trigger, clock readout, and (mobile) the Menu trigger all share this chrome."
     backgroundColor: "{colors.overlay-fill}"
-    hoverBackgroundColor: "{colors.overlay-fill-hover}"
-    blur: "{blur.chrome}"
-    rounded: "{rounded.xs}"
-    padding: "{spacing.sm} {spacing.md}"
-    typography: "{typography.eyebrow}"
-  footer:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.ink-secondary}"
-    linkColor: "{colors.ink}"
-    hairline: "{colors.hairline}"
-    padding: "{spacing.xxl}"
-    typography: "{typography.body-sm}"
-  feature-card:
-    description: "Resting / unfocused service card in the carousel."
-    backgroundColor: "{colors.surface-card}"
-    borderColor: "{colors.hairline}"
-    rounded: "{rounded.lg}"
-    padding: "{spacing.lg}"
-    typography: "{typography.title}"
-  feature-card-elevated:
-    description: "Focused liquid-glass service card, scaled up and glowing."
-    backgroundColor: "{colors.surface-card}"
-    borderColor: "{colors.border-active}"
-    glow: "{colors.accent-ruby-glow}"
-    rounded: "{rounded.lg}"
-    padding: "{spacing.xl}"
-    typography: "{typography.heading-3}"
-  text-input:
-    backgroundColor: "transparent"
-    borderColor: "{colors.hairline}"
-    focusBorderColor: "{colors.primary}"
+    hoverBackground: "{colors.overlay-fill-hover}"
     textColor: "{colors.ink}"
-    placeholderColor: "{colors.ink-faint}"
-    padding: "{spacing.md} 0"
-    typography: "{typography.body-md}"
-  badge-pill:
-    backgroundColor: "transparent"
-    borderColor: "{colors.hairline}"
-    selectedBackground: "{colors.ink}"
-    selectedTextColor: "{colors.canvas}"
-    selectedBorder: "{colors.accent-ruby-border}"
     rounded: "{rounded.full}"
-    padding: "{spacing.xs} {spacing.md}"
-    typography: "{typography.body-sm}"
-  hero-band:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.xxl}"
-  hero-outline-type:
-    description: "Signature oversized outlined word behind hero/section content."
-    fillColor: "transparent"
-    strokeColor: "{colors.ink}"
-    typography: "{typography.display-outline}"
+    height: "48px"
+    paddingX: "{spacing.xl}"
+    typography: "{typography.button}"
+  button-inverse:
+    description: "Light pill for use ON the dark contrast block, which stays dark in both themes."
+    backgroundColor: "{colors.on-inverse}"
+    hoverBackground: "{colors.on-inverse-secondary}"
+    textColor: "{colors.inverse}"
+    rounded: "{rounded.full}"
+    height: "48px"
+    paddingX: "{spacing.xl}"
+    typography: "{typography.button}"
   cursor-fill-button:
-    description: "High-intent CTA with cursor-origin radial fill on hover."
-    backgroundColor: "transparent"
-    borderColor: "{colors.border-glass}"
+    description: "Filled circle expands from the cursor's entry point, inverting the label."
+    backgroundColor: "{colors.overlay-fill}"
     fillColor: "{colors.ink}"
-    fillTextColor: "{colors.canvas}"
+    fillTextColor: "{colors.surface}"
     rounded: "{rounded.full}"
-    padding: "{spacing.sm} {spacing.lg}"
+    height: "48px"
+    paddingX: "{spacing.xl}"
     typography: "{typography.button}"
-  kinetic-rollover-button:
-    description: "Form submit pill with rolling subsurface brand type."
-    backgroundColor: "{colors.surface}"
-    textColor: "{colors.ink}"
-    subsurfaceColor: "{colors.ink-faint}"
-    accentDot: "{colors.primary}"
-    rounded: "{rounded.full}"
-    padding: "{spacing.sm} {spacing.xl}"
-    typography: "{typography.button}"
-  media-card:
-    description: "Case-study quad-grid image/render tile."
-    backgroundColor: "{colors.surface}"
-    borderColor: "{colors.hairline}"
+  hero-card:
+    description: "Near-black block inset from the page edge, with the wordmark ghosted across its bottom."
+    backgroundColor: "{colors.inverse}"
+    textColor: "{colors.on-inverse}"
     rounded: "{rounded.lg}"
-    hoverScale: "1.02"
-  ex-pricing-tier:
-    description: "Default pricing tier card."
+    inset: "{layout.inset}"
+    paddingX: "{layout.card-p}"
+    minHeight: "clamp(560px, 82vh, 880px)"
+  ghost-wordmark:
+    description: "Brand wordmark ghosted into the surface behind hero/footer content."
+    color: "{colors.ghost-inverse}"
+    typography: "{typography.ghost}"
+  card:
+    description: "Filled panel. No border — the surface step off the canvas is the separation."
     backgroundColor: "{colors.surface}"
+    rounded: "{rounded.lg}"
+    padding: "{layout.card-p}"
+  card-on-inverse:
+    backgroundColor: "{colors.inverse-soft}"
+    textColor: "{colors.on-inverse}"
+    rounded: "{rounded.lg}"
+    padding: "{layout.card-p}"
+  stat:
+    description: "Oversized metric with its supporting line. Rule-free; spacing carries the grouping."
+    valueTypography: "{typography.stat}"
+    valueColor: "{colors.ink}"
+    labelTypography: "{typography.body-sm}"
+    labelColor: "{colors.ink-muted}"
+    gap: "{spacing.lg}"
+  header-island:
+    description: "Logo island. Transparent at page-top over the hero card; a floating chrome pill once scrolled."
+    restBackground: "transparent"
+    scrolledBackground: "{colors.chrome}"
+    textColor: "{colors.on-chrome}"
+    rounded: "{rounded.full}"
+    blur: "{blur.chrome}"
+    shadow: "{shadow.elevation-1}"
+  header-chrome-button:
+    backgroundColor: "{colors.overlay-fill}"
+    hoverBackground: "{colors.overlay-fill-hover}"
+    rounded: "{rounded.full}"
+    height: "44px"
+    paddingX: "{spacing.lg}"
+    typography: "{typography.eyebrow}"
+    blur: "{blur.chrome}"
+  theme-toggle:
+    description: "Fixed bottom-right light/dark switch. Sun/moon morph, no border."
+    backgroundColor: "{colors.overlay-fill}"
+    hoverBackground: "{colors.overlay-fill-hover}"
     textColor: "{colors.ink}"
-    borderColor: "{colors.hairline}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.lg}"
-  ex-pricing-tier-featured:
-    description: "Featured/highlighted tier — polarity-flipped."
-    backgroundColor: "{colors.ink}"
-    textColor: "{colors.on-primary}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.lg}"
-  ex-product-selector:
-    description: "What's Included summary card."
-    backgroundColor: "{colors.surface}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.lg}"
-  ex-cart-drawer:
-    description: "Order/subscription summary drawer."
-    backgroundColor: "{colors.surface}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.lg}"
-    item-divider: "{colors.hairline}"
-  ex-app-shell-row:
-    description: "Sidebar nav row. Active state uses brand primary."
-    backgroundColor: "{colors.canvas}"
-    activeIndicator: "{colors.primary}"
-    rounded: "{rounded.sm}"
-    padding: "{spacing.sm} {spacing.md}"
-  ex-data-table-cell:
-    description: "Data table th + td. Header uses eyebrow typography."
-    headerBackground: "{colors.canvas-soft}"
-    headerTypography: "{typography.eyebrow}"
-    bodyTypography: "{typography.body-sm}"
-    cellPadding: "{spacing.sm} {spacing.md}"
-    rowBorder: "{colors.hairline}"
-  ex-auth-form-card:
-    description: "Sign-in / sign-up card with text-input primitives."
-    backgroundColor: "{colors.surface}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.lg}"
-  ex-modal-card:
-    description: "Modal dialog surface with elevated shadow."
-    backgroundColor: "{colors.surface}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.lg}"
-  ex-empty-state-card:
-    description: "Empty-state illustration frame."
-    backgroundColor: "{colors.canvas-soft}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.xxl}"
-    captionTypography: "{typography.body-md}"
-  ex-toast:
-    description: "Toast notification — feature-card shape + medium shadow."
-    backgroundColor: "{colors.surface}"
-    rounded: "{rounded.xl}"
-    padding: "{spacing.sm} {spacing.md}"
+    rounded: "{rounded.full}"
+    size: "48px"
+    offset: "{spacing.lg}"
+  footer:
+    backgroundColor: "{colors.inverse}"
+    textColor: "{colors.on-inverse}"
+    paddingX: "{layout.inset}"
     typography: "{typography.body-sm}"
 ---
 
 ## Overview
 
-AH Growth is a full-service growth agency for Pakistani local businesses (restaurants, solar, bakeries, gyms, pharmacies, and beyond) that will eventually widen into SaaS. The site has to read as confident, creative, and technically capable, never as another templated corporate agency page. A full page sits on the near-black obsidian canvas ({colors.canvas}), broken only by slightly-lighter panels ({colors.canvas-soft}, {colors.secondary}) for hero and footer bands. Cards are frosted glass ({colors.surface-card}) with hairline edges ({colors.hairline}), not flat opaque boxes — the whole surface language stays in a tight monochrome band from obsidian through zinc to near-white, with color reserved almost entirely for one ruby accent ({colors.primary}).
+AH Growth is a growth agency for Pakistani local businesses, widening into SaaS. The site reads confident and creative, never templated. The page sits on a soft off-white canvas (`{colors.canvas}`), and the drama comes from full-bleed near-black blocks (`{colors.inverse}`) dropped deliberately into that light field: the hero, the capabilities section, the CTA outro and footer. The accent is a single vermilion (`{colors.primary}`) used as small squares, badges and one filled CTA per view, never as a large wash.
 
-Typographically, Bricolage Grotesque carries every functional role, from the 72px hero headline ({typography.display-lg}) down to captions, with increasingly negative letter-spacing as size increases — tight, sharp, a little futuristic. The one deliberate exception is the brand's signature move: an oversized outlined word set in Boldonse ({typography.display-outline}), stroke-only, sitting behind hero and section content the way "kinetic" sits behind the Kinetic Studio reference. It is used sparingly, once per major section at most, so it keeps its impact.
+**Borders are structural, not decorative.** Cards, panels and buttons are never outlined — they separate by fill, a white card on off-white or an elevated dark card on near-black. Dividers (`{colors.hairline}`) are kept where they carry real structure, exactly as the references use them: the rule under each stat figure, the footer meta rule, the separators in the nav list. The rule is restraint, not abstinence: if a line isn't doing structural work, it shouldn't be there.
 
-The ruby accent ({colors.primary}) is a whisper, not a flood — it shows up as CTA fills, focus rings, ambient radial glow behind elevated cards ({colors.accent-ruby-glow}), and small active-state indicators. Everything else, including all imagery treatment and card chrome, stays grayscale so that ruby always reads as intentional, not decorative.
+Type is Geist across every functional role, with Geist Mono reserved strictly for small technical micro-labels — eyebrows, section indices, the clock readout. Buttons are sentence case, never uppercase. Behind the hero and footer the brand wordmark is set enormous and ghosted almost into the surface (`{typography.ghost}` at `{colors.ghost-inverse}`), which is the one signature typographic move.
+
+Light and dark are one system, not two designs. Every structural token — spacing, radius, type, motion — is shared; only color values swap. The theme follows the device preference by default and can be overridden by a fixed bottom-right toggle that persists the choice.
 
 **Key Characteristics:**
-- Obsidian canvas ({colors.canvas}) with almost no color outside the {colors.primary} accent
-- Frosted-glass card surfaces ({colors.surface-card}) over hard-edged flat boxes
-- Bricolage Grotesque across the entire type scale, tightly tracked at large sizes ({typography.display-lg})
-- One signature move: oversized outlined Boldonse word ({typography.display-outline}) behind key sections
-- Pill geometry everywhere at the interactive edge ({rounded.full}) — buttons, chips, nav
-- Depth used to signal focus/energy, not comfort — cards glow and scale up when they earn attention ({colors.accent-ruby-glow})
-- 8px spacing base throughout ({spacing.md}, {spacing.lg}) keeps rhythm consistent across dense and open sections
-- Ruby never fills large surfaces — confined to CTAs, borders, and ambient bleed ({colors.accent-ruby-border})
+- Off-white canvas (`{colors.canvas}`) with deliberate near-black contrast blocks (`{colors.inverse}`)
+- Cards and buttons separate by fill, not outline; dividers reserved for real structure
+- Very spacious rhythm — `{layout.section-y}` between sections, `{layout.card-p}` inside cards
+- One vermilion accent (`{colors.primary}`), never a large flat wash
+- Geist everywhere; Geist Mono only for `{typography.eyebrow}` micro-labels
+- Sentence-case pill buttons at `{rounded.full}`, 48px tall, `{spacing.xl}` horizontal padding
+- Ghosted giant wordmark (`{typography.ghost}`) behind hero and footer
+- Light/dark share every non-color token; the theme cross-fades over `{motion.duration-theme}`
 
 ## Colors
 
 ### Brand & Accent
-- **Primary** `{colors.primary}` `#e11d48` — the one chromatic signal in the system: CTA fills, active states, focus rings, ambient glow behind elevated cards.
-- **Primary Active** `{colors.primary-active}` `#b41739` — pressed/active state of primary, darkened ~20% for tactile feedback.
-- **On Primary** `{colors.on-primary}` `#ffffff` — text and icons sitting on a primary-filled surface.
-- **Secondary** `{colors.secondary}` `#1a1a1f` — the dark hero/footer band color, a step up from canvas to separate monumental sections without introducing hue.
+- **Primary** `{colors.primary}` — `#ea4127` in both themes. Fills, eyebrow squares, badges, one CTA per view.
+- **Primary Hover** `{colors.primary-hover}` — darkens on light (`#d3341c`), lightens on dark (`#f2583f`), so the hover always moves away from the surface.
+- **Primary Ink** `{colors.primary-ink}` — the accent used as *text*. Darker on light (`#c4331c`), lighter on dark (`#ff6a4d`), because the raw accent fails contrast as small text. Never use `{colors.primary}` for body-size text.
+- **On Primary** `{colors.on-primary}` — `#ffffff`, text on a primary fill.
 
 ### Surface
-- **Canvas** `{colors.canvas}` `#09090b` — the default page background, pure deep obsidian.
-- **Canvas Soft** `{colors.canvas-soft}` `#0f0f12` — a barely-lighter alternate background for section banding and table headers.
-- **Surface** `{colors.surface}` `#121215` — opaque surface for utility chrome: inputs, buttons, table cells.
-- **Surface Card** `{colors.surface-card}` `rgba(18,18,21,0.75)` — frosted glass card surface, used with backdrop blur for feature cards, service cards, and modals.
-- **Hairline** `{colors.hairline}` `rgba(255,255,255,0.08)` — the default 1px structural border/divider.
+- **Canvas** `{colors.canvas}` — the page. Off-white `#f2f1ef` / near-black `#0a0a09`.
+- **Surface** `{colors.surface}` — cards and panels raised off the canvas.
+- **Surface Sunken** `{colors.surface-sunken}` — wells and inactive states.
+- **Inverse** `{colors.inverse}` — the deliberate contrast block. Stays dark in *both* themes; on the dark canvas it reads as an elevated step rather than flipping to light.
+- **Inverse Soft** `{colors.inverse-soft}` — a card sitting on an inverse block.
+- **Chrome** `{colors.chrome}` — floating controls that pass over arbitrary sections (the scrolled header island). Defined per theme specifically so the control always separates from whatever is behind it; a single surface value cannot guarantee that.
 
 ### Text
-- **Ink** `{colors.ink}` `#f4f4f5` — headline and primary text color, near-white for maximum contrast on obsidian.
-- **Ink Secondary** `{colors.ink-secondary}` `#d4d4d8` — subheads and emphasized body copy.
-- **Ink Muted** `{colors.ink-muted}` `#a1a1aa` — standard body copy, scannable but clearly secondary to headlines.
-- **Ink Faint** `{colors.ink-faint}` `#71717a` — captions, placeholders, timestamps, disabled text.
+- **Ink** `{colors.ink}` — headlines and primary text.
+- **Ink Secondary** `{colors.ink-secondary}` — emphasized body.
+- **Ink Muted** `{colors.ink-muted}` — standard body copy.
+- **Ink Faint** `{colors.ink-faint}` — captions, placeholders, the muted half of a two-tone statement.
+- **On Inverse** `{colors.on-inverse}` (+ `-secondary`, `-muted`, `-faint`) — the same four steps for text on an inverse block. Light values in *both* themes, since the block is dark in both.
+- **On Chrome** `{colors.on-chrome}` (+ `-muted`) — text inside a floating chrome control.
 
 ### Semantic
-AH Growth has no dedicated success/warning/error palette yet — form validation and status states should reuse `{colors.primary}` for error/attention states and `{colors.ink}` for confirmation states until a semantic set is explicitly requested. Two additional accent-only tokens exist for chromatic emphasis: `{colors.accent-ruby-glow}` (ambient radial bleed behind elevated surfaces) and `{colors.accent-ruby-border}` (tinted hairline for selected/active chips and inputs).
+No dedicated success/warning/error palette yet. Validation and status states reuse `{colors.primary-ink}` for attention and `{colors.ink}` for confirmation until a real semantic set is requested. Supporting non-semantic tokens: `{colors.overlay-fill}` / `-hover` (neutral chrome fills), `{colors.accent-tint}` (ambient accent bleed), `{colors.ghost}` / `{colors.ghost-inverse}` (the giant wordmark), `{colors.scrim}` (full-viewport overlay behind the nav panel).
 
 ## Typography
 
 ### Font Family
-Primary family: **Bricolage Grotesque** (variable weight grotesk), fallback stack `"Bricolage Grotesque", "Inter", system-ui, sans-serif`. It carries every functional role — display, heading, body, button, caption — so the type voice stays singular and confident rather than mixing families. Signature family: **Boldonse**, fallback `"Boldonse", "Bricolage Grotesque", sans-serif`, used exclusively for the oversized outlined background word ({typography.display-outline}) — never for functional text.
+**Geist** carries every functional role, loaded variable so `{typography.stat}` and `{typography.ghost}` can sit at 700 in the same family as body copy. Fallback: `"Geist", "Inter", system-ui, sans-serif`.
+
+**Geist Mono** is the micro-label face *only* — `{typography.eyebrow}`, section indices, meta rows, the clock. Fallback: `"Geist Mono", ui-monospace, "SFMono-Regular", monospace`. Never set body copy or headlines in it.
 
 ### Hierarchy
 | Token | Size | Weight | Line Height | Letter Spacing | Use |
 |---|---|---|---|---|---|
-| display-lg | 72px | 700 | 1.05 | -2px | Hero headline |
-| display-md | 56px | 700 | 1.08 | -1.5px | Section headlines |
-| display-outline | clamp(4rem, 12vw, 9rem) | 400 | 0.9 | -2px | Signature outlined background word |
-| heading-1 | 40px | 600 | 1.15 | -1px | Page-level subheads |
-| heading-2 | 28px | 600 | 1.2 | -0.5px | Section subheads |
-| heading-3 | 20px | 600 | 1.3 | -0.1px | Card/module titles |
-| title | 18px | 500 | 1.4 | 0px | List/component titles |
-| body-md | 16px | 400 | 1.6 | 0px | Default paragraph copy |
-| body-sm | 14px | 400 | 1.55 | 0px | Secondary/dense copy |
-| button | 13px | 500 | 1 | 1.5px | CTA and pill labels (uppercase) |
-| caption | 12px | 400 | 1.4 | 0px | Captions, timestamps |
-| eyebrow | 12px | 500 | 1.2 | 0.4px | Uppercase meta labels above headlines |
+| ghost | clamp(5rem, 18vw, 16rem) | 700 | 0.85 | -0.04em | Ghosted wordmark behind hero/footer |
+| display-xl | clamp(3.25rem, 6.4vw, 5.5rem) | 600 | 1.04 | -0.03em | Hero headline |
+| display-lg | clamp(2.5rem, 4.8vw, 4rem) | 600 | 1.08 | -0.025em | Section headlines |
+| display-md | clamp(2rem, 3.6vw, 2.75rem) | 600 | 1.14 | -0.02em | Sub-section / statement lines |
+| stat | clamp(2.5rem, 5vw, 3.5rem) | 700 | 1 | -0.03em | Oversized metric numbers |
+| heading-1 | clamp(1.75rem, 2.6vw, 2.25rem) | 600 | 1.2 | -0.015em | Page-level subheads |
+| heading-2 | 1.5rem | 600 | 1.25 | -0.01em | Section subheads |
+| heading-3 | 1.25rem | 600 | 1.35 | -0.005em | Card titles |
+| title | 1.0625rem | 500 | 1.45 | 0 | List/component titles |
+| body-lg | 1.125rem | 400 | 1.6 | 0 | Large statement paragraphs |
+| body-md | 1rem | 400 | 1.65 | 0 | Default paragraph copy |
+| body-sm | 0.875rem | 400 | 1.6 | 0 | Secondary/dense copy |
+| button | 0.875rem | 500 | 1 | -0.005em | CTA labels (sentence case) |
+| caption | 0.8125rem | 400 | 1.45 | 0 | Captions, meta |
+| eyebrow | 0.75rem | 500 | 1.2 | +0.08em | Mono micro-label, uppercase |
 
 ### Principles
-Letter-spacing tightens as size grows (down to -2px at display-lg) so large type feels compressed and deliberate rather than loose; body copy stays at 0 tracking for readability. Button and eyebrow labels use uppercase presentation with positive tracking to read as structural chrome, not prose. The display-outline role is stroke-only — never filled — reinforcing that it is a graphic device layered behind content, not a headline competing with `{typography.display-lg}`.
+Tracking tightens as size grows (to -0.04em at `{typography.ghost}`) so large type feels deliberate; body sits at 0 for readability. Display sizes are all `clamp()`, so the scale is fluid rather than stepping at breakpoints. Buttons are **sentence case** — "Start a project", not "START A PROJECT" — matching every button across the reference set; the only uppercase in the system is `{typography.eyebrow}`.
 
 ### Note on Font Substitutes
-Both Bricolage Grotesque and Boldonse are open Google Fonts with no licensing constraints; self-host or load via `next/font/google` for performance. If Boldonse is unavailable at build time, fall back to Bricolage Grotesque at 800 weight with an added `-webkit-text-stroke` for the outline effect rather than dropping the signature move entirely.
+Geist and Geist Mono are open Google Fonts, loaded via `next/font/google` in `src/lib/fonts.ts`. If either is unavailable, substitute Inter / IBM Plex Mono and keep the weight and tracking values unchanged.
 
 ## Layout
 
 ### Spacing System
-- xxs `{spacing.xxs}` 4px — icon-to-label gaps
-- xs `{spacing.xs}` 8px — tight inline spacing, chip padding
-- sm `{spacing.sm}` 12px — form field gaps, badge padding
-- md `{spacing.md}` 16px — default component padding
-- lg `{spacing.lg}` 24px — card padding, grid gutter
-- xl `{spacing.xl}` 32px — section-internal spacing
-- xxl `{spacing.xxl}` 48px — section-to-section spacing, hero/footer padding
+`{spacing.xxs}` 4 · `{spacing.xs}` 8 · `{spacing.sm}` 12 · `{spacing.md}` 16 · `{spacing.lg}` 24 · `{spacing.xl}` 32 · `{spacing.xxl}` 48 · `{spacing.3xl}` 64 · `{spacing.4xl}` 96 · `{spacing.5xl}` 128 · `{spacing.6xl}` 176
+
+The scale runs well past the usual 48px ceiling on purpose. This system is spacious; reaching for `{spacing.4xl}`–`{spacing.6xl}` between blocks inside a section is normal, not excessive.
 
 ### Grid & Container
-Max container width 1440px, 12-column grid, gutter at `{spacing.lg}`. Content-heavy sections (case studies, contact form) use a 2-column asymmetric split rather than the full 12 columns, keeping one column as a fixed meta/label rail.
+Content caps at `{layout.container}` (1440px) and centers. Page-edge inset is `{layout.inset}`, which also sets the gap around the inset hero card, so the card's edge and every section's text align to the same rail. Card interiors use `{layout.card-p}`.
 
 ### Whitespace Philosophy
-Space is used to let the oversized type and glass cards breathe — dense multi-font text blocks are treated as an anti-pattern. Every section keeps generous vertical rhythm (`{spacing.xxl}` between major sections) so the confident, editorial tone doesn't collapse into clutter.
+Generosity is the point. Sections are separated by `{layout.section-y}` (96–180px fluid), and dense multi-column text is treated as an anti-pattern. If a layout feels tight, the fix is more space, not a smaller type size.
 
 ### Responsive Strategy
 | Name | Width | Key Changes |
 |---|---|---|
-| Mobile | 375–767px | Single column, nav collapses to pill immediately, pinned horizontal carousel disabled (stacked vertical cards instead) |
-| Tablet | 768–1023px | 2-column grids, footer columns stack to 2-up, quad media grid becomes 2x2 unchanged |
-| Laptop | 1024–1439px | Full 12-column grid active, pinned carousel and parallax billboard enabled |
-| Desktop | 1440px+ | Container caps at 1440px and centers; display-outline scales to its clamp() ceiling |
+| Mobile | 375–767px | Single column; header collapses to logo island + Menu chrome button; hero buttons wrap |
+| Tablet | 768–1023px | 2-column grids; nav labels appear in the header row |
+| Laptop | 1024–1439px | 3-column grids; hero subhead and buttons sit on one row; clock readout appears |
+| Desktop | 1440px+ | Container caps and centers; `clamp()` type and inset reach their ceilings |
 
-**Touch Targets:** All interactive pills and chips maintain a minimum 44px tap height on mobile regardless of visual padding.
+**Touch Targets:** interactive pills hold a 44px minimum height; the theme toggle is 48px.
 
-**Collapsing Strategy:** The floating nav collapses to a rounded glass pill (`{components.nav-bar.collapsedBackground}`) on scroll past the hero at all breakpoints. The footer's 3–4 column location grid stacks to a single column under tablet. The 2x2 case-study media matrix stays 2x2 down to tablet, then stacks to one column on mobile. The pinned horizontal service carousel and parallax scroll-linked billboard both fall back to standard vertical stacked scrolling under the laptop breakpoint and whenever `prefers-reduced-motion: reduce` is set.
+**Collapsing Strategy:** the header's action cluster fades out on scroll past the hero while the logo island grows into a floating chrome pill. Multi-column grids collapse to one column below tablet. Any pinned/scroll-scrubbed section falls back to normal vertical stacking below laptop and whenever `prefers-reduced-motion: reduce` is set.
 
 ## Elevation & Depth
 
 | Level | Treatment | Use |
 |---|---|---|
-| Level 0 — Flat | `{colors.hairline}` border only, no shadow | Nav rows, table dividers, base layout separators |
-| Level 1 — Soft | `{colors.surface-card}` glass fill + `{colors.border-glass}` ring, subtle backdrop blur | Resting feature/service cards, form containers |
-| Level 2 — Elevated | `{colors.border-active}` ring + `{colors.accent-ruby-glow}` ambient bleed + deeper shadow | Focused/hovered service card, modals, popovers |
+| Level 0 — Flat | No shadow, no border. A surface step only (`{colors.surface}` on `{colors.canvas}`) | Cards, panels, most of the page |
+| Level 1 — Soft | `{shadow.elevation-1}` reinforcing the surface step | Floating chrome (header island, theme toggle) |
+| Level 2 — Elevated | `{shadow.elevation-2}` | Open nav panel, modals |
 
-Depth in this system signals focus and energy rather than soft comfort: most surfaces sit flat and quiet at Level 0–1, and only the thing currently earning attention — a focused carousel card, an open modal — jumps to Level 2 with a glow and a scale-up. This mirrors the brand's confident, deliberate posture: nothing is elevated by default, elevation is earned.
+Depth is carried by **color, not outline**. A card is legible because it is a different fill from the canvas, and shadow only reinforces that when an element genuinely floats over arbitrary content. Shadows are near-invisible on the dark palette by design, which is why floating chrome uses `{colors.chrome}` rather than relying on shadow for separation.
 
-Two blur tiers back the glass surfaces: `{blur.card}` (20px) for feature/service cards and modals, `{blur.chrome}` (40px) for small high-frequency UI chrome like `header-chrome-button` — the stronger blur reads as "system chrome" versus the softer card blur reading as "content surface."
+Two blur tiers back the glass chrome: `{blur.card}` (20px) for panels and `{blur.chrome}` (40px) for small high-frequency controls.
 
 ## Shapes
 
 ### Border Radius Scale
 | Token | Value | Use |
 |---|---|---|
-| xs | 6px | Inline chips, form select chevrons |
-| sm | 10px | Utility buttons, dense pill toggles |
-| md | 16px | Standard card corners, input wells |
-| lg | 24px | Feature/service cards, media tiles |
-| xl | 32px | Hero panels, modals, large image wells |
-| full | 9999px | Pill CTAs, nav pill, chips, circular elements |
+| xs | 6px | Inline chips, small markers |
+| sm | 10px | Dense controls |
+| md | 16px | Open nav panel |
+| lg | 24px | Hero card, section cards, media tiles |
+| xl | 32px | Large containers |
+| full | 9999px | All pill buttons, header island, theme toggle |
 
 ### Photography Geometry
-Photography and renders are framed one of two ways: full-bleed inside a `{rounded.lg}` or `{rounded.xl}` card with a `{colors.hairline}` or `{colors.border-glass}` edge, or presented as isolated cutouts with no frame at all, floating over the `{typography.display-outline}` billboard type for parallax sections. Cutouts never carry drop shadows — depth comes from the ambient `{colors.accent-ruby-glow}` bleed behind them, not from a shadow silhouette.
+Images sit full-bleed inside `{rounded.lg}` frames with no border, or as isolated cutouts with no frame at all floating over `{typography.ghost}`. Cutouts never take a drop shadow.
 
 ## Components
 
-**No hover states documented beyond what's specified per component below.**
+**Hover states are documented per component below. Chrome hovers use `{motion.ease-out-soft}` at `{motion.duration-micro}`; CTA buttons use the slower `{motion.ease-smooth}` at `{motion.duration-layout}` and above.**
 
 ### Navigation
+**`header-island`** — at page-top it is fully transparent, sitting on the hero card with the mark at 1.24x and no chrome. Past the hero it tweens to a `{colors.chrome}` pill at `{rounded.full}` with `{blur.chrome}` and `{shadow.elevation-1}`, the mark settling to 1x and the section label fading in. Hovering widens it; clicking expands its height into the nav panel. `{colors.chrome}` is theme-specific precisely so this pill always separates from whatever section is scrolling behind it.
 
-**Header, full spec (adapted from a live audit of koto.com's header — structure and motion carried over, palette and type swapped to AH Growth's tokens).** Fixed, `{spacing.xxl}` tall, inset `{spacing.md}` from the top/left/right edges. Three independent pieces sit in one row, each with `mix-blend-mode: exclusion` applied directly in CSS (not a JS section-detector) so all three stay legible over any hero media automatically:
+**`header-chrome-button`** — borderless `{colors.overlay-fill}` pill for the Menu trigger and 4-dot widget, `{blur.chrome}`, hovering to `{colors.overlay-fill-hover}`. Takes an `inverse` tone when sitting on a dark block.
 
-1. **`header-logo-pill`** (far left) — the logo mark alone, no chrome, floating over the hero at page-top. It's the one place `{colors.primary}` (ruby) appears in the header: every other header surface stays grayscale, matching the "whisper accent" rule everywhere else in the system. At page-top the mark renders ~24% larger than its scrolled size (a small hero-emphasis flourish); once the page scrolls past hero height, two things happen together: the mark settles to 1x scale, and a `{colors.surface}` pill (`{rounded.sm}`) grows in behind it from width 0 to full, width-tweened over 750ms with `cubic-bezier(0.28, 0, 0, 1)`. The whole pill container also resizes (400ms, `cubic-bezier(0.65, 0, 0.35, 1)`) when a click opens the nav dropdown — same easing family as `{colors.primary}`'s general "settle, don't spring" feel from `--ease-inertia`, just a distinct curve tuned for this one layout tween.
-2. **`header-nav-list`** (beside the logo) — **Work / About / Contact** only, matching the locked route tree in `SITEMAP.md` (no Services/Latest/Careers routes exist here, so don't port Koto's full 6-item list). Set in `{typography.eyebrow}` — Koto uses a monospace face for this row, but AH Growth stays inside its single-family type system, so `{typography.eyebrow}`'s uppercase/tracked treatment carries the same "small system label" read without introducing a second font. Rest color `{colors.ink-muted}`, hover `{colors.ink}`, gap `{spacing.xl}` between items, quick 167ms linear color transition on hover (no roll-reveal text animation was actually observed in the live DOM despite that being described in the Koto motion audit — treat this as a corrected, verified behavior: it's a color fade, not a text roll). On scroll past hero: the row's inner flex wrapper slides left by its own full width (`translateX(-100%)`, not a fixed px — Koto's `-255px` was sized for its own 6-item row and won't fit a 3-item one) inside an `overflow-hidden` mask, 650ms `cubic-bezier(0.36, 0.54, 0, 0.99)`, and the row becomes non-interactive (`pointer-events: none`) for the duration it's hidden.
-3. **`header-chrome-button`** (far right) — one or two small glass capsules: a 4-dot widget-trigger icon (four 2px dots in a 2x2 grid, `{colors.ink}` fill, each dot nudges ~2px outward from center on hover, 167ms linear — a small "explode" detail worth keeping) and, at tablet+, a live clock reading `HH:MM UTC+5` (Pakistan's real offset, so this isn't decorative) in the same `{typography.eyebrow}` treatment as the nav labels. Below the tablet breakpoint both collapse into a single "Menu" chrome button instead. Chrome: `{colors.overlay-fill}` fill, `{colors.overlay-fill-hover}` on hover, `{blur.chrome}` backdrop blur, `{rounded.xs}`.
-
-Don't reintroduce a separate "current section name" pill replacing the nav row on scroll — that was in the original motion-preset notes but didn't hold up against the live DOM; the real mechanism is simpler (slide the row away, grow the logo pill), and simpler is preferable here anyway.
+**`theme-toggle`** — fixed `{spacing.lg}` from the bottom-right corner, 48px, `{rounded.full}`, `{colors.overlay-fill}`. A single SVG morphs sun to moon over `{motion.duration-interactive}`. Any page content in that corner must reserve 72px of clearance.
 
 ### Buttons
-**`button-primary`** — filled `{colors.primary}` pill, `{colors.on-primary}` label, `{rounded.full}`, padded `{spacing.sm} {spacing.lg}`, set in `{typography.button}`.
-**`button-primary-pressed`** — same shape, background darkens to `{colors.primary-active}` on press.
-**`button-secondary`** — transparent with a `{colors.hairline}` ring, inverts to `{colors.ink}` background / `{colors.canvas}` text on hover.
-**`button-utility`** — small `{colors.surface}` chip-button with `{colors.hairline}` border, used for inline tools and filters, set in `{typography.caption}`.
-**`cursor-fill-button`** — high-intent CTA (Explore Now, Send Now) where a `{colors.ink}` circular fill expands from the cursor's entry point on hover, inverting the label to `{colors.canvas}`; falls back to a plain opacity change under reduced motion.
-**`kinetic-rollover-button`** — form submit pill where a `{colors.ink-faint}` subsurface wordmark layer rolls vertically behind a static `{typography.button}` label on hover, punctuated by a `{colors.primary}` accent dot.
+**`button-primary`** — `{colors.primary}` fill, `{colors.on-primary}` label, `{rounded.full}`, 48px tall, `{spacing.xl}` horizontal. Hover transitions on `{motion.ease-smooth}` at `{motion.duration-layout}`, matching the CTA's unhurried feel. One per view.
+**`button-secondary`** — `{colors.overlay-fill}`, no border, hovering to `{colors.overlay-fill-hover}`.
+**`button-inverse`** — the light pill used *on* the dark contrast block. Backed by `{colors.on-inverse}` (a light value in both themes) rather than `{colors.surface}`, which would vanish against the dark card in the dark palette.
+**`cursor-fill-button`** — `{colors.ink}` circle expands from the cursor's entry point over 900ms (720ms to collapse) on `{motion.ease-smooth}`, inverting the label as it sweeps. The ease is deliberately symmetric ease-in-out, not `{motion.ease-inertia}`: the fill should accelerate in as well as settle, and the long duration is what makes it read as considered rather than snappy. Reduced motion falls back to an opacity change.
 
 ### Cards & Containers
-**`feature-card`** — resting/unfocused service carousel card: `{colors.surface-card}` glass fill, `{colors.hairline}` border, `{rounded.lg}`, title in `{typography.title}`.
-**`feature-card-elevated`** — the focused carousel card: same glass fill but `{colors.border-active}` ring and `{colors.accent-ruby-glow}` bleed, scaled up, heading in `{typography.heading-3}`.
-**`media-card`** — case-study quad-grid tile: `{colors.surface}` fill, `{colors.hairline}` border, `{rounded.lg}`, 1.02 scale on hover.
-**`hero-band`** — the dark `{colors.secondary}` panel used for hero and footer sections, `{rounded.xl}` where it's used as a contained block rather than full-bleed.
+**`section`** — the shell every section routes through: `{layout.inset}` horizontal, `{layout.section-y}` vertical, capped at `{layout.container}`. Takes a `canvas`, `surface` or `inverse` tone.
+**`card`** — `{colors.surface}` fill, `{rounded.lg}`, `{layout.card-p}` padding, **no border**.
+**`card-on-inverse`** — `{colors.inverse-soft}` on a dark block, same geometry.
+**`hero-card`** — `{colors.inverse}` block inset `{layout.inset}` from the page edge, `{rounded.lg}`, min-height `clamp(560px, 82vh, 880px)`, content bottom-aligned with bottom padding reserved to clear the ghost wordmark.
+**`stat`** — `{typography.stat}` figure over a `{typography.body-sm}` supporting line, separated by `{spacing.lg}` of space rather than a rule.
 
 ### Inputs & Forms
-**`text-input`** — zero-box underline field: transparent background, `{colors.hairline}` bottom border that draws in to `{colors.primary}` on focus, placeholder in `{colors.ink-faint}`, text in `{typography.body-md}`.
-**`badge-pill`** — multi-select service/budget chip: transparent with `{colors.hairline}` border at rest, inverts to `{colors.ink}` background / `{colors.canvas}` text when selected, with an optional `{colors.accent-ruby-border}` ring for chromatic emphasis.
+**`eyebrow`** — an 8px `{colors.primary}` square at `{rounded.xs}` followed by a `{typography.eyebrow}` label, `{spacing.xs}` apart. Sits above nearly every section and is the main accent sighting on a light surface. Takes an `inverse` tone on dark blocks.
 
 ### Signature Components
-**`hero-outline-type`** — the brand's one unmistakable move: a stroke-only `{typography.display-outline}` word in `{colors.ink}`, layered behind hero/section content, used once per major section maximum.
+**`ghost-wordmark`** — the brand wordmark at `{typography.ghost}` in `{colors.ghost-inverse}`, anchored to the bottom edge of the hero card and the footer and clipped by them. It sits *behind* content, which reserves bottom padding to clear it. Ghosted and filled, never a stroke outline.
 
 ### Examples (illustrative)
-**`ex-pricing-tier`** — default `{colors.surface}` tier card, `{rounded.xl}`, `{spacing.lg}` padding.
-**`ex-pricing-tier-featured`** — polarity-flipped tier: `{colors.ink}` background, `{colors.on-primary}` text.
-**`ex-product-selector`** — "what's included" summary card on `{colors.surface}`, `{rounded.xl}`.
-**`ex-cart-drawer`** — order summary drawer with `{colors.hairline}` item dividers.
-**`ex-app-shell-row`** — sidebar nav row on `{colors.canvas}`, active state marked with `{colors.primary}`.
-**`ex-data-table-cell`** — table header on `{colors.canvas-soft}` in `{typography.eyebrow}`, body in `{typography.body-sm}`, rows divided by `{colors.hairline}`.
-**`ex-auth-form-card`** — sign-in card on `{colors.surface}` built from `{components.text-input}` primitives.
-**`ex-modal-card`** — `{colors.surface}` modal at Elevation Level 2.
-**`ex-empty-state-card`** — `{colors.canvas-soft}` illustration frame, generous `{spacing.xxl}` padding, caption in `{typography.body-md}`.
-**`ex-toast`** — `{colors.surface}` notification, `{rounded.xl}`, `{typography.body-sm}`.
+**`ex-pricing-tier`** — `{colors.surface}`, `{rounded.lg}`, `{layout.card-p}`, no border.
+**`ex-pricing-tier-featured`** — polarity-flipped: `{colors.inverse}` fill, `{colors.on-inverse}` text.
+**`ex-modal-card`** — `{colors.surface}`, `{rounded.md}`, `{shadow.elevation-2}`.
+**`ex-toast`** — `{colors.chrome}` fill, `{colors.on-chrome}` text, `{rounded.full}`, `{typography.body-sm}`.
+**`ex-empty-state`** — `{colors.surface}` panel, `{layout.card-p}`, `{typography.caption}` in `{colors.ink-faint}`.
+**`ex-data-row`** — `{typography.eyebrow}` header in `{colors.ink-muted}`, `{typography.body-sm}` body, rows separated by `{spacing.lg}` of space (a `{colors.hairline}` divider only if the density genuinely demands it).
 
 ## Do's and Don'ts
 
 **Do:**
-- Keep 90%+ of every surface monochrome; let `{colors.primary}` do the signaling, not decoration.
-- Use `{typography.display-outline}` sparingly — once per major section, never as a repeating pattern.
-- Reserve Elevation Level 2 (`{colors.accent-ruby-glow}`, `{colors.border-active}`) for the element currently earning focus.
-- Keep interactive edges on the `{rounded.full}` pill geometry for consistency across nav, buttons, and chips.
-- Respect `prefers-reduced-motion` for every hover/scroll-linked component (`cursor-fill-button`, `kinetic-rollover-button`, pinned carousel).
-- Hold body copy at `{typography.body-md}` / `{typography.body-sm}` with zero letter-spacing for readability.
-- Use `{colors.hairline}` as the default separator before reaching for a shadow.
-- Keep the header to exactly the three routes in `SITEMAP.md` (`header-nav-list`: Work, About, Contact) — don't add nav items speculatively.
+- Separate cards and panels with a filled surface step (`{colors.surface}` on `{colors.canvas}`) rather than an outline.
+- Keep the page spacious: `{layout.section-y}` between sections, `{layout.card-p}` inside cards.
+- Use `{colors.primary}` for eyebrow squares, badges, and one CTA per view.
+- Use `{colors.primary-ink}` whenever the accent is small text, so it holds contrast in both themes.
+- Set every button in sentence case at `{typography.button}`.
+- Reserve `{typography.eyebrow}` (Geist Mono) for micro-labels only.
+- Keep light and dark structurally identical — change color values, never spacing or type.
+- Give `{typography.ghost}` room: content over it reserves bottom padding so the two never collide.
 
 **Don't:**
-- Don't fill large flat surfaces with `{colors.primary}` — it breaks the "whisper accent" rule and flattens the hierarchy.
-- Don't apply drop shadows to photography cutouts — use `{colors.accent-ruby-glow}` ambient bleed instead.
-- Don't mix in a second display typeface beyond `{typography.display-outline}`'s Boldonse — Bricolage Grotesque carries every functional role.
-- Don't use `{rounded.xs}` or `{rounded.sm}` on primary CTAs — those stay on `{rounded.full}`.
-- Don't stack multiple `feature-card-elevated` instances at once — elevation is meant to be scarce and earned.
-- Don't hardcode any copy or token value directly in components — every string comes from `src/content.ts`, every visual value from this token set.
-- Don't run the pinned horizontal carousel or parallax billboard below the laptop breakpoint — fall back to stacked vertical scroll.
-- Don't build header contrast-safety with a JS scroll/section-position class toggler — `mix-blend-mode: exclusion` on `header-logo-pill`, `header-nav-list`, and `header-chrome-button` handles it in plain CSS.
-- Don't put `{colors.primary}` anywhere in the header chrome besides the logo mark itself — nav labels and chrome buttons stay grayscale.
+- Don't outline cards, panels or buttons — separate them by fill. Keep dividers for structure (stat rules, footer meta, nav list) and nothing more.
+- Don't use `{colors.primary}` as a large flat wash or as small body text.
+- Don't set body copy or headlines in Geist Mono.
+- Don't uppercase button labels.
+- Don't use `{colors.surface}` for anything sitting on a dark block — it collapses into `{colors.inverse}` in the dark palette. Use `{colors.on-inverse}` or `{colors.inverse-soft}`.
+- Don't rely on shadow for separation on the dark palette; use `{colors.chrome}` for floating controls.
+- Don't apply `{motion.ease-inertia}` to a hover — it is an aggressive exponential-out that only reads well at reveal-length durations (700ms+).
+- Don't place page content in the bottom-right 72px without clearing the fixed `theme-toggle`.
