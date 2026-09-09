@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { content } from "@/content";
 import { Eyebrow } from "@/components/ui/eyebrow";
@@ -6,56 +7,83 @@ import { Magnetic } from "@/components/motion/magnetic";
 import { buttonVariants } from "@/components/ui/button";
 
 /**
- * 01 — Hero. A near-black card inset from the page edge on the light canvas,
- * with the brand wordmark ghosted across the bottom: the shared shape across
- * all three locked references.
+ * 01 — Hero. Full-bleed photography with the type composed ON it, per
+ * primary.jpg: micro-block opposite the headline, a floating claim card at
+ * the bottom-left, and the capability pills at the bottom-right.
+ *
+ * The previous version was a text-only near-black card. It typechecked, it
+ * was responsive, and it looked like a wireframe, because nothing in it
+ * carried an image. The media is the section here, not decoration on it.
  *
  * `data-hero` lets the header measure its height for the scroll threshold.
  * `data-tone="inverse"` flips the global focus ring to its light value.
  *
- * The empty `z-0` layer is the slot the WebGL canvas drops into later
- * (SITEMAP.md §2). Content sits at `z-10` above it, so adding the canvas is
- * filling a slot rather than restructuring the section.
+ * The ghosted wordmark that used to sit in this section now lives only in
+ * the footer: at `--color-ghost-inverse` it reads as smudge over photography
+ * rather than as a deliberate mark. See HOMEPAGE-REDESIGN.md.
  */
 export function Hero() {
   const { hero } = content.home;
 
   return (
-    <section data-hero data-tone="inverse" className="bg-canvas px-inset pt-inset">
-      <div className="relative mx-auto flex min-h-[clamp(560px,82vh,880px)] w-full max-w-container flex-col justify-end overflow-hidden rounded-lg bg-inverse px-card pb-hero-bottom pt-hero-top">
-        {/* Reserved for the WebGL canvas. Intentionally empty in the MVP. */}
-        <div aria-hidden className="absolute inset-0 z-0" />
+    <section
+      data-hero
+      data-tone="inverse"
+      aria-labelledby="hero-headline"
+      className="relative isolate flex min-h-svh flex-col overflow-hidden bg-inverse px-inset pb-xxl pt-hero-top text-on-inverse"
+    >
+      {/* Media layer. Two crops, swapped by media query rather than by
+          object-position: the landscape plate loses its subject entirely
+          inside a 375px-wide frame. */}
+      <div aria-hidden className="absolute inset-0 -z-10">
+        <Image
+          src={hero.media.mobileSrc}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover md:hidden"
+        />
+        <Image
+          src={hero.media.src}
+          alt={hero.media.alt}
+          fill
+          priority
+          sizes="100vw"
+          className="hidden object-cover md:block"
+        />
+        {/* Bottom-weighted scrim. Every piece of copy in this section sits in
+            the lower two thirds, so the wash is heaviest there and the top
+            stays open enough to read as a photograph. */}
+        <div className="absolute inset-0 bg-gradient-to-t from-scrim-media-strong via-scrim-media-mid to-scrim-media-soft" />
+      </div>
 
-        {/* Ghosted wordmark, anchored to the card's bottom edge and clipped by
-            it. The content block reserves pb-hero-bottom to clear it. */}
-        <span
-          aria-hidden
-          className="type-ghost pointer-events-none absolute -bottom-[0.45em] left-[-0.04em] z-0 select-none whitespace-nowrap text-ghost-inverse"
-        >
-          <span className="md:hidden">{content.footer.wordmarkShort}</span>
-          <span className="hidden md:inline">{content.footer.wordmark}</span>
-        </span>
-
-        <div className="relative z-10 flex flex-col gap-xl md:gap-xxl">
-          <Reveal>
+      <div className="mx-auto flex w-full max-w-container flex-1 flex-col">
+        <div className="grid flex-1 gap-xxl lg:grid-cols-12 lg:gap-lg">
+          {/* Micro-block. Set opposite the headline, not above it. */}
+          <Reveal className="lg:col-span-3 lg:pt-lg">
             <Eyebrow tone="inverse">{hero.eyebrow}</Eyebrow>
-          </Reveal>
-
-          <Reveal delay={80}>
-            <h1 className="type-display-xl max-w-[16ch] text-balance text-on-inverse">
-              {hero.headline}
-            </h1>
+            <p className="type-body-sm mt-md max-w-[24ch] text-on-inverse-muted">
+              {hero.microNote}
+            </p>
           </Reveal>
 
           <Reveal
-            delay={160}
-            className="flex flex-col gap-xl lg:flex-row lg:items-end lg:justify-between"
+            delay={80}
+            className="flex flex-col gap-xl lg:col-span-8 lg:col-start-5 lg:items-end lg:text-right"
           >
-            <p className="type-body-lg max-w-[46ch] text-on-inverse-muted">
+            <h1
+              id="hero-headline"
+              className="type-display-xl max-w-[15ch] text-balance text-on-inverse"
+            >
+              {hero.headline}
+            </h1>
+
+            <p className="type-body-md max-w-[46ch] text-on-inverse-secondary">
               {hero.subheadline}
             </p>
 
-            <div className="flex shrink-0 flex-wrap items-center gap-sm">
+            <div className="flex flex-wrap items-center gap-sm lg:justify-end">
               <Magnetic>
                 <Link href={hero.cta.href} className={buttonVariants({ variant: "primary" })}>
                   {hero.cta.label}
@@ -70,6 +98,34 @@ export function Hero() {
             </div>
           </Reveal>
         </div>
+
+        {/* Bottom band. Right padding clears the fixed theme toggle, which
+            otherwise lands on top of the last pill. */}
+        <Reveal
+          delay={160}
+          className="mt-4xl flex flex-col gap-xl pr-toggle-clearance lg:flex-row lg:items-end lg:justify-between"
+        >
+          {/* `plate`, not `surface`: this card sits on photography that is
+              dark in both themes, so it has to stay light in both. */}
+          <div className="w-fit max-w-[26ch] shrink-0 rounded-md bg-plate p-lg shadow-elevation-2">
+            <p className="type-eyebrow text-on-plate-muted">{hero.floatingCard.label}</p>
+            <p className="type-heading-3 mt-sm text-on-plate">{hero.floatingCard.claim}</p>
+          </div>
+
+          <div className="lg:text-right">
+            <h2 className="sr-only">{hero.tagsLabel}</h2>
+            <ul className="flex flex-wrap gap-xs lg:justify-end">
+              {content.services.map((service) => (
+                <li
+                  key={service.id}
+                  className="type-caption rounded-full bg-overlay-fill-inverse px-md py-xxs text-on-inverse-secondary backdrop-blur-chrome"
+                >
+                  {service.title}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

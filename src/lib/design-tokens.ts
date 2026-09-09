@@ -312,6 +312,20 @@ export const motion = {
     observerThreshold: 0.5,
   },
 
+  /*
+   * Pinned capabilities carousel. `trackVhPerCard` is the scroll distance the
+   * page travels to hand focus from one card to the next, expressed in
+   * viewport heights. One full viewport per card (the obvious choice) makes
+   * the section five screens tall and reads as dead space in a page scrub;
+   * 62vh keeps every hand-off deliberate without stretching the page.
+   */
+  carousel: {
+    trackVhPerCard: 62,
+    focusedScale: 1.04,
+    restingScale: 0.9,
+    restingOpacity: 0.45,
+  },
+
   /**
    * Header. Retimed from the Koto audit: the source values (167ms hovers,
    * 400ms layout) read as twitchy at this brand's pace, so hovers sit at

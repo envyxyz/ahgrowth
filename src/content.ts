@@ -100,7 +100,7 @@ export interface SocialLink {
 export interface Commitment {
   title: string;
   body: string;
-  /** Optional背 image. Cards with one get a media treatment instead of flat fill. */
+  /** Optional backdrop. Cards with one get a media treatment, not a flat fill. */
   imageSrc?: string;
   imageAlt?: string;
 }
@@ -285,6 +285,21 @@ export const home = {
       "AH Growth designs brands, builds the websites and apps they run on, and handles the marketing that brings people to them. One team, from the first sketch to live traffic.",
     cta: { label: "Start a project", href: "/contact" },
     secondaryCta: { label: "See what we do", href: "#capabilities" },
+    /** Small mono block set opposite the headline, per primary.jpg. */
+    microNote: "Brand, build, and the traffic that follows.",
+    /** Full-bleed backdrop. `mobileSrc` is the portrait crop: the landscape
+        plate loses its subject entirely at 375px. */
+    media: {
+      src: "/images/hero/hero-primary.jpg",
+      mobileSrc: "/images/hero/hero-primary-mobile.jpg",
+      alt: "",
+    },
+    /** The floating card bottom-left. primary.jpg puts a percentage here;
+        a claim goes in instead, because that percentage is a measurement
+        and no verified figure exists. */
+    floatingCard: { label: "What you get", claim: "One team, end to end." },
+    /** Screen-reader heading for the capability pill row over the media. */
+    tagsLabel: "Capabilities",
     /** Floating status badges per primary.jpg. Empty: every candidate value
         here would be a measurement, and none are verified. */
     metrics: [] as Metric[],
@@ -306,6 +321,10 @@ export const home = {
         alt: "",
       },
     } as CapsuleStatement,
+    /** Mono micro-label set in the top-right corner of the statement band. */
+    microLabel: "Built to last",
+    support:
+      "We take on the whole thing: the identity, the site or app it runs on, and the campaigns that send people to it. Fewer handoffs, fewer places for the work to fall apart.",
   },
 
   /** Asymmetric media row. Three frames at staggered vertical offsets. */

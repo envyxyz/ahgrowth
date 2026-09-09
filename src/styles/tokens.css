@@ -56,6 +56,14 @@
   --color-on-chrome: #f7f7f5;
   --color-on-chrome-muted: #a8a8a2;
 
+  /* An opaque plate laid over full-bleed photography: the hero claim card,
+     any future caption chip on media. Light in BOTH palettes, because the
+     photograph under it is dark in both — `surface` would collapse into the
+     media in the dark theme, and `chrome` is dark, so it would vanish. */
+  --color-plate: #f7f7f5;
+  --color-on-plate: #111110;
+  --color-on-plate-muted: #6e6e69;
+
   /* --- Color: dividers. Used sparingly — prefer a surface step. --- */
   --color-hairline: rgba(17, 17, 16, 0.1);
   --color-hairline-inverse: rgba(255, 255, 255, 0.12);
@@ -81,6 +89,13 @@
   --color-ghost: rgba(17, 17, 16, 0.05);
   --color-ghost-inverse: rgba(255, 255, 255, 0.055);
   --color-scrim: rgba(242, 241, 239, 0.72);
+  /* Legibility scrims over full-bleed photography. Three stops rather than
+     one flat wash: copy sits at the bottom edge, so a single opacity either
+     washes out the image or leaves the copy unreadable. Keyed to
+     --color-inverse per palette, since media always sits on the dark block. */
+  --color-scrim-media-strong: rgba(17, 17, 16, 0.88);
+  --color-scrim-media-mid: rgba(17, 17, 16, 0.46);
+  --color-scrim-media-soft: rgba(17, 17, 16, 0.22);
 
   /* --- Elevation. Soft and low-opacity; depth is carried by the surface
      step, with shadow only reinforcing it. --- */
@@ -277,6 +292,14 @@
     --color-on-chrome: #f5f4f2;
     --color-on-chrome-muted: #93928d;
 
+    /* An opaque plate laid over full-bleed photography: the hero claim card,
+       any future caption chip on media. Light in BOTH palettes, because the
+       photograph under it is dark in both — `surface` would collapse into the
+       media in the dark theme, and `chrome` is dark, so it would vanish. */
+    --color-plate: #f5f4f2;
+    --color-on-plate: #161615;
+    --color-on-plate-muted: #63625e;
+
     --color-hairline: rgba(255, 255, 255, 0.08);
     --color-hairline-inverse: rgba(255, 255, 255, 0.08);
 
@@ -293,6 +316,9 @@
     --color-ghost: rgba(255, 255, 255, 0.045);
     --color-ghost-inverse: rgba(255, 255, 255, 0.045);
     --color-scrim: rgba(10, 10, 9, 0.72);
+    --color-scrim-media-strong: rgba(22, 22, 21, 0.88);
+    --color-scrim-media-mid: rgba(22, 22, 21, 0.46);
+    --color-scrim-media-soft: rgba(22, 22, 21, 0.22);
 
     --shadow-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
     --shadow-elevation-2: 0 2px 8px rgba(0, 0, 0, 0.5), 0 24px 56px -16px rgba(0, 0, 0, 0.7);
@@ -326,6 +352,14 @@
   --color-on-chrome: #f5f4f2;
   --color-on-chrome-muted: #93928d;
 
+  /* An opaque plate laid over full-bleed photography: the hero claim card,
+     any future caption chip on media. Light in BOTH palettes, because the
+     photograph under it is dark in both — `surface` would collapse into the
+     media in the dark theme, and `chrome` is dark, so it would vanish. */
+  --color-plate: #f5f4f2;
+  --color-on-plate: #161615;
+  --color-on-plate-muted: #63625e;
+
   --color-hairline: rgba(255, 255, 255, 0.08);
   --color-hairline-inverse: rgba(255, 255, 255, 0.08);
 
@@ -342,6 +376,9 @@
   --color-ghost: rgba(255, 255, 255, 0.045);
   --color-ghost-inverse: rgba(255, 255, 255, 0.045);
   --color-scrim: rgba(10, 10, 9, 0.72);
+  --color-scrim-media-strong: rgba(22, 22, 21, 0.88);
+  --color-scrim-media-mid: rgba(22, 22, 21, 0.46);
+  --color-scrim-media-soft: rgba(22, 22, 21, 0.22);
 
   --shadow-elevation-1: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
   --shadow-elevation-2: 0 2px 8px rgba(0, 0, 0, 0.5), 0 24px 56px -16px rgba(0, 0, 0, 0.7);

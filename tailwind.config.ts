@@ -35,6 +35,12 @@ const config: Config = {
           DEFAULT: "var(--color-on-chrome)",
           muted: "var(--color-on-chrome-muted)",
         },
+        /* Opaque light plate over full-bleed media. Light in both palettes. */
+        plate: "var(--color-plate)",
+        "on-plate": {
+          DEFAULT: "var(--color-on-plate)",
+          muted: "var(--color-on-plate-muted)",
+        },
         surface: {
           DEFAULT: "var(--color-surface)",
           sunken: "var(--color-surface-sunken)",
@@ -62,7 +68,12 @@ const config: Config = {
           DEFAULT: "var(--color-ghost)",
           inverse: "var(--color-ghost-inverse)",
         },
-        scrim: "var(--color-scrim)",
+        scrim: {
+          DEFAULT: "var(--color-scrim)",
+          "media-strong": "var(--color-scrim-media-strong)",
+          "media-mid": "var(--color-scrim-media-mid)",
+          "media-soft": "var(--color-scrim-media-soft)",
+        },
         focus: {
           DEFAULT: "var(--color-focus-ring)",
           inverse: "var(--color-focus-ring-inverse)",
