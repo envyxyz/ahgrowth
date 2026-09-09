@@ -35,7 +35,7 @@ export function Editorial() {
         <Reveal className="lg:col-span-3">
           <h2
             id="editorial-heading"
-            className="type-eyebrow max-w-[10ch] text-ink underline decoration-primary underline-offset-4"
+            className="type-eyebrow max-w-[18ch] text-ink underline decoration-primary underline-offset-4"
           >
             {editorial.lead}
           </h2>

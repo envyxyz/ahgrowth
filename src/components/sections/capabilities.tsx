@@ -1,5 +1,4 @@
 import { content } from "@/content";
-import { Section } from "@/components/ui/section";
 import { Statement } from "@/components/ui/statement";
 import { Reveal } from "@/components/motion/reveal";
 import { ServiceCard } from "@/components/sections/capabilities/service-card";
@@ -52,16 +51,14 @@ export function Capabilities() {
         <PinnedCarousel services={content.services} />
       </div>
 
-      <div className="lg:motion-safe:hidden">
-        <Section tone="inverse" as="div" className="!pt-0">
-          <div className="grid gap-xxl md:grid-cols-2">
-            {content.services.map((service, i) => (
-              <Reveal key={service.id} delay={i * designMotion.lineRise.staggerMs}>
-                <ServiceCard service={service} includesLabel={capabilities.includesLabel} />
-              </Reveal>
-            ))}
-          </div>
-        </Section>
+      <div className="px-inset pb-section-y lg:motion-safe:hidden">
+        <div className="mx-auto grid w-full max-w-container gap-xxl md:grid-cols-2">
+          {content.services.map((service, i) => (
+            <Reveal key={service.id} delay={i * designMotion.lineRise.staggerMs}>
+              <ServiceCard service={service} includesLabel={capabilities.includesLabel} />
+            </Reveal>
+          ))}
+        </div>
       </div>
     </section>
   );

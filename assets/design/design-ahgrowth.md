@@ -26,7 +26,7 @@ colors:
     surface-sunken: "#e8e7e4"
     inverse: "#111110"
     inverse-soft: "#1c1c1a"
-    chrome: "#111110"
+    chrome: "#242422"
     on-chrome: "#f7f7f5"
     on-chrome-muted: "#a8a8a2"
     hairline: "rgba(17, 17, 16, 0.10)"
@@ -355,7 +355,7 @@ Light and dark are one system, not two designs. Every structural token — spaci
 - **Surface Sunken** `{colors.surface-sunken}` — wells and inactive states.
 - **Inverse** `{colors.inverse}` — the deliberate contrast block. Stays dark in *both* themes; on the dark canvas it reads as an elevated step rather than flipping to light.
 - **Inverse Soft** `{colors.inverse-soft}` — a card sitting on an inverse block.
-- **Chrome** `{colors.chrome}` — floating controls that pass over arbitrary sections (the scrolled header island). Defined per theme specifically so the control always separates from whatever is behind it; a single surface value cannot guarantee that.
+- **Chrome** `{colors.chrome}` — floating controls that pass over arbitrary sections (the scrolled header island). Defined per theme specifically so the control always separates from whatever is behind it; a single surface value cannot guarantee that. It is deliberately a step lighter than `{colors.inverse}` in both palettes: set equal to it, the island and the theme toggle vanish the moment they pass over the hero, the capabilities block, the CTA outro, or the footer, which is most of the page.
 
 ### Text
 - **Ink** `{colors.ink}` — headlines and primary text.

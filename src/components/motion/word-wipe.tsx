@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ElementType } from "react";
 import type { Statement as StatementValue } from "@/content";
 import { useViewportProgress } from "@/lib/hooks/use-scroll-progress";
 import { easing, motion as designMotion } from "@/lib/design-tokens";
@@ -20,14 +20,19 @@ import { easing, motion as designMotion } from "@/lib/design-tokens";
  */
 export function WordWipe({
   value,
+  as: Tag = "p",
   size = "display-md",
   tone = "light",
   className = "",
+  id,
 }: {
   value: StatementValue;
+  /** Pass the real heading tag when this line IS the section heading. */
+  as?: ElementType;
   size?: "display-lg" | "display-md";
   tone?: "light" | "inverse";
   className?: string;
+  id?: string;
 }) {
   const [reduced, setReduced] = useState(false);
 
@@ -35,7 +40,7 @@ export function WordWipe({
     setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   }, []);
 
-  const { ref, progress } = useViewportProgress<HTMLParagraphElement>(!reduced);
+  const { ref, progress } = useViewportProgress<HTMLElement>(!reduced);
 
   const strong = tone === "inverse" ? "var(--color-on-inverse)" : "var(--color-ink)";
   const soft =
@@ -46,7 +51,12 @@ export function WordWipe({
   const leadWords = value.lead.split(" ");
 
   return (
-    <p ref={ref} className={`type-${size} text-balance ${className}`} style={{ color: soft }}>
+    <Tag
+      ref={ref}
+      id={id}
+      className={`type-${size} text-balance ${className}`}
+      style={{ color: soft }}
+    >
       {leadWords.map((word, i) => {
         const threshold = (i / leadWords.length) * 0.85;
         return (
@@ -65,6 +75,6 @@ export function WordWipe({
       })}
       <span style={{ color: soft }}>{value.muted}</span>
       {value.tail ? <span style={{ color: strong }}> {value.tail}</span> : null}
-    </p>
+    </Tag>
   );
 }

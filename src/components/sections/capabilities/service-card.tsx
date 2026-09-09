@@ -3,7 +3,7 @@ import { MediaFrame } from "@/components/ui/media-frame";
 import { StaticChip } from "@/components/ui/chip";
 
 /**
- * 03 — Capabilities card. Per assets/design/services/SERVICE-CARDS-THEMING-SPEC.md
+ * 04 — Capabilities card. Per assets/design/services/SERVICE-CARDS-THEMING-SPEC.md
  * Method A: a theme-colored radial glow sits BEHIND the alpha-cutout PNG, so
  * the card's luminous aperture picks up `--color-primary` and re-tints itself
  * whenever the accent token changes. No baked-in color.

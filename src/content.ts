@@ -364,7 +364,7 @@ export const home = {
   },
 
   /**
-   * 05 — Social Proof. SITEMAP.md scopes this as metric callouts, craft
+   * 06 — Social Proof. SITEMAP.md scopes this as metric callouts, craft
    * guarantees and credibility proof. The MVP ships the guarantees: they are
    * commitments AH Growth controls, not measurements nobody has verified.
    * `metrics` and `clientLogos` stay typed and empty; both render only when
@@ -402,7 +402,7 @@ export const home = {
     clientLogos: [] as { name: string; logoSrc: string }[],
   },
 
-  /** 06 — Studio Culture. Cut until real photo/video assets exist. */
+  /** 07 — Studio Culture. Cut until real photo/video assets exist. */
   studioCulture: null as null | {
     eyebrow: string;
     heading: string;

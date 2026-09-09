@@ -52,7 +52,7 @@
   /* Floating chrome (scrolled header island, pills that hover over arbitrary
      sections). Defined per theme so the control always separates from
      whatever is behind it — a single surface value cannot guarantee that. */
-  --color-chrome: #111110;
+  --color-chrome: #242422;
   --color-on-chrome: #f7f7f5;
   --color-on-chrome-muted: #a8a8a2;
 

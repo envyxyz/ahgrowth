@@ -39,7 +39,7 @@ export const lightColors = {
   surfaceSunken: "#e8e7e4",
   inverse: "#111110",
   inverseSoft: "#1c1c1a",
-  chrome: "#111110",
+  chrome: "#242422",
   onChrome: "#f7f7f5",
   onChromeMuted: "#a8a8a2",
 
@@ -316,11 +316,13 @@ export const motion = {
    * Pinned capabilities carousel. `trackVhPerCard` is the scroll distance the
    * page travels to hand focus from one card to the next, expressed in
    * viewport heights. One full viewport per card (the obvious choice) makes
-   * the section five screens tall and reads as dead space in a page scrub;
-   * 62vh keeps every hand-off deliberate without stretching the page.
+   * the section five screens tall, and because the pinned panel is `sticky`
+   * the surplus track renders as a blank field in any full-page capture.
+   * 45vh is the floor that still reads as a deliberate hand-off rather than
+   * a jump cut.
    */
   carousel: {
-    trackVhPerCard: 62,
+    trackVhPerCard: 45,
     focusedScale: 1.04,
     restingScale: 0.9,
     restingOpacity: 0.45,

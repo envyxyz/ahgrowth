@@ -39,7 +39,7 @@ If you change a token, update `design-ahgrowth.md` first, then mirror the value 
 
 ## Section order
 
-**Locked.** Full route tree and per-section architecture: `SITEMAP.md`. Five routes (`/`, `/work`, `/work/[slug]`, `/about`, `/contact`); Home has 8 sections (Hero → Positioning → Capabilities Carousel → Selected Work → Social Proof → Studio Culture → CTA Outro → Footer). Do not add, remove, or reorder sections without updating `SITEMAP.md` first.
+**Locked.** Full route tree and per-section architecture: `SITEMAP.md`. Five routes (`/`, `/work`, `/work/[slug]`, `/about`, `/contact`); Home has 9 sections (Hero → Positioning → Editorial Trio → Capabilities Carousel → Selected Work → Social Proof → Studio Culture → CTA Outro → Footer). Do not add, remove, or reorder sections without updating `SITEMAP.md` first.
 
 ## Constraints
 
@@ -114,5 +114,16 @@ There is no separate `CONTENT.md`. `src/content.ts` is the single source of trut
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+# Front-End Rules of Engagement
+- **Flags Active:** /impeccable /ui-ux-pro-max /design-taste-frontend /web-design
+- **Stack:** React 19, Tailwind CSS v4, TypeScript (Strict Mode)
+
+## Anti-AI Slop Mandates
+1. **Never Ship Half-Made:** No placeholders, no `// TODO: implement logic`, and no stubbed functions. Write out full components.
+2. **Typography:** Avoid generic Inter or Arial. Use highly distinctive, beautiful fonts tailored to the theme.
+3. **Color & Gradients:** Commit to a cohesive theme with sharp accent colors. Layer CSS gradients and subtle geometric patterns for visual depth instead of flat gray backgrounds.
+4. **Motion & Polish:** Implement high-impact staggered page load reveals, smooth micro-interactions, and animations using Framer Motion/Tailwind transitions.
+
 
 <!-- END:nextjs-agent-rules -->

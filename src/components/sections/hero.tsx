@@ -56,10 +56,15 @@ export function Hero() {
             the lower two thirds, so the wash is heaviest there and the top
             stays open enough to read as a photograph. */}
         <div className="absolute inset-0 bg-gradient-to-t from-scrim-media-strong via-scrim-media-mid to-scrim-media-soft" />
+        {/* Second, shallow wash under the fixed header. The nav sits on
+            whatever the photograph happens to be doing at the top edge, so
+            it needs its own guarantee rather than inheriting the bottom
+            gradient's tail. */}
+        <div className="absolute inset-x-0 top-0 h-1/4 bg-gradient-to-b from-scrim-media-mid to-transparent" />
       </div>
 
       <div className="mx-auto flex w-full max-w-container flex-1 flex-col">
-        <div className="grid flex-1 gap-xxl lg:grid-cols-12 lg:gap-lg">
+        <div className="grid flex-1 gap-xl lg:grid-cols-12 lg:gap-lg">
           {/* Micro-block. Set opposite the headline, not above it. */}
           <Reveal className="lg:col-span-3 lg:pt-lg">
             <Eyebrow tone="inverse">{hero.eyebrow}</Eyebrow>
@@ -103,7 +108,7 @@ export function Hero() {
             otherwise lands on top of the last pill. */}
         <Reveal
           delay={160}
-          className="mt-4xl flex flex-col gap-xl pr-toggle-clearance lg:flex-row lg:items-end lg:justify-between"
+          className="mt-xxl flex flex-col gap-lg pr-toggle-clearance lg:mt-4xl lg:flex-row lg:items-end lg:justify-between lg:gap-xl"
         >
           {/* `plate`, not `surface`: this card sits on photography that is
               dark in both themes, so it has to stay light in both. */}

@@ -6,6 +6,8 @@ Generate all 8 images below. Save each one at the exact path given in its headin
 
 Save as JPEG, quality 85 or higher, sRGB.
 
+> **Revised.** Images 1 and 2 originally specified a fashion portrait. The hero is now an architectural scene instead, matching `public/images/services/product-development.jpg`. Images 3 to 8 are unchanged and the files already generated for them are correct: only regenerate 1 and 2.
+
 Before generating, look at these three references in the repo. They define the target and they are the pass/fail bar:
 
 - `assets/design/inspirations/images/primary.jpg` is the primary visual target.
@@ -37,9 +39,9 @@ Every image is a near monochrome red frame. The palette runs from hot vermilion 
 
 **Prompt**
 
-> Editorial fashion portrait, tight crop of one model from chest up, head turned three quarters toward camera, wearing dark angular sunglasses and a heavy polished metal chain at the collarbone. Skin is glossy with hard specular highlights along the cheekbone, jaw and shoulder. One hard crimson key light from the upper left, thin rim light tracing the far edge of the face and neck. Near monochrome red: hot vermilion highlights, deep oxblood midtones, unlifted black shadows, no second hue. Background is a smooth crimson to black gradient, completely empty. 85mm lens, shallow depth of field, fine film grain, cinematic grade.
+> Architectural interior, a tall fluted glass wall running the depth of the frame, lit from behind so the ribs glow hot amber and vermilion. Several anonymous figures walk past on the far side, reduced by the glass to soft blurred silhouettes with no readable faces. Polished dark floor holding a long wet reflection of the glow. Near monochrome red: hot vermilion in the panel, deep oxblood midtones, unlifted black shadows, no second hue. Wide angle, deep perspective running to a vanishing point, shallow foreground falloff, fine film grain, cinematic grade. No portrait, no visible face, no single hero subject.
 
-**Composition and negative space.** Place the subject left of centre so the head and shoulders occupy roughly the left 55 percent of the frame, crown of the head in the top third with headroom above it. The right 45 percent must be an unbroken smooth gradient with no detail, no hair, no hands: large display type sits there. The bottom left quadrant must fall away to near black with no subject detail: floating cards sit on top of it. Keep the face out of the extreme top edge so a small vertical crop does not cut the forehead.
+**Composition and negative space.** Put the lit glass wall and the figures in the left 55 percent of the frame. The right 45 percent must fall to near black with no detail: large display type sits there. The bottom left quadrant must also fall away to near black with no detail, because a floating card sits on top of it. Keep the brightest part of the panel in the upper left so it never competes with the copy.
 
 ---
 
@@ -49,9 +51,9 @@ Every image is a near monochrome red frame. The palette runs from hot vermilion 
 
 **Prompt**
 
-> Same model, same wardrobe and same lighting setup as the landscape hero, recomposed vertical. Editorial fashion portrait, head and shoulders only, centred horizontally, three quarter angle to camera, dark angular sunglasses, heavy polished chain at the collarbone. One hard crimson key from the upper left, thin rim light on the opposite cheek, glossy specular highlights on skin and metal. Near monochrome red, vermilion highlights, oxblood midtones, crushed black shadows, no second hue. Plain crimson to black gradient background, nothing else in frame. 85mm portrait compression, shallow depth of field, fine grain, cinematic grade.
+> Same backlit fluted glass wall, same lighting and same grade as the landscape hero, recomposed vertical. The glowing ribbed panel fills the frame from top to bottom, one or two blurred anonymous silhouettes behind it, polished floor reflection at the base. Near monochrome red, vermilion in the panel, oxblood midtones, crushed black shadows, no second hue. Deep perspective, shallow foreground falloff, fine grain, cinematic grade. No portrait, no visible face, no single hero subject.
 
-**Composition and negative space.** The face is the whole point at this width, so make it large: crown of the head around 12 percent down, chin around 45 percent down. Keep every part of the face inside the central 70 percent of the width so a narrow 375px viewport never clips an eye or an ear. The bottom third of the frame falls to near black and holds no detail, because stacked headline and button copy sits there. No chain or hand should intrude into that bottom third.
+**Composition and negative space.** The glow is the subject at this width, so keep it in the upper two thirds and let the frame fall to near black below. The bottom third holds no detail at all, because stacked headline and button copy sits there. Keep the strongest highlight inside the central 70 percent of the width so a narrow 375px viewport does not crop it out.
 
 ---
 
@@ -93,7 +95,7 @@ Every image is a near monochrome red frame. The palette runs from hot vermilion 
 
 ## 6. `public/images/blobs/blob-01.jpg`
 
-**480x280, 12:7 landscape.** Tiny image inset inside a headline. It gets masked to a full radius capsule and renders around 120x70px, so it must read as a single bold shape at thumbnail size.
+**480x280, 12:7 landscape.** Tiny image inset inside a headline. It gets masked to a full radius capsule and renders around 120x70px, so it must read as a single bold shape at thumbnail size. The capsule in code is a little wider than 12:7, so `object-fit: cover` trims roughly a quarter off the top and bottom: keep the subject centred vertically and leave dead space above and below it, never at the sides.
 
 **Prompt**
 

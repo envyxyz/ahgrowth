@@ -19,7 +19,11 @@ export function MediaFrame({
   alt: string;
   /** Required: an unset `sizes` on a `fill` image downloads the largest source. */
   sizes: string;
-  ratio?: "portrait" | "square" | "landscape";
+  /** `fill` sets no aspect ratio and covers the parent instead, which must
+      be positioned. Use it when the grid row decides the height, not the
+      image: an aspect ratio plus a definite height fights itself and the
+      image ends up sized off its height rather than the cell's width. */
+  ratio?: "portrait" | "square" | "landscape" | "fill";
   /** Placeholder fill behind the image. `inverse` on a dark block: a light
       fill shows straight through a cutout PNG's transparent aperture. */
   tone?: "light" | "inverse";
@@ -28,17 +32,22 @@ export function MediaFrame({
   /** Overlay content, e.g. the accent glow behind a cutout. */
   children?: React.ReactNode;
 }) {
-  const ratioClass = {
-    portrait: "aspect-[3/4]",
-    square: "aspect-square",
-    landscape: "aspect-[16/10]",
+  /* Position ships with the ratio, not alongside it. `relative absolute` in
+     one class list does not resolve by author order — Tailwind emits
+     `.relative` after `.absolute`, so `relative` would silently win and the
+     fill variant would collapse. */
+  const boxClass = {
+    portrait: "relative aspect-[3/4]",
+    square: "relative aspect-square",
+    landscape: "relative aspect-[16/10]",
+    fill: "absolute inset-0",
   }[ratio];
 
   return (
     <div
-      className={`relative isolate overflow-hidden rounded-lg ${
+      className={`isolate overflow-hidden rounded-lg ${boxClass} ${
         tone === "inverse" ? "bg-inverse-soft" : "bg-surface-sunken"
-      } ${ratioClass} ${className}`}
+      } ${className}`}
     >
       {children}
       <Image

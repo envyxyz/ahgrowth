@@ -10,7 +10,7 @@ import { motion as designMotion } from "@/lib/design-tokens";
 const shippedRoutes = content.nav.items.filter((item) => item.shipped);
 
 /**
- * 08 — Footer. Continues the CTA Outro's dark block rather than starting a
+ * 09 — Footer. Continues the CTA Outro's dark block rather than starting a
  * new one, closing the page on a single uninterrupted contrast field. The
  * wordmark is ghosted into the surface, not set as bright display type.
  * Curtain reveal mechanic lands later (SITEMAP.md §8).
